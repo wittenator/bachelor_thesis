@@ -143,6 +143,14 @@ As algorithmic systems increasingly regulate, evaluate and adapt to individual a
 	\item Welche Ziele werden mit der Arbeit verfolgt? Und welche zentralen Fragen lassen sich daraus ableiten?
 	\item Die Ziele sollten so spezifisch wie möglich sein. Das hilft Ihnen im Verlauf der Umsetzung zu prüfen, ob Sie Ihre Ziele erreichen konnten.
 \end{itemize}
+This thesis 
+\begin{itemize}
+	\item Which techniques to enhance interpretability of models are out there and how are they characterized?
+	\item How do they work and to which extent are they applicable to the chosen model?
+	\item 
+\end{itemize}
+
+
 
 \section{Procedure and methods}
 \begin{itemize}
@@ -151,11 +159,15 @@ As algorithmic systems increasingly regulate, evaluate and adapt to individual a
 	
 \end{itemize}
 
-In order to gain a reproducible overview over the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies} is conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
+In order to gain a reproducible overview over the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies} is going to be conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
 
-These papers are going to be analyzed for occurring XAI methods and categorized according to generally accepted criteria e.g. Miller's "Properties of Interpretable Models" \cite{liptonMythosModelInterpretability2016} or Robnik-Sikonja's criteria \cite{robnik-sikonjaPerturbationBasedExplanationsPrediction2018}.
+These papers are going to be analyzed quantitatively and qualitatively for occurring XAI methods and categorized according to generally accepted criteria e.g. Miller's "Properties of Interpretable Models" \cite{liptonMythosModelInterpretability2016} or Robnik-Sikonja's criteria \cite{robnik-sikonjaPerturbationBasedExplanationsPrediction2018}.
 
-Based on that analysis a number of techniques are selected and are going to be applied to one of the state-of-art NLP topic modelling techniques - e.g. Doc2Vec \cite{leDistributedRepresentationsSentences2014}.
+Based on that analysis a number of techniques are selected and going to be applied to one of the state-of-art NLP topic modelling techniques - e.g. Doc2Vec \cite{leDistributedRepresentationsSentences2014}.
+
+One of the most crucial parts of the existing topic modelling pipeline is the document embedding. Currently a simple information retrieval method - Tf-Idf - is used, but the main drawback of the technique is that it, as all Bag-of-Words method, completely disregards word order and semantic dependencies in texts. Since that may be a integral part especially in scientific literature a more complex model is needed which is able to capture this dependencies. In order to do this a short summary of the state of research of document embeddings is presented and an applicable model will be chosen.
+
+This model will be augmented by interpretability techniques and their impact will be studied.
 
 \section{Technische Umsetzung}
 \begin{itemize}
@@ -163,7 +175,9 @@ Based on that analysis a number of techniques are selected and are going to be a
 	\item Selbstverständlich können Sie an der Stelle noch nicht alles wissen, aber Sie sollen sich hier bereits einen guten Überblick verschaffen.
 \end{itemize}
 
-The implementation of this thesis is going to be done in Python since most research in machine learning is conducted in this language. Based on the chosen model which is going to be augmented with explainability mechanisms further packages and technologies are going to be selected. Features for the decision will be ease of implementation and applicability additionally to the results of the previous literature analysis.
+One of the main technical challenges and parts of the implementational work will be the augmentation of the current topic modelling pipeline by a document embedding technique. Since the performance of the model greatly depends on this step, it is crucial to have well learned vector representations of the document base. Currently there is a corpus of circa 114000 scientific documents available in order to train the model. If that is not enough to gain expressive document embeddings, one may include pretrained word embeddings via e.g. BERT to introduce external information into the model and enhance the semantic coherence of the learned embeddings. This path should be taken with cation since it is connected to an hardly determinable amount of complexity. Research in the field of transfer learning for document embeddings is still in its infancy.
+
+In order to adhere to the current research and industry standards, the implementation of this thesis is going to be done in Python, more precisely Tensorflow. Based on the chosen model which is going to be augmented with explainability mechanisms further packages and technologies are going to be selected. Additionally to the results of the previous literature analysis further features for the decision will be the ease of implementation and applicability to the chosen model.
 
 \section{Time calculation}
 \begin{itemize}
