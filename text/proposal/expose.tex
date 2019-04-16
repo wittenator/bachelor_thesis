@@ -13,7 +13,8 @@
 %
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel} %\usepackage[english]{babel}  
+%\usepackage[ngerman]{babel} 
+\usepackage[english]{babel}  
 \usepackage{ae} 
 \usepackage{bibgerm}    
 
@@ -27,6 +28,8 @@
 %\usepackage[pdfstartview=FitH,pdftitle={<<Titel der Arbeit>>}, pdfauthor={<<Autor>>}, pdfkeywords={<<Schlüsselwörter>>}, pdfsubject={<<Titel der Arbeit>>}, colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black, hypertexnames=false, bookmarksnumbered=true, bookmarksopen=true, pdfborder = {0 0 0}]{hyperref}
 % 
 % a new command is defined that allows to include an empty page when needed
+\definecolor{tim}{rgb}  {0.6, 0.1, 0.4}
+\newcommand{\tk}[1]{\textcolor{tim}{[\textbf{TK:} #1]}}
 \newcommand{\blankpage}{
 \newpage
 \thispagestyle{empty}
@@ -40,7 +43,7 @@
 %
 \hypersetup{
 	pdftitle={<My title>},  % please, add the title of your thesis
-    pdfauthor={<Author>},   % please, add your name
+    pdfauthor={Tim Korjakow},   % please, add your name
     pdfsubject={<<Bachelor thesis>, Institute of Computer Science, Freie Universität Berlin>}, % please, select the type of this document
     pdfstartview={FitH},    % fits the width of the page to the window
     pdfnewwindow=true, 		% links in new window
@@ -79,20 +82,19 @@
 \begin{titlepage}
 
 \title{
-{\small <Bachelorarbeit> am Institut für Informatik der Freien Universität Berlin}\\
+{\small Bachelor thesis, Institute of Computer Science, Freie Universität Berlin}\\
 {\small Human-Centered Computing (HCC), AG NBI}\\
 [6ex]
 {\LARGE<Titel der Arbeit>}\\
 {\normalsize-- Exposé --}}
 
 \author{
-{\emph{\normalsize<Ihr Vor- und Nachname>}}\\
-{\normalsize Matrikelnummer: <IhreMatrikelnummer>}\\
-{\normalsize <ihreemail@adresse.de>}\\\\
-{\normalsize Betreuerin: Prof. Dr. C. Müller-Birn}
+{\emph{\normalsize Tim Korjakow}}\\
+{\normalsize tim.korjakow@campus.tu-berlin.de}\\\\
+{\normalsize Supervisor: Prof. Dr. C. Müller-Birn}
 }
 
-\date{\normalsize Berlin, <Datum>}
+\date{\normalsize Berlin, \today}
 
 \end{titlepage}
 
@@ -114,42 +116,56 @@
 
 \setcounter{page}{1} % page number is set to "1" otherwise it would be "3"
 
-\section{Struktur des Exposé}
-Im Folgenden habe ich Ihnen eine generelle Struktur für ein Exposé vorgegeben. Jeder Abschnitt ist mit einer Frage, welchen Inhalt dieses Kapitel abdecken sollte eingeleitet und enthält einige Erläuterungen. Bitte beachten Sie, dass das Layout dieser Vorlage doppelseitig angelegt ist.
-
-\subsection{Motivation der Arbeit} 
+\section{Motivation of the thesis} 
 \begin{itemize}
 	\item In welchem Bereich/Themenfeld bewegt sich Ihre geplante Arbeit?
 	\item Erläutern Sie kurz, in welchem Themenbereich Ihre Arbeit angesiedelt ist. Wo werden Sie einen Beitrag leisten?
 	\item Nutzen Sie bei den Erläuterungen die Ihnen bereitgestellte Kurzaufgabenstellung.
-\end{itemize} 
+\end{itemize}
 
-\subsection{Thematische Einordnung der Arbeit}
+Research on Explainable Artificial Intelligence, often called XAI, is currently wildly distributed and characterized by several competing ideas and approaches from a vast number of fields including computer science, mathematics, social sciences and philosophy\tk{citation needed}. Research is mostly focused on explainability in computer vision since the inner workings of a model can directly be translated into a graphic representation. In contrast to that development stands the fact that most of humanity's knowledge is encoded in text and XAI algorithms and methods from computer vision most often cannot be directly applied to results of NLP algorithms. Therefore there is an urgent need to research these methods in the context of NLP.
+
+In Project IKON, we are developing a data-driven application at a major natural history research institution in order to make potentials for knowledge transfer between research projects and society actionable. To this end, it features a data visualization of semantic relations between research projects supplemented by links to infrastructures (e.g., collections or labs) and knowledge transfer activities (e.g., workshops or lectures). To generate the semantic relations, we have developed a Topic Modelling Pipeline with a Singular Value Decomposition at its heart. It is thought that this method shares a limited amount of expressiveness with different other linear methods due to its purely linear nature \cite{arrasWhatRelevantText2017}. Additionally, when considering how we can make the results of our pipeline more interpretable, we encountered significant doubts over the meaningfulness of approaches such as parameter manipulation or choosing between algorithms for dimensionality reduction \cite{benjaminTransparencyMediationMeaning2018} in our use case.
+
+In short, the fundamental challenge of interpretability in Project IKON is: which model can we use that is potentially more interpretable, and how precisely can what aspect be made interpretable for humans in order to support the context of identifying potentials for knowledge transfer at the research institution? The latter illustrates a significant gap in the related work, as contextuality (both considering the way in which the output of a machine learning algorithm is operationalized in an algorithmic system as well as the situated context of use) is a sorely neglected aspect of interpretability \cite{millerExplanationArtificialIntelligence2017}.
+
+\section{Thematische Einordnung der Arbeit}
 \begin{itemize}
 	\item Welche Artikel/Literatur sind/ist relevant für diese Arbeit? 
 	\item Bitte geben Sie die relevanten Inhalte der Artikel kurz wieder.
 	\item Das Ausarbeiten von ausgewählter Literatur bzw. verwandten Arbeiten hilft Ihnen, Ihre Ziele im folgenden Abschnitt zu definieren. Daher ist eine Auseinandersetzung mit der Literatur von Beginn an notwendig, wenn es zu diesem Zeitpunkt noch nicht erschöpfend sein muss.
 \end{itemize}
 
-\subsection{Zielstellung} 
+As algorithmic systems increasingly regulate, evaluate and adapt to individual as well as geopolitical human activity, there is a particular ethical urgency to make their operation and results interpretable for people with different backgrounds (ML experts, non-technical experts etc.). This has been especially apparent in recent years, with a growing discourse on algorithmic influence in political events and lawmakers seeking a right to explanation [8] for people using algorithmic systems. As a result, interpretability has become a frequent if ill-defined \cite{liptonMythosModelInterpretability2016} objective for research and development in machine learning (ML) algorithms. For example, ML algorithms have been showcased as 'interpretable' in the form of network graphs of neural network layers [9], as well as feature visualisations [7] or textual explanations [3] in image classification.
+
+\section{Goal setting} 
 \begin{itemize}
 	\item Welche Ziele werden mit der Arbeit verfolgt? Und welche zentralen Fragen lassen sich daraus ableiten?
 	\item Die Ziele sollten so spezifisch wie möglich sein. Das hilft Ihnen im Verlauf der Umsetzung zu prüfen, ob Sie Ihre Ziele erreichen konnten.
 \end{itemize}
 
-\subsection{Geplante Vorgehensweise}
+\section{Procedure and methods}
 \begin{itemize}
 	\item Welche einzelnen Aktivitäten müssen umgesetzt werden, um die Fragen zu beantworten und das Ziel der Arbeit zu erreichen?
 	\item Aus den Fragen (vorheriger Abschnitt) können Sie dann gut Aktivitäten ableiten, die Ihnen helfen, Ihre weitere Arbeit zu strukturieren.
+	
 \end{itemize}
 
-\subsection{Technische Umsetzung}
+In order to gain a reproducible overview over the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies} is conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
+
+These papers are going to be analyzed for occurring XAI methods and categorized according to generally accepted criteria e.g. Miller's "Properties of Interpretable Models" \cite{liptonMythosModelInterpretability2016} or Robnik-Sikonja's criteria \cite{robnik-sikonjaPerturbationBasedExplanationsPrediction2018}.
+
+Based on that analysis a number of techniques are selected and are going to be applied to one of the state-of-art NLP topic modelling techniques - e.g. Doc2Vec \cite{leDistributedRepresentationsSentences2014}.
+
+\section{Technische Umsetzung}
 \begin{itemize}
 	\item Mit welchen softwaretechnischen Hilfsmitteln soll die Arbeit realisiert werden?
 	\item Selbstverständlich können Sie an der Stelle noch nicht alles wissen, aber Sie sollen sich hier bereits einen guten Überblick verschaffen.
 \end{itemize}
 
-\subsection{Erster Terminplan}
+The implementation of this thesis is going to be done in Python since most research in machine learning is conducted in this language. Based on the chosen model which is going to be augmented with explainability mechanisms further packages and technologies are going to be selected. Features for the decision will be ease of implementation and applicability additionally to the results of the previous literature analysis.
+
+\section{Time calculation}
 \begin{itemize}
 	\item Wie ist der generelle Zeitplan der Arbeit? 
 	\item Sie sollten bereits wissen, wann Sie fertig sein wollen und von dort mit der Rückwärtsterminierung starten.
@@ -168,15 +184,7 @@ Viele weitere, nützliche Informationen finden Sie in der Prüfungsordnung Ihres
 \phantomsection
 \addcontentsline{toc}{chapter}{Literatur}   % headline
 \bibliographystyle{alpha}  % citation style
-\bibliography{references} % bib file
+\bibliography{../../references/proposal} % bib file
 
-\newpage 
-\section*{Anhang I: Auszug Prüfungsordnung Bachelor}
-\label{sec:bachelor}     
-\begin{figure}[!h]
-	\centering
-		\includegraphics[width=0.8\textwidth]{../../img/proposal/Auszug_Bachelor_Pruefungsordnung.pdf}
-	\caption{Auszug Prüfungsordnung Bachelor} 
-\end{figure}
 
 \end{document}
