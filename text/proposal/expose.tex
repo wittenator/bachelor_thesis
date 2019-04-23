@@ -117,11 +117,6 @@
 \setcounter{page}{1} % page number is set to "1" otherwise it would be "3"
 
 \section{Motivation of the thesis} 
-\begin{itemize}
-	\item In welchem Bereich/Themenfeld bewegt sich Ihre geplante Arbeit?
-	\item Erläutern Sie kurz, in welchem Themenbereich Ihre Arbeit angesiedelt ist. Wo werden Sie einen Beitrag leisten?
-	\item Nutzen Sie bei den Erläuterungen die Ihnen bereitgestellte Kurzaufgabenstellung.
-\end{itemize}
 
 Research on Explainable Artificial Intelligence, often called XAI, is currently wildly distributed and characterized by several competing ideas and approaches from a vast number of fields including computer science, mathematics, social sciences and philosophy\tk{citation needed}. Research is mostly focused on explainability in computer vision since the inner workings of a model can directly be translated into a graphic representation. In contrast to that development stands the fact that most of humanity's knowledge is encoded in text and XAI algorithms and methods from computer vision most often cannot be directly applied to results of NLP algorithms. Therefore there is an urgent need to research these methods in the context of NLP.
 
@@ -136,28 +131,20 @@ In short, the fundamental challenge of interpretability in Project IKON is: whic
 	\item Das Ausarbeiten von ausgewählter Literatur bzw. verwandten Arbeiten hilft Ihnen, Ihre Ziele im folgenden Abschnitt zu definieren. Daher ist eine Auseinandersetzung mit der Literatur von Beginn an notwendig, wenn es zu diesem Zeitpunkt noch nicht erschöpfend sein muss.
 \end{itemize}
 
+\tk{Same as before?}
 As algorithmic systems increasingly regulate, evaluate and adapt to individual as well as geopolitical human activity, there is a particular ethical urgency to make their operation and results interpretable for people with different backgrounds (ML experts, non-technical experts etc.). This has been especially apparent in recent years, with a growing discourse on algorithmic influence in political events and lawmakers seeking a right to explanation [8] for people using algorithmic systems. As a result, interpretability has become a frequent if ill-defined \cite{liptonMythosModelInterpretability2016} objective for research and development in machine learning (ML) algorithms. For example, ML algorithms have been showcased as 'interpretable' in the form of network graphs of neural network layers [9], as well as feature visualisations [7] or textual explanations [3] in image classification.
 
 \section{Goal setting} 
-\begin{itemize}
-	\item Welche Ziele werden mit der Arbeit verfolgt? Und welche zentralen Fragen lassen sich daraus ableiten?
-	\item Die Ziele sollten so spezifisch wie möglich sein. Das hilft Ihnen im Verlauf der Umsetzung zu prüfen, ob Sie Ihre Ziele erreichen konnten.
-\end{itemize}
-This thesis 
+This thesis tries to answer the following two questions:
 \begin{itemize}
 	\item Which techniques to enhance interpretability of models are out there and how are they characterized?
-	\item How do they work and to which extent are they applicable to the chosen model?
-	\item 
+	\item How can the existing topic modeling pipeline be augmented or changed in order to enhance interpretability?
+	\item Does the usage of these methods result in an enhanced understanding on the end users side? \tk{Needs to be discussed!}
 \end{itemize}
 
 
 
 \section{Procedure and methods}
-\begin{itemize}
-	\item Welche einzelnen Aktivitäten müssen umgesetzt werden, um die Fragen zu beantworten und das Ziel der Arbeit zu erreichen?
-	\item Aus den Fragen (vorheriger Abschnitt) können Sie dann gut Aktivitäten ableiten, die Ihnen helfen, Ihre weitere Arbeit zu strukturieren.
-	
-\end{itemize}
 
 In order to gain a reproducible overview over the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies} is going to be conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
 
@@ -180,17 +167,14 @@ One of the main technical challenges and parts of the implementational work will
 In order to adhere to the current research and industry standards, the implementation of this thesis is going to be done in Python, more precisely Tensorflow. Based on the chosen model which is going to be augmented with explainability mechanisms further packages and technologies are going to be selected. Additionally to the results of the previous literature analysis further features for the decision will be the ease of implementation and applicability to the chosen model.
 
 \section{Time calculation}
+\tk{Needs to be done!}
 \begin{itemize}
 	\item Wie ist der generelle Zeitplan der Arbeit? 
 	\item Sie sollten bereits wissen, wann Sie fertig sein wollen und von dort mit der Rückwärtsterminierung starten.
 	\item Ihre Arbeit ist ein Projekt, daher planen Sie es auch wie eines. Nutzen Sie zur Visualisierung ein Gantt-Chart.
 \end{itemize}
 
-\section{Wie geht es nach dem Exposé weiter?}
 
-Nachdem die Phase der Exposé-Erstellung abgeschlossen ist (das kann bis zu drei Iterationen dauern), können Sie mit der Erstellung der eigentlichen Abschlussarbeit beginnen. Bitte nutzen Sie die Inhalte des Exposés gleich als inhaltlichen Rahmen für die Arbeit (vor allem in Kapitel 1). Ihnen wird wieder eine \LaTeX Vorlage zur Verfügung gestellt. In dieser Vorlage finden Sie wieder viele Informationen und Hilfestellungen zur Erstellung der Arbeit. Sie sollten nun Ihre Arbeit anmelden. Das entsprechende Formular finden Sie auf den Institutsseiten (\href{http://www.mi.fu-berlin.de/inf/stud-bioinf/downloads/Anmeldung_zur_Bachelorarbeit_2010.pdf}{Link}).Bitte bringen Sie das ausgefüllte Formular zu einer unserer Sitzungen mit. Ich unterschreibe es und leite es weiter. Nun sollten Sie auch bald darüber nachdenken, wer der Zweitgutachter Ihrer Arbeit sein könnte. Ich berate Sie dabei gern. 
-
-Viele weitere, nützliche Informationen finden Sie in der Prüfungsordnung Ihres Studiengangs. Bitte lesen Sie den Sie betreffenden Absatz im Anhang (\ref{sec:bachelor}). 
 %---------------------------------------------------
 %----- Bibliography
 %---------------------------------------------------
