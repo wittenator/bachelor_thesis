@@ -22,9 +22,10 @@
 %----- Packages
 %---------------------------------------------------
 %
+\usepackage{pythontex}
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel} %\usepackage[english]{babel}  
+\usepackage[english]{babel}  
 \usepackage{ae} 
 \usepackage{bibgerm}    
 
@@ -48,6 +49,8 @@
 \usepackage{pdflscape}
 \usepackage{multirow} %multi row
 \usepackage{rotating} %for rotating table
+% custom imports
+
 %
 %---------------------------------------------------
 %----- PDF and document setup
@@ -86,6 +89,9 @@
 \renewcommand{\sectionmark}[1]{% adapt the shown section name: show it in lower case and with section number 
 \markboth{\thesection.\ #1}{}}
 
+\definecolor{tim}{rgb}  {0.6, 0.1, 0.4}
+\newcommand{\tk}[1]{\textcolor{tim}{[\textbf{TK:} #1]}} % add author comments
+
 \renewcommand{\headrulewidth}{0pt} % remove lines from header
 \renewcommand{\footrulewidth}{0pt} % remove lines from header
 
@@ -120,15 +126,15 @@
 % In order to only partially translate the document, for example for bug-fixing, 
 % it might be useful to comment out some of the documents.
 \includeonly{
-title,
-declaration,
-abstract_en,
-abstract_de,
-preface,
-introduction,
-chapters,
-conclusion,
-appendix
+../chapters/title/title,
+../chapters/declaration/declaration,
+../chapters/abstract/abstract_en,
+../chapters/abstract/abstract_de,
+../chapters/preface/preface,
+../chapters/introduction/introduction,
+../chapters/literature_analysis/literature_analysis,
+../chapters/conclusion/conclusion,
+../chapters/appendix/appendix
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,15 +187,15 @@ appendix
 %----- Title and declaration   
 %---------------------------------------------------
 \pagenumbering{alph} % even though, these page numbers are not visible there are necessary to have unique page numbers 
-\include{title}
-\include{declaration}
+\input{../chapters/title/title}
+\input{../chapters/declaration/declaration}
 
 %---------------------------------------------------
 %----- Abstracts in English and German   
 %---------------------------------------------------
 
-\include{abstract_en}
-\include{abstract_de}  
+\input{../chapters/abstract/abstract_en}
+\input{../chapters/abstract/abstract_de} 
                                           
 %---------------------------------------------------
 %----- Directories   
@@ -211,18 +217,18 @@ appendix
 \pagenumbering{arabic} 
 \pagestyle{fancy} 
 
-\include{preface} 
+\input{../chapters/preface/preface} 
 
-\include{introduction}
-\include{chapters}
-\include{conclusion}
+\input{../chapters/introduction/introduction}
+\input{../chapters/literature_analysis/literature_analysis}
+\input{../chapters/conclusion/conclusion}
 
 
 %---------------------------------------------------
 %----- Bibliography
 %---------------------------------------------------
 \phantomsection
-\addcontentsline{toc}{chapter}{Literatur}
+\addcontentsline{toc}{../chapters/appendix/appendix}{Literatur}
 \bibliographystyle{alpha}
 \bibliography{references.bib,../../references/thesis/main.bib}
 

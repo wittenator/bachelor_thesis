@@ -3,7 +3,7 @@ from bibtexparser.bwriter import BibTexWriter
 from bibtexparser.bibdatabase import BibDatabase
 
 
-search_query = [['explainability', 'explainable', 'explanation', 'interpretability', 'interpretable', 'interpretation'], ['machine learning', 'neural network']]
+search_query = [['explainability', 'explainable', 'explanation', 'interpretability', 'interpretable', 'interpretation'], ['machine learning', 'neural network', 'AI', 'artificial intelligence']]
 search_string = ' AND '.join( '( ' + ' OR '.join([ f'all:"{item}"' for item in ors]) + ' )' for ors in search_query)
 print(search_string)
 # Multi-field queries

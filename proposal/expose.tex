@@ -11,6 +11,7 @@
 %----- Packages
 %---------------------------------------------------
 %
+\usepackage{pgfgantt}
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
 %\usepackage[ngerman]{babel} 
@@ -23,7 +24,7 @@
 \usepackage{xcolor}
 \usepackage{url}
 %
-\usepackage[pdftex]{graphicx}  
+%\usepackage[pdftex]{graphicx}  
 \usepackage{hyperref} % turn all your internal references into hyperlinks
 %\usepackage[pdfstartview=FitH,pdftitle={<<Titel der Arbeit>>}, pdfauthor={<<Autor>>}, pdfkeywords={<<Schlüsselwörter>>}, pdfsubject={<<Titel der Arbeit>>}, colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black, hypertexnames=false, bookmarksnumbered=true, bookmarksopen=true, pdfborder = {0 0 0}]{hyperref}
 % 
@@ -91,7 +92,7 @@
 \author{
 {\emph{\normalsize Tim Korjakow}}\\
 {\normalsize tim.korjakow@campus.tu-berlin.de}\\\\
-{\normalsize Supervisor: Prof. Dr. C. Müller-Birn}
+{\normalsize Supervisor: Jesse Josua Benjamin }
 }
 
 \date{\normalsize Berlin, \today}
@@ -118,62 +119,77 @@
 
 \section{Motivation of the thesis} 
 
-Research on Explainable Artificial Intelligence, often called XAI, is currently wildly distributed and characterized by several competing ideas and approaches from a vast number of fields including computer science, mathematics, social sciences and philosophy\tk{citation needed}. Research is mostly focused on explainability in computer vision since the inner workings of a model can directly be translated into a graphic representation. In contrast to that development stands the fact that most of humanity's knowledge is encoded in text and XAI algorithms and methods from computer vision most often cannot be directly applied to results of NLP algorithms. Therefore there is an urgent need to research these methods in the context of NLP.
+Research on Explainable Artificial Intelligence, often called XAI, is currently wildly distributed and characterized by several competing ideas and approaches from a vast number of fields including computer science, mathematics, social sciences and philosophy. Research is mostly focused on explainability in computer vision since the inner workings of a model can directly be translated into a graphic representation. In contrast to that development stands the fact that most of humanity's knowledge is encoded in text and XAI algorithms and methods from computer vision most often cannot be directly applied to results of NLP algorithms. Therefore there is an urgent need to research these methods in the context of NLP.
 
 In Project IKON, we are developing a data-driven application at a major natural history research institution in order to make potentials for knowledge transfer between research projects and society actionable. To this end, it features a data visualization of semantic relations between research projects supplemented by links to infrastructures (e.g., collections or labs) and knowledge transfer activities (e.g., workshops or lectures). To generate the semantic relations, we have developed a Topic Modelling Pipeline with a Singular Value Decomposition at its heart. It is thought that this method shares a limited amount of expressiveness with different other linear methods due to its purely linear nature \cite{arrasWhatRelevantText2017}. Additionally, when considering how we can make the results of our pipeline more interpretable, we encountered significant doubts over the meaningfulness of approaches such as parameter manipulation or choosing between algorithms for dimensionality reduction \cite{benjaminTransparencyMediationMeaning2018} in our use case.
 
-
 In short, the fundamental challenge of interpretability in Project IKON is: which model can we use that is potentially more interpretable, and how precisely can what aspect be made interpretable for humans in order to support the context of identifying potentials for knowledge transfer at the research institution? The latter illustrates a significant gap in the related work, as contextuality (both considering the way in which the output of a machine learning algorithm is operationalized in an algorithmic system as well as the situated context of use) is a sorely neglected aspect of interpretability \cite{millerExplanationArtificialIntelligence2017}.
 
-\section{Thematische Einordnung der Arbeit}
-\begin{itemize}
-	\item Welche Artikel/Literatur sind/ist relevant für diese Arbeit? 
-	\item Bitte geben Sie die relevanten Inhalte der Artikel kurz wieder.
-	\item Das Ausarbeiten von ausgewählter Literatur bzw. verwandten Arbeiten hilft Ihnen, Ihre Ziele im folgenden Abschnitt zu definieren. Daher ist eine Auseinandersetzung mit der Literatur von Beginn an notwendig, wenn es zu diesem Zeitpunkt noch nicht erschöpfend sein muss.
-\end{itemize}
+\section{Related work}
 
-\tk{Same as before?}
-As algorithmic systems increasingly regulate, evaluate and adapt to individual as well as geopolitical human activity, there is a particular ethical urgency to make their operation and results interpretable for people with different backgrounds (ML experts, non-technical experts etc.). This has been especially apparent in recent years, with a growing discourse on algorithmic influence in political events and lawmakers seeking a right to explanation [8] for people using algorithmic systems. As a result, interpretability has become a frequent if ill-defined \cite{liptonMythosModelInterpretability2016} objective for research and development in machine learning (ML) algorithms. For example, ML algorithms have been showcased as 'interpretable' in the form of network graphs of neural network layers [9], as well as feature visualisations [7] or textual explanations [3] in image classification.
+With the surge of the application of machine learning (ML) systems in our daily life there is an increasing demand to make operation and results of these systems interpretable for people with different backgrounds (ML experts, non-technical experts etc.). Contrary to these efforts, interpretability as term has become an ill-defined objective \cite{liptonMythosModelInterpretability2016}  for research and development in ML algorithms since there is no widely agreed upon definition of it. 
+
+Miller et al. \cite{millerExplainableAIBeware2017} supports this point by conducting a literature study and uncovering that interpretability research is rarely influenced by insights from the humanities, especially connected fields as explainability or causality research.
+
+This thesis builds upon this concepts  and tries to transfer their critical insights onto the sub field of natural language processing - an often overlooked discipline in the context of interpretability research. 
 
 \section{Goal setting} 
-This thesis tries to answer the following two questions:
+As formulated in the introduction, the main problem for project IKON is uncertainty about the interpretability of the existing model. This thesis should therefore examine existing interpretability techniques, their applicability to the existing model or a contending one and subsequently a decision for one of them. The chosen model will be implemented and augmented by a number of interpretability techniques. The results will be assessed with the help of an exemplary, qualitative user test with an expert user from the natural history museum. This goal setting directly leads to the following set of questions:
 \begin{itemize}
 	\item Which techniques to enhance interpretability of models are out there and how are they characterized?
-	\item How can the existing topic modeling pipeline be augmented or changed in order to enhance interpretability?
-	\item Does the usage of these methods result in an enhanced understanding on the end users side? \tk{Needs to be discussed!}
+	\item How can the existing topic modeling pipeline be augmented or changed in order to enhance different aspects of interpretability?
+	\item Does the usage of these methods result in an enhanced understanding on the end users side? \tk{Can the type of understanding remain undisclosed?}
 \end{itemize}
 
 
 
 \section{Procedure and methods}
 
+One of the most crucial parts of the existing topic modelling pipeline is the document embedding. Currently a simple information retrieval method - Tf-Idf - is used, but the main drawback of the technique is that it, as all Bag-of-Words method, completely disregards word order and semantic dependencies in texts. Since that may be a integral part especially in scientific literature a more complex model is needed which is able to capture this dependencies. In order to do this a short summary of the state of research of document embeddings is presented and an contender to the existing NLP pipeline will be chosen.
+
 In order to gain a reproducible overview over the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies} is going to be conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
 
-These papers are going to be analyzed quantitatively and qualitatively for occurring XAI methods and categorized according to generally accepted criteria e.g. Miller's "Properties of Interpretable Models" \cite{liptonMythosModelInterpretability2016} or Robnik-Sikonja's criteria \cite{robnik-sikonjaPerturbationBasedExplanationsPrediction2018}.
+These papers are going to be analyzed quantitatively and qualitatively for occurring XAI methods and categorized according to proposed criteria e.g. Liptons's "Properties of Interpretable Models" \cite{liptonMythosModelInterpretability2016} or Robnik-Sikonja's criteria \cite{robnik-sikonjaPerturbationBasedExplanationsPrediction2018}.
 
-Based on that analysis a number of techniques are selected and going to be applied to one of the state-of-art NLP topic modelling techniques - e.g. Doc2Vec \cite{leDistributedRepresentationsSentences2014}.
+In this analysis a model is more interpretable if it supports more interpretability techniques that were sourced from the literature analysis. Therefore the next step involves checking which techniques are applicable to the two contending models. Based on the absolute counts the more interpretable model is chosen. Following a number of supported techniques are selected and going to be applied to the chosen model.
 
-One of the most crucial parts of the existing topic modelling pipeline is the document embedding. Currently a simple information retrieval method - Tf-Idf - is used, but the main drawback of the technique is that it, as all Bag-of-Words method, completely disregards word order and semantic dependencies in texts. Since that may be a integral part especially in scientific literature a more complex model is needed which is able to capture this dependencies. In order to do this a short summary of the state of research of document embeddings is presented and an applicable model will be chosen.
+As an exemplary analysis of the impact of these techniques on the human understanding a qualitative interview with domain experts from the natural history museum will be conducted. This Think Aloud Test should generate insightful information and pointers for further research.
 
-This model will be augmented by interpretability techniques and their impact will be studied.
 
-\section{Technische Umsetzung}
-\begin{itemize}
-	\item Mit welchen softwaretechnischen Hilfsmitteln soll die Arbeit realisiert werden?
-	\item Selbstverständlich können Sie an der Stelle noch nicht alles wissen, aber Sie sollen sich hier bereits einen guten Überblick verschaffen.
-\end{itemize}
 
-One of the main technical challenges and parts of the implementational work will be the augmentation of the current topic modelling pipeline by a document embedding technique. Since the performance of the model greatly depends on this step, it is crucial to have well learned vector representations of the document base. Currently there is a corpus of circa 114000 scientific documents available in order to train the model. If that is not enough to gain expressive document embeddings, one may include pretrained word embeddings via e.g. BERT to introduce external information into the model and enhance the semantic coherence of the learned embeddings. This path should be taken with cation since it is connected to an hardly determinable amount of complexity. Research in the field of transfer learning for document embeddings is still in its infancy.
+\section{Implementation}
 
-In order to adhere to the current research and industry standards, the implementation of this thesis is going to be done in Python, more precisely Tensorflow. Based on the chosen model which is going to be augmented with explainability mechanisms further packages and technologies are going to be selected. Additionally to the results of the previous literature analysis further features for the decision will be the ease of implementation and applicability to the chosen model.
+One of the main technical challenges and parts of the implementational work will be the augmentation of the current topic modelling pipeline by a document embedding technique. Since the performance of the model greatly depends on this step, it is crucial to have well learned vector representations of the document base. Currently there is a corpus of circa 114000 scientific documents available in order to train the model. If that is not enough to gain expressive document embeddings, one may include pretrained word embeddings via e.g. BERT \cite{devlinBERTPretrainingDeep2018} to introduce external information into the model and enhance the semantic coherence of the learned embeddings. This path should be taken with cation since it is connected to an hardly determinable amount of complexity. Research in the field of transfer learning for document embeddings is still in its infancy.
+
+In order to adhere to the current research and industry standards, the implementation of this thesis is going to be done in Python. Based on the chosen model which is going to be augmented with explainability mechanisms further packages and technologies are going to be selected.
 
 \section{Time calculation}
-\tk{Needs to be done!}
-\begin{itemize}
-	\item Wie ist der generelle Zeitplan der Arbeit? 
-	\item Sie sollten bereits wissen, wann Sie fertig sein wollen und von dort mit der Rückwärtsterminierung starten.
-	\item Ihre Arbeit ist ein Projekt, daher planen Sie es auch wie eines. Nutzen Sie zur Visualisierung ein Gantt-Chart.
-\end{itemize}
+
+\begin{ganttchart}[
+	hgrid,
+	vgrid={*{6}{draw=none}, dotted},
+	x unit=0.115cm,
+	expand chart=\textwidth,
+	time slot format=isodate,
+	%   time slot unit=day,
+	calendar week text = {\currentweek{}},
+	milestone left shift =-1,
+	milestone right shift =2,
+	chart element start border=right,
+	% Jens's nice update
+	link bulge = 1.3,
+	link/.style={-to, rounded corners = 3pt}
+	%%
+	]{2019-05-06}{2019-08-31}
+	\gantttitlecalendar{year, month=name, week} \\
+	\ganttbar{Literature analysis}{2019-05-06}{2019-05-12} \\
+	\ganttbar{Implementation}{2019-05-12}{2019-05-26} \\
+	\ganttbar{User test}{2019-05-26}{2019-05-31} \\
+	\ganttbar{Writing}{2019-05-06}{2019-05-13} \ganttlinkedbar{}{2019-06-01}{2019-06-30} \\
+	\ganttmilestone{Handing in thesis}{2019-07-01} \\
+	\ganttbar{}{2019-08-03}{2019-08-30}
+	\ganttmilestone{Defense of thesis}{2019-08-30}
+\end{ganttchart}
 
 
 %---------------------------------------------------
@@ -183,7 +199,7 @@ In order to adhere to the current research and industry standards, the implement
 \phantomsection
 \addcontentsline{toc}{chapter}{Literatur}   % headline
 \bibliographystyle{alpha}  % citation style
-\bibliography{../../references/proposal} % bib file
+\bibliography{../references/proposal} % bib file
 
 
 \end{document}
