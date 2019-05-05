@@ -1,0 +1,2313 @@
+@article{http://arxiv.org/abs/1401.5390v1,
+ abstract = {Domain knowledge is crucial for effective performance in autonomous control
+systems. Typically, human effort is required to encode this knowledge into a
+control algorithm. In this paper, we present an approach to language grounding
+which automatically interprets text in the context of a complex control
+application, such as a game, and uses domain knowledge extracted from the text
+to improve control performance. Both text analysis and control strategies are
+learned jointly using only a feedback signal inherent to the application. To
+effectively leverage textual information, our method automatically extracts the
+text segment most relevant to the current game state, and labels it with a
+task-centric predicate structure. This labeled text is then used to bias an
+action selection policy for the game, guiding it towards promising regions of
+the action space. We encode our model for text analysis and game playing in a
+multi-layer neural network, representing linguistic decisions via latent
+variables in the hidden layers, and game action quality via the output layer.
+Operating within the Monte-Carlo Search framework, we estimate model parameters
+using feedback from simulated games. We apply our approach to the complex
+strategy game Civilization II using the official game manual as the text guide.
+Our results show that a linguistically-informed game-playing agent
+significantly outperforms its language-unaware counterpart, yielding a 34%
+absolute improvement and winning over 65% of games when playing against the
+built-in AI of Civilization.},
+ author = {Branavan, S. R. K. and Silver, David and Barzilay, Regina},
+ journal = {arxiv},
+ month = {1},
+ title = {Learning to Win by Reading Manuals in a Monte-Carlo Framework},
+ url = {http://arxiv.org/pdf/1401.5390v1},
+ year = {2014}
+}
+
+@article{http://arxiv.org/abs/1602.04938v3,
+ abstract = {Despite widespread adoption, machine learning models remain mostly black
+boxes. Understanding the reasons behind predictions is, however, quite
+important in assessing trust, which is fundamental if one plans to take action
+based on a prediction, or when choosing whether to deploy a new model. Such
+understanding also provides insights into the model, which can be used to
+transform an untrustworthy model or prediction into a trustworthy one. In this
+work, we propose LIME, a novel explanation technique that explains the
+predictions of any classifier in an interpretable and faithful manner, by
+learning an interpretable model locally around the prediction. We also propose
+a method to explain models by presenting representative individual predictions
+and their explanations in a non-redundant way, framing the task as a submodular
+optimization problem. We demonstrate the flexibility of these methods by
+explaining different models for text (e.g. random forests) and image
+classification (e.g. neural networks). We show the utility of explanations via
+novel experiments, both simulated and with human subjects, on various scenarios
+that require trust: deciding if one should trust a prediction, choosing between
+models, improving an untrustworthy classifier, and identifying why a classifier
+should not be trusted.},
+ author = {Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
+ journal = {arxiv},
+ month = {2},
+ title = {"Why Should I Trust You?": Explaining the Predictions of Any Classifier},
+ url = {http://arxiv.org/pdf/1602.04938v3},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1604.00289v3,
+ abstract = {Recent progress in artificial intelligence (AI) has renewed interest in
+building systems that learn and think like people. Many advances have come from
+using deep neural networks trained end-to-end in tasks such as object
+recognition, video games, and board games, achieving performance that equals or
+even beats humans in some respects. Despite their biological inspiration and
+performance achievements, these systems differ from human intelligence in
+crucial ways. We review progress in cognitive science suggesting that truly
+human-like learning and thinking machines will have to reach beyond current
+engineering trends in both what they learn, and how they learn it.
+Specifically, we argue that these machines should (a) build causal models of
+the world that support explanation and understanding, rather than merely
+solving pattern recognition problems; (b) ground learning in intuitive theories
+of physics and psychology, to support and enrich the knowledge that is learned;
+and (c) harness compositionality and learning-to-learn to rapidly acquire and
+generalize knowledge to new tasks and situations. We suggest concrete
+challenges and promising routes towards these goals that can combine the
+strengths of recent neural network advances with more structured cognitive
+models.},
+ author = {Lake, Brenden M. and Ullman, Tomer D. and Tenenbaum, Joshua B. and Gershman, Samuel J.},
+ journal = {arxiv},
+ month = {4},
+ title = {Building Machines That Learn and Think Like People},
+ url = {http://arxiv.org/pdf/1604.00289v3},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1606.03490v3,
+ abstract = {Supervised machine learning models boast remarkable predictive capabilities.
+But can you trust your model? Will it work in deployment? What else can it tell
+you about the world? We want models to be not only good, but interpretable. And
+yet the task of interpretation appears underspecified. Papers provide diverse
+and sometimes non-overlapping motivations for interpretability, and offer
+myriad notions of what attributes render models interpretable. Despite this
+ambiguity, many papers proclaim interpretability axiomatically, absent further
+explanation. In this paper, we seek to refine the discourse on
+interpretability. First, we examine the motivations underlying interest in
+interpretability, finding them to be diverse and occasionally discordant. Then,
+we address model properties and techniques thought to confer interpretability,
+identifying transparency to humans and post-hoc explanations as competing
+notions. Throughout, we discuss the feasibility and desirability of different
+notions, and question the oft-made assertions that linear models are
+interpretable and that deep neural networks are not.},
+ author = {Lipton, Zachary C.},
+ journal = {arxiv},
+ month = {6},
+ title = {The Mythos of Model Interpretability},
+ url = {http://arxiv.org/pdf/1606.03490v3},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1608.08974v2,
+ abstract = {Deep neural networks have shown striking progress and obtained
+state-of-the-art results in many AI research fields in the recent years.
+However, it is often unsatisfying to not know why they predict what they do. In
+this paper, we address the problem of interpreting Visual Question Answering
+(VQA) models. Specifically, we are interested in finding what part of the input
+(pixels in images or words in questions) the VQA model focuses on while
+answering the question. To tackle this problem, we use two visualization
+techniques -- guided backpropagation and occlusion -- to find important words
+in the question and important regions in the image. We then present qualitative
+and quantitative analyses of these importance maps. We found that even without
+explicit attention mechanisms, VQA models may sometimes be implicitly attending
+to relevant regions in the image, and often to appropriate words in the
+question.},
+ author = {Goyal, Yash and Mohapatra, Akrit and Parikh, Devi and Batra, Dhruv},
+ journal = {arxiv},
+ month = {8},
+ title = {Towards Transparent AI Systems: Interpreting Visual Question Answering
+  Models},
+ url = {http://arxiv.org/pdf/1608.08974v2},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1609.09869v2,
+ abstract = {Gaussian state space models have been used for decades as generative models
+of sequential data. They admit an intuitive probabilistic interpretation, have
+a simple functional form, and enjoy widespread adoption. We introduce a unified
+algorithm to efficiently learn a broad class of linear and non-linear state
+space models, including variants where the emission and transition
+distributions are modeled by deep neural networks. Our learning algorithm
+simultaneously learns a compiled inference network and the generative model,
+leveraging a structured variational approximation parameterized by recurrent
+neural networks to mimic the posterior distribution. We apply the learning
+algorithm to both synthetic and real-world datasets, demonstrating its
+scalability and versatility. We find that using the structured approximation to
+the posterior results in models with significantly higher held-out likelihood.},
+ author = {Krishnan, Rahul G. and Shalit, Uri and Sontag, David},
+ journal = {arxiv},
+ month = {9},
+ title = {Structured Inference Networks for Nonlinear State Space Models},
+ url = {http://arxiv.org/pdf/1609.09869v2},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1611.07429v1,
+ abstract = {With the advent of highly predictive but opaque deep learning models, it has
+become more important than ever to understand and explain the predictions of
+such models. Existing approaches define interpretability as the inverse of
+complexity and achieve interpretability at the cost of accuracy. This
+introduces a risk of producing interpretable but misleading explanations. As
+humans, we are prone to engage in this kind of behavior \cite{mythos}. In this
+paper, we take a step in the direction of tackling the problem of
+interpretability without compromising the model accuracy. We propose to build a
+Treeview representation of the complex model via hierarchical partitioning of
+the feature space, which reveals the iterative rejection of unlikely class
+labels until the correct association is predicted.},
+ author = {Thiagarajan, Jayaraman J. and Kailkhura, Bhavya and Sattigeri, Prasanna and Ramamurthy, Karthikeyan Natesan},
+ journal = {arxiv},
+ month = {11},
+ title = {TreeView: Peeking into Deep Neural Networks Via Feature-Space
+  Partitioning},
+ url = {http://arxiv.org/pdf/1611.07429v1},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1611.07567v1,
+ abstract = {Complex problems may require sophisticated, non-linear learning methods such
+as kernel machines or deep neural networks to achieve state of the art
+prediction accuracies. However, high prediction accuracies are not the only
+objective to consider when solving problems using machine learning. Instead,
+particular scientific applications require some explanation of the learned
+prediction function. Unfortunately, most methods do not come with out of the
+box straight forward interpretation. Even linear prediction functions are not
+straight forward to explain if features exhibit complex correlation structure.
+  In this paper, we propose the Measure of Feature Importance (MFI). MFI is
+general and can be applied to any arbitrary learning machine (including kernel
+machines and deep learning). MFI is intrinsically non-linear and can detect
+features that by itself are inconspicuous and only impact the prediction
+function through their interaction with other features. Lastly, MFI can be used
+for both --- model-based feature importance and instance-based feature
+importance (i.e, measuring the importance of a feature for a particular data
+point).},
+ author = {Vidovic, Marina M. -C. and Görnitz, Nico and Müller, Klaus-Robert and Kloft, Marius},
+ journal = {arxiv},
+ month = {11},
+ title = {Feature Importance Measure for Non-linear Learning Algorithms},
+ url = {http://arxiv.org/pdf/1611.07567v1},
+ year = {2016}
+}
+
+@article{http://arxiv.org/abs/1701.04489v1,
+ abstract = {In recent times, the use of separable convolutions in deep convolutional
+neural network architectures has been explored. Several researchers, most
+notably (Chollet, 2016) and (Ghosh, 2017) have used separable convolutions in
+their deep architectures and have demonstrated state of the art or close to
+state of the art performance. However, the underlying mechanism of action of
+separable convolutions are still not fully understood. Although their
+mathematical definition is well understood as a depthwise convolution followed
+by a pointwise convolution, deeper interpretations such as the extreme
+Inception hypothesis (Chollet, 2016) have failed to provide a thorough
+explanation of their efficacy. In this paper, we propose a hybrid
+interpretation that we believe is a better model for explaining the efficacy of
+separable convolutions.},
+ author = {Ghosh, Tapabrata},
+ journal = {arxiv},
+ month = {1},
+ title = {Towards a New Interpretation of Separable Convolutions},
+ url = {http://arxiv.org/pdf/1701.04489v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1702.08608v2,
+ abstract = {As machine learning systems become ubiquitous, there has been a surge of
+interest in interpretable machine learning: systems that provide explanation
+for their outputs. These explanations are often used to qualitatively assess
+other criteria such as safety or non-discrimination. However, despite the
+interest in interpretability, there is very little consensus on what
+interpretable machine learning is and how it should be measured. In this
+position paper, we first define interpretability and describe when
+interpretability is needed (and when it is not). Next, we suggest a taxonomy
+for rigorous evaluation and expose open questions towards a more rigorous
+science of interpretable machine learning.},
+ author = {Doshi-Velez, Finale and Kim, Been},
+ journal = {arxiv},
+ month = {2},
+ title = {Towards A Rigorous Science of Interpretable Machine Learning},
+ url = {http://arxiv.org/pdf/1702.08608v2},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1704.03296v3,
+ abstract = {As machine learning algorithms are increasingly applied to high impact yet
+high risk tasks, such as medical diagnosis or autonomous driving, it is
+critical that researchers can explain how such algorithms arrived at their
+predictions. In recent years, a number of image saliency methods have been
+developed to summarize where highly complex neural networks "look" in an image
+for evidence for their predictions. However, these techniques are limited by
+their heuristic nature and architectural constraints. In this paper, we make
+two main contributions: First, we propose a general framework for learning
+different kinds of explanations for any black box algorithm. Second, we
+specialise the framework to find the part of an image most responsible for a
+classifier decision. Unlike previous works, our method is model-agnostic and
+testable because it is grounded in explicit and interpretable image
+perturbations.},
+ author = {Fong, Ruth and Vedaldi, Andrea},
+ journal = {arxiv},
+ month = {4},
+ title = {Interpretable Explanations of Black Boxes by Meaningful Perturbation},
+ url = {http://arxiv.org/pdf/1704.03296v3},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1705.06936v1,
+ abstract = {The asynchronous nature of the state-of-the-art reinforcement learning
+algorithms such as the Asynchronous Advantage Actor-Critic algorithm, makes
+them exceptionally suitable for CPU computations. However, given the fact that
+deep reinforcement learning often deals with interpreting visual information, a
+large part of the train and inference time is spent performing convolutions. In
+this work we present our results on learning strategies in Atari games using a
+Convolutional Neural Network, the Math Kernel Library and TensorFlow 0.11rc0
+machine learning framework. We also analyze effects of asynchronous
+computations on the convergence of reinforcement learning algorithms.},
+ author = {Adamski, Robert and Grel, Tomasz and Klimek, Maciej and Michalewski, Henryk},
+ journal = {arxiv},
+ month = {5},
+ title = {Atari games and Intel processors},
+ url = {http://arxiv.org/pdf/1705.06936v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1707.01154v1,
+ abstract = {We propose Black Box Explanations through Transparent Approximations (BETA),
+a novel model agnostic framework for explaining the behavior of any black-box
+classifier by simultaneously optimizing for fidelity to the original model and
+interpretability of the explanation. To this end, we develop a novel objective
+function which allows us to learn (with optimality guarantees), a small number
+of compact decision sets each of which explains the behavior of the black box
+model in unambiguous, well-defined regions of feature space. Furthermore, our
+framework also is capable of accepting user input when generating these
+approximations, thus allowing users to interactively explore how the black-box
+model behaves in different subspaces that are of interest to the user. To the
+best of our knowledge, this is the first approach which can produce global
+explanations of the behavior of any given black box model through joint
+optimization of unambiguity, fidelity, and interpretability, while also
+allowing users to explore model behavior based on their preferences.
+Experimental evaluation with real-world datasets and user studies demonstrates
+that our approach can generate highly compact, easy-to-understand, yet accurate
+approximations of various kinds of predictive models compared to
+state-of-the-art baselines.},
+ author = {Lakkaraju, Himabindu and Kamar, Ece and Caruana, Rich and Leskovec, Jure},
+ journal = {arxiv},
+ month = {7},
+ title = {Interpretable & Explorable Approximations of Black Box Models},
+ url = {http://arxiv.org/pdf/1707.01154v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1708.04988v1,
+ abstract = {We show a proof of principle for warping, a method to interpret the inner
+working of neural networks in the context of gene expression analysis. Warping
+is an efficient way to gain insight to the inner workings of neural nets and
+make them more interpretable. We demonstrate the ability of warping to recover
+meaningful information for a given class on a samplespecific individual basis.
+We found warping works well in both linearly and nonlinearly separable
+datasets. These encouraging results show that warping has a potential to be the
+answer to neural networks interpretability in computational biology.},
+ author = {Assya, Trofimov and Sebastien, Lemieux and Claude, Perreault},
+ journal = {arxiv},
+ month = {8},
+ title = {Warp: a method for neural network interpretability applied to gene
+  expression profiles},
+ url = {http://arxiv.org/pdf/1708.04988v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1708.08296v1,
+ abstract = {With the availability of large databases and recent improvements in deep
+learning methodology, the performance of AI systems is reaching or even
+exceeding the human level on an increasing number of complex tasks. Impressive
+examples of this development can be found in domains such as image
+classification, sentiment analysis, speech understanding or strategic game
+playing. However, because of their nested non-linear structure, these highly
+successful machine learning and artificial intelligence models are usually
+applied in a black box manner, i.e., no information is provided about what
+exactly makes them arrive at their predictions. Since this lack of transparency
+can be a major drawback, e.g., in medical applications, the development of
+methods for visualizing, explaining and interpreting deep learning models has
+recently attracted increasing attention. This paper summarizes recent
+developments in this field and makes a plea for more interpretability in
+artificial intelligence. Furthermore, it presents two approaches to explaining
+predictions of deep learning models, one method which computes the sensitivity
+of the prediction with respect to changes in the input and one approach which
+meaningfully decomposes the decision in terms of the input variables. These
+methods are evaluated on three classification tasks.},
+ author = {Samek, Wojciech and Wiegand, Thomas and Müller, Klaus-Robert},
+ journal = {arxiv},
+ month = {8},
+ title = {Explainable Artificial Intelligence: Understanding, Visualizing and
+  Interpreting Deep Learning Models},
+ url = {http://arxiv.org/pdf/1708.08296v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1710.00262v1,
+ abstract = {Event learning is one of the most important problems in AI. However,
+notwithstanding significant research efforts, it is still a very complex task,
+especially when the events involve the interaction of humans or agents with
+other objects, as it requires modeling human kinematics and object movements.
+This study proposes a methodology for learning complex human-object interaction
+(HOI) events, involving the recording, annotation and classification of event
+interactions. For annotation, we allow multiple interpretations of a motion
+capture by slicing over its temporal span, for classification, we use
+Long-Short Term Memory (LSTM) sequential models with Conditional Randon Field
+(CRF) for constraints of outputs. Using a setup involving captures of
+human-object interaction as three dimensional inputs, we argue that this
+approach could be used for event types involving complex spatio-temporal
+dynamics.},
+ author = {Do, Tuan and Pustejovsky, James},
+ journal = {arxiv},
+ month = {9},
+ title = {Fine-grained Event Learning of Human-Object Interaction with LSTM-CRF},
+ url = {http://arxiv.org/pdf/1710.00262v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1710.00794v1,
+ abstract = {We characterize three notions of explainable AI that cut across research
+fields: opaque systems that offer no insight into its algo- rithmic mechanisms;
+interpretable systems where users can mathemat- ically analyze its algorithmic
+mechanisms; and comprehensible systems that emit symbols enabling user-driven
+explanations of how a conclusion is reached. The paper is motivated by a corpus
+analysis of NIPS, ACL, COGSCI, and ICCV/ECCV paper titles showing differences
+in how work on explainable AI is positioned in various fields. We close by
+introducing a fourth notion: truly explainable systems, where automated
+reasoning is central to output crafted explanations without requiring human
+post processing as final step of the generative process.},
+ author = {Doran, Derek and Schulz, Sarah and Besold, Tarek R.},
+ journal = {arxiv},
+ month = {10},
+ title = {What Does Explainable AI Really Mean? A New Conceptualization of
+  Perspectives},
+ url = {http://arxiv.org/pdf/1710.00794v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1710.04806v2,
+ abstract = {Deep neural networks are widely used for classification. These deep models
+often suffer from a lack of interpretability -- they are particularly difficult
+to understand because of their non-linear nature. As a result, neural networks
+are often treated as "black box" models, and in the past, have been trained
+purely to optimize the accuracy of predictions. In this work, we create a novel
+network architecture for deep learning that naturally explains its own
+reasoning for each prediction. This architecture contains an autoencoder and a
+special prototype layer, where each unit of that layer stores a weight vector
+that resembles an encoded training input. The encoder of the autoencoder allows
+us to do comparisons within the latent space, while the decoder allows us to
+visualize the learned prototypes. The training objective has four terms: an
+accuracy term, a term that encourages every prototype to be similar to at least
+one encoded input, a term that encourages every encoded input to be close to at
+least one prototype, and a term that encourages faithful reconstruction by the
+autoencoder. The distances computed in the prototype layer are used as part of
+the classification process. Since the prototypes are learned during training,
+the learned network naturally comes with explanations for each prediction, and
+the explanations are loyal to what the network actually computes.},
+ author = {Li, Oscar and Liu, Hao and Chen, Chaofan and Rudin, Cynthia},
+ journal = {arxiv},
+ month = {10},
+ title = {Deep Learning for Case-Based Reasoning through Prototypes: A Neural
+  Network that Explains Its Predictions},
+ url = {http://arxiv.org/pdf/1710.04806v2},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1710.09511v2,
+ abstract = {Humans are able to explain their reasoning. On the contrary, deep neural
+networks are not. This paper attempts to bridge this gap by introducing a new
+way to design interpretable neural networks for classification, inspired by
+physiological evidence of the human visual system's inner-workings. This paper
+proposes a neural network design paradigm, termed InterpNET, which can be
+combined with any existing classification architecture to generate natural
+language explanations of the classifications. The success of the module relies
+on the assumption that the network's computation and reasoning is represented
+in its internal layer activations. While in principle InterpNET could be
+applied to any existing classification architecture, it is evaluated via an
+image classification and explanation task. Experiments on a CUB bird
+classification and explanation dataset show qualitatively and quantitatively
+that the model is able to generate high-quality explanations. While the current
+state-of-the-art METEOR score on this dataset is 29.2, InterpNET achieves a
+much higher METEOR score of 37.9.},
+ author = {Barratt, Shane},
+ journal = {arxiv},
+ month = {10},
+ title = {InterpNET: Neural Introspection for Interpretable Deep Learning},
+ url = {http://arxiv.org/pdf/1710.09511v2},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1710.10967v3,
+ abstract = {Artificial intelligence (AI) has achieved superhuman performance in a growing
+number of tasks, but understanding and explaining AI remain challenging. This
+paper clarifies the connections between machine-learning algorithms to develop
+AIs and the econometrics of dynamic structural models through the case studies
+of three famous game AIs. Chess-playing Deep Blue is a calibrated value
+function, whereas shogi-playing Bonanza is an estimated value function via
+Rust's (1987) nested fixed-point method. AlphaGo's "supervised-learning policy
+network" is a deep neural network implementation of Hotz and Miller's (1993)
+conditional choice probability estimation; its "reinforcement-learning value
+network" is equivalent to Hotz, Miller, Sanders, and Smith's (1994) conditional
+choice simulation method. Relaxing these AIs' implicit econometric assumptions
+would improve their structural interpretability.},
+ author = {Igami, Mitsuru},
+ journal = {arxiv},
+ month = {10},
+ title = {Artificial Intelligence as Structural Estimation: Economic
+  Interpretations of Deep Blue, Bonanza, and AlphaGo},
+ url = {http://arxiv.org/pdf/1710.10967v3},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1711.06431v2,
+ abstract = {We present a method for explaining the image classification predictions of
+deep convolution neural networks, by highlighting the pixels in the image which
+influence the final class prediction. Our method requires the identification of
+a heuristic method to select parameters hypothesized to be most relevant in
+this prediction, and here we use Kullback-Leibler divergence to provide this
+focus. Overall, our approach helps in understanding and interpreting deep
+network predictions and we hope contributes to a foundation for such
+understanding of deep learning networks. In this brief paper, our experiments
+evaluate the performance of two popular networks in this context of
+interpretability.},
+ author = {Babiker, Housam Khalifa Bashier and Goebel, Randy},
+ journal = {arxiv},
+ month = {11},
+ title = {Using KL-divergence to focus Deep Visual Explanation},
+ url = {http://arxiv.org/pdf/1711.06431v2},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1711.09482v2,
+ abstract = {The practical impact of deep learning on complex supervised learning problems
+has been significant, so much so that almost every Artificial Intelligence
+problem, or at least a portion thereof, has been somehow recast as a deep
+learning problem. The applications appeal is significant, but this appeal is
+increasingly challenged by what some call the challenge of explainability, or
+more generally the more traditional challenge of debuggability: if the outcomes
+of a deep learning process produce unexpected results (e.g., less than expected
+performance of a classifier), then there is little available in the way of
+theories or tools to help investigate the potential causes of such unexpected
+behavior, especially when this behavior could impact people's lives. We
+describe a preliminary framework to help address this issue, which we call
+"deep visual explanation" (DVE). "Deep," because it is the development and
+performance of deep neural network models that we want to understand. "Visual,"
+because we believe that the most rapid insight into a complex multi-dimensional
+model is provided by appropriate visualization techniques, and "Explanation,"
+because in the spectrum from instrumentation by inserting print statements to
+the abductive inference of explanatory hypotheses, we believe that the key to
+understanding deep learning relies on the identification and exposure of
+hypotheses about the performance behavior of a learned deep model. In the
+exposition of our preliminary framework, we use relatively straightforward
+image classification examples and a variety of choices on initial configuration
+of a deep model building scenario. By careful but not complicated
+instrumentation, we expose classification outcomes of deep models using
+visualization, and also show initial results for one potential application of
+interpretability.},
+ author = {Babiker, Housam Khalifa Bashier and Goebel, Randy},
+ journal = {arxiv},
+ month = {11},
+ title = {An Introduction to Deep Visual Explanation},
+ url = {http://arxiv.org/pdf/1711.09482v2},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1711.09784v1,
+ abstract = {Deep neural networks have proved to be a very effective way to perform
+classification tasks. They excel when the input data is high dimensional, the
+relationship between the input and the output is complicated, and the number of
+labeled training examples is large. But it is hard to explain why a learned
+network makes a particular classification decision on a particular test case.
+This is due to their reliance on distributed hierarchical representations. If
+we could take the knowledge acquired by the neural net and express the same
+knowledge in a model that relies on hierarchical decisions instead, explaining
+a particular decision would be much easier. We describe a way of using a
+trained neural net to create a type of soft decision tree that generalizes
+better than one learned directly from the training data.},
+ author = {Frosst, Nicholas and Hinton, Geoffrey},
+ journal = {arxiv},
+ month = {11},
+ title = {Distilling a Neural Network Into a Soft Decision Tree},
+ url = {http://arxiv.org/pdf/1711.09784v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1712.02034v2,
+ abstract = {Chemical databases store information in text representations, and the SMILES
+format is a universal standard used in many cheminformatics software. Encoded
+in each SMILES string is structural information that can be used to predict
+complex chemical properties. In this work, we develop SMILES2vec, a deep RNN
+that automatically learns features from SMILES to predict chemical properties,
+without the need for additional explicit feature engineering. Using Bayesian
+optimization methods to tune the network architecture, we show that an
+optimized SMILES2vec model can serve as a general-purpose neural network for
+predicting distinct chemical properties including toxicity, activity,
+solubility and solvation energy, while also outperforming contemporary MLP
+neural networks that uses engineered features. Furthermore, we demonstrate
+proof-of-concept of interpretability by developing an explanation mask that
+localizes on the most important characters used in making a prediction. When
+tested on the solubility dataset, it identified specific parts of a chemical
+that is consistent with established first-principles knowledge with an accuracy
+of 88%. Our work demonstrates that neural networks can learn technically
+accurate chemical concept and provide state-of-the-art accuracy, making
+interpretable deep neural networks a useful tool of relevance to the chemical
+industry.},
+ author = {Goh, Garrett B. and Hodas, Nathan O. and Siegel, Charles and Vishnu, Abhinav},
+ journal = {arxiv},
+ month = {12},
+ title = {SMILES2Vec: An Interpretable General-Purpose Deep Neural Network for
+  Predicting Chemical Properties},
+ url = {http://arxiv.org/pdf/1712.02034v2},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1712.06302v3,
+ abstract = {Interpretation and explanation of deep models is critical towards wide
+adoption of systems that rely on them. In this paper, we propose a novel scheme
+for both interpretation as well as explanation in which, given a pretrained
+model, we automatically identify internal features relevant for the set of
+classes considered by the model, without relying on additional annotations. We
+interpret the model through average visualizations of this reduced set of
+features. Then, at test time, we explain the network prediction by accompanying
+the predicted class label with supporting visualizations derived from the
+identified features. In addition, we propose a method to address the artifacts
+introduced by stridded operations in deconvNet-based visualizations. Moreover,
+we introduce an8Flower, a dataset specifically designed for objective
+quantitative evaluation of methods for visual explanation.Experiments on the
+MNIST,ILSVRC12,Fashion144k and an8Flower datasets show that our method produces
+detailed explanations with good coverage of relevant features of the classes of
+interest},
+ author = {Oramas, Jose and Wang, Kaili and Tuytelaars, Tinne},
+ journal = {arxiv},
+ month = {12},
+ title = {Visual Explanation by Interpretation: Improving Visual Feedback
+  Capabilities of Deep Neural Networks},
+ url = {http://arxiv.org/pdf/1712.06302v3},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1712.06657v1,
+ abstract = {Digital pathology is not only one of the most promising fields of diagnostic
+medicine, but at the same time a hot topic for fundamental research. Digital
+pathology is not just the transfer of histopathological slides into digital
+representations. The combination of different data sources (images, patient
+records, and *omics data) together with current advances in artificial
+intelligence/machine learning enable to make novel information accessible and
+quantifiable to a human expert, which is not yet available and not exploited in
+current medical settings. The grand goal is to reach a level of usable
+intelligence to understand the data in the context of an application task,
+thereby making machine decisions transparent, interpretable and explainable.
+The foundation of such an "augmented pathologist" needs an integrated approach:
+While machine learning algorithms require many thousands of training examples,
+a human expert is often confronted with only a few data points. Interestingly,
+humans can learn from such few examples and are able to instantly interpret
+complex patterns. Consequently, the grand goal is to combine the possibilities
+of artificial intelligence with human intelligence and to find a well-suited
+balance between them to enable what neither of them could do on their own. This
+can raise the quality of education, diagnosis, prognosis and prediction of
+cancer and other diseases. In this paper we describe some (incomplete) research
+issues which we believe should be addressed in an integrated and concerted
+effort for paving the way towards the augmented pathologist.},
+ author = {Holzinger, Andreas and Malle, Bernd and Kieseberg, Peter and Roth, Peter M. and Müller, Heimo and Reihs, Robert and Zatloukal, Kurt},
+ journal = {arxiv},
+ month = {12},
+ title = {Towards the Augmented Pathologist: Challenges of Explainable-AI in
+  Digital Pathology},
+ url = {http://arxiv.org/pdf/1712.06657v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1712.08107v1,
+ abstract = {Deep neural network models have been proven to be very successful in image
+classification tasks, also for medical diagnosis, but their main concern is its
+lack of interpretability. They use to work as intuition machines with high
+statistical confidence but unable to give interpretable explanations about the
+reported results. The vast amount of parameters of these models make difficult
+to infer a rationale interpretation from them. In this paper we present a
+diabetic retinopathy interpretable classifier able to classify retine images
+into the different levels of disease severity and of explaining its results by
+assigning a score for every point in the hidden and input space, evaluating its
+contribution to the final classification in a linear way. The generated visual
+maps can be interpreted by an expert in order to compare its own knowledge with
+the interpretation given by the model.},
+ author = {Torre, Jordi de la and Valls, Aida and Puig, Domenec},
+ journal = {arxiv},
+ month = {12},
+ title = {A Deep Learning Interpretable Classifier for Diabetic Retinopathy
+  Disease Grading},
+ url = {http://arxiv.org/pdf/1712.08107v1},
+ year = {2017}
+}
+
+@article{http://arxiv.org/abs/1801.05075v1,
+ abstract = {In order for people to be able to trust and take advantage of the results of
+advanced machine learning and artificial intelligence solutions for real
+decision making, people need to be able to understand the machine rationale for
+given output. Research in explain artificial intelligence (XAI) addresses the
+aim, but there is a need for evaluation of human relevance and
+understandability of explanations. Our work contributes a novel methodology for
+evaluating the quality or human interpretability of explanations for machine
+learning models. We present an evaluation benchmark for instance explanations
+from text and image classifiers. The explanation meta-data in this benchmark is
+generated from user annotations of image and text samples. We describe the
+benchmark and demonstrate its utility by a quantitative evaluation on
+explanations generated from a recent machine learning algorithm. This research
+demonstrates how human-grounded evaluation could be used as a measure to
+qualify local machine-learning explanations.},
+ author = {Mohseni, Sina and Ragan, Eric D.},
+ journal = {arxiv},
+ month = {1},
+ title = {A Human-Grounded Evaluation Benchmark for Local Explanations of Machine
+  Learning},
+ url = {http://arxiv.org/pdf/1801.05075v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1801.09808v1,
+ abstract = {Linear approximations to the decision boundary of a complex model have become
+one of the most popular tools for interpreting predictions. In this paper, we
+study such linear explanations produced either post-hoc by a few recent methods
+or generated along with predictions with contextual explanation networks
+(CENs). We focus on two questions: (i) whether linear explanations are always
+consistent or can be misleading, and (ii) when integrated into the prediction
+process, whether and how explanations affect the performance of the model. Our
+analysis sheds more light on certain properties of explanations produced by
+different methods and suggests that learning models that explain and predict
+jointly is often advantageous.},
+ author = {Al-Shedivat, Maruan and Dubey, Avinava and Xing, Eric P.},
+ journal = {arxiv},
+ month = {1},
+ title = {The Intriguing Properties of Model Explanations},
+ url = {http://arxiv.org/pdf/1801.09808v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1802.00541v1,
+ abstract = {Deep neural networks are complex and opaque. As they enter application in a
+variety of important and safety critical domains, users seek methods to explain
+their output predictions. We develop an approach to explaining deep neural
+networks by constructing causal models on salient concepts contained in a CNN.
+We develop methods to extract salient concepts throughout a target network by
+using autoencoders trained to extract human-understandable representations of
+network activations. We then build a bayesian causal model using these
+extracted concepts as variables in order to explain image classification.
+Finally, we use this causal model to identify and visualize features with
+significant causal influence on final classification.},
+ author = {Harradon, Michael and Druce, Jeff and Ruttenberg, Brian},
+ journal = {arxiv},
+ month = {2},
+ title = {Causal Learning and Explanation of Deep Neural Networks via Autoencoded
+  Activations},
+ url = {http://arxiv.org/pdf/1802.00541v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1802.00560v2,
+ abstract = {Model interpretability is a requirement in many applications in which crucial
+decisions are made by users relying on a model's outputs. The recent movement
+for "algorithmic fairness" also stipulates explainability, and therefore
+interpretability of learning models. And yet the most successful contemporary
+Machine Learning approaches, the Deep Neural Networks, produce models that are
+highly non-interpretable. We attempt to address this challenge by proposing a
+technique called CNN-INTE to interpret deep Convolutional Neural Networks (CNN)
+via meta-learning. In this work, we interpret a specific hidden layer of the
+deep CNN model on the MNIST image dataset. We use a clustering algorithm in a
+two-level structure to find the meta-level training data and Random Forest as
+base learning algorithms to generate the meta-level test data. The
+interpretation results are displayed visually via diagrams, which clearly
+indicates how a specific test instance is classified. Our method achieves
+global interpretation for all the test instances without sacrificing the
+accuracy obtained by the original deep CNN model. This means our model is
+faithful to the deep CNN model, which leads to reliable interpretations.},
+ author = {Liu, Xuan and Wang, Xiaoguang and Matwin, Stan},
+ journal = {arxiv},
+ month = {2},
+ title = {Interpretable Deep Convolutional Neural Networks via Meta-learning},
+ url = {http://arxiv.org/pdf/1802.00560v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1802.01274v1,
+ abstract = {This paper addresses the interpretability of deep learning-enabled image
+recognition processes in computer vision science in relation to theories in art
+history and cognitive psychology on the vision-related perceptual capabilities
+of humans. Examination of what is determinable about the machine-learned image
+in comparison to humanistic theories of visual perception, particularly in
+regard to art historian Erwin Panofsky's methodology for image analysis and
+psychologist Eleanor Rosch's theory of graded categorization according to
+prototypes, finds that there are surprising similarities between the two that
+suggest that researchers in the arts and the sciences would have much to
+benefit from closer collaborations. Utilizing the examples of Google's
+DeepDream and the Machine Learning and Perception Lab at Georgia Tech's
+Grad-CAM: Gradient-weighted Class Activation Mapping programs, this study
+suggests that a revival of art historical research in iconography and formalism
+in the age of AI is essential for shaping the future navigation and
+interpretation of all machine-learned images, given the rapid developments in
+image recognition technologies.},
+ author = {Spratt, Emily L.},
+ journal = {arxiv},
+ month = {2},
+ title = {Dream Formulations and Deep Neural Networks: Humanistic Themes in the
+  Iconology of the Machine-Learned Image},
+ url = {http://arxiv.org/pdf/1802.01274v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1802.03043v1,
+ abstract = {With the popularity of deep learning (DL), artificial intelligence (AI) has
+been applied in many areas of human life. Neural network or artificial neural
+network (NN), the main technique behind DL, has been extensively studied to
+facilitate computer vision and natural language recognition. However, the more
+we rely on information technology, the more vulnerable we are. That is,
+malicious NNs could bring huge threat in the so-called coming AI era. In this
+paper, for the first time in the literature, we propose a novel approach to
+design and insert powerful neural-level trojans or PoTrojan in pre-trained NN
+models. Most of the time, PoTrojans remain inactive, not affecting the normal
+functions of their host NN models. PoTrojans could only be triggered in very
+rare conditions. Once activated, however, the PoTrojans could cause the host NN
+models to malfunction, either falsely predicting or classifying, which is a
+significant threat to human society of the AI era. We would explain the
+principles of PoTrojans and the easiness of designing and inserting them in
+pre-trained deep learning models. PoTrojans doesn't modify the existing
+architecture or parameters of the pre-trained models, without re-training.
+Hence, the proposed method is very efficient.},
+ author = {Zou, Minhui and Shi, Yang and Wang, Chengliang and Li, Fangyu and Song, WenZhan and Wang, Yu},
+ journal = {arxiv},
+ month = {2},
+ title = {PoTrojan: powerful neural-level trojan designs in deep learning models},
+ url = {http://arxiv.org/pdf/1802.03043v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1802.03788v2,
+ abstract = {We study the problem of explaining a rich class of behavioral properties of
+deep neural networks. Distinctively, our influence-directed explanations
+approach this problem by peering inside the network to identify neurons with
+high influence on a quantity and distribution of interest, using an
+axiomatically-justified influence measure, and then providing an interpretation
+for the concepts these neurons represent. We evaluate our approach by
+demonstrating a number of its unique capabilities on convolutional neural
+networks trained on ImageNet. Our evaluation demonstrates that
+influence-directed explanations (1) identify influential concepts that
+generalize across instances, (2) can be used to extract the "essence" of what
+the network learned about a class, and (3) isolate individual features the
+network uses to make decisions and distinguish related classes.},
+ author = {Leino, Klas and Sen, Shayak and Datta, Anupam and Fredrikson, Matt and Li, Linyi},
+ journal = {arxiv},
+ month = {2},
+ title = {Influence-Directed Explanations for Deep Convolutional Networks},
+ url = {http://arxiv.org/pdf/1802.03788v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1802.08235v1,
+ abstract = {A novel Neural Network architecture is proposed using the mathematically and
+physically rich idea of vector fields as hidden layers to perform nonlinear
+transformations in the data. The data points are interpreted as particles
+moving along a flow defined by the vector field which intuitively represents
+the desired movement to enable classification. The architecture moves the data
+points from their original configuration to anew one following the streamlines
+of the vector field with the objective of achieving a final configuration where
+classes are separable. An optimization problem is solved through gradient
+descent to learn this vector field.},
+ author = {Vieira, Daniel and Rangel, Fabio and Firmino, Fabricio and Paixao, Joao},
+ journal = {arxiv},
+ month = {2},
+ title = {Vector Field Based Neural Networks},
+ url = {http://arxiv.org/pdf/1802.08235v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1803.04263v3,
+ abstract = {Since Artificial Intelligence (AI) software uses techniques like deep
+lookahead search and stochastic optimization of huge neural networks to fit
+mammoth datasets, it often results in complex behavior that is difficult for
+people to understand. Yet organizations are deploying AI algorithms in many
+mission-critical settings. To trust their behavior, we must make AI
+intelligible, either by using inherently interpretable models or by developing
+new methods for explaining and controlling otherwise overwhelmingly complex
+decisions using local approximation, vocabulary alignment, and interactive
+explanation. This paper argues that intelligibility is essential, surveys
+recent work on building such systems, and highlights key directions for
+research.},
+ author = {Weld, Daniel S. and Bansal, Gagan},
+ journal = {arxiv},
+ month = {3},
+ title = {The Challenge of Crafting Intelligible Intelligence},
+ url = {http://arxiv.org/pdf/1803.04263v3},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1803.07517v2,
+ abstract = {Issues regarding explainable AI involve four components: users, laws &
+regulations, explanations and algorithms. Together these components provide a
+context in which explanation methods can be evaluated regarding their adequacy.
+The goal of this chapter is to bridge the gap between expert users and lay
+users. Different kinds of users are identified and their concerns revealed,
+relevant statements from the General Data Protection Regulation are analyzed in
+the context of Deep Neural Networks (DNNs), a taxonomy for the classification
+of existing explanation methods is introduced, and finally, the various classes
+of explanation methods are analyzed to verify if user concerns are justified.
+Overall, it is clear that (visual) explanations can be given about various
+aspects of the influence of the input on the output. However, it is noted that
+explanation methods or interfaces for lay users are missing and we speculate
+which criteria these methods / interfaces should satisfy. Finally it is noted
+that two important concerns are difficult to address with explanation methods:
+the concern about bias in datasets that leads to biased DNNs, as well as the
+suspicion about unfair outcomes.},
+ author = {Ras, Gabrielle and Gerven, Marcel van and Haselager, Pim},
+ journal = {arxiv},
+ month = {3},
+ title = {Explanation Methods in Deep Learning: Users, Values, Concerns and
+  Challenges},
+ url = {http://arxiv.org/pdf/1803.07517v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1803.07980v2,
+ abstract = {We interpret part of the experimental results of Shwartz-Ziv and Tishby
+[2017]. Inspired by these results, we established a conjecture of the dynamics
+of the machinary of deep neural network. This conjecture can be used to explain
+the counterpart result by Saxe et al. [2018].},
+ author = {Zhao, Tianchen},
+ journal = {arxiv},
+ month = {3},
+ title = {Information Theoretic Interpretation of Deep learning},
+ url = {http://arxiv.org/pdf/1803.07980v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1803.11261v1,
+ abstract = {This essay examines how what is considered to be artificial intelligence (AI)
+has changed over time and come to intersect with the expertise of the author.
+Initially, AI developed on a separate trajectory, both topically and
+institutionally, from pattern recognition, neural information processing,
+decision and control systems, and allied topics by focusing on symbolic systems
+within computer science departments rather than on continuous systems in
+electrical engineering departments. The separate evolutions continued
+throughout the author's lifetime, with some crossover in reinforcement learning
+and graphical models, but were shocked into converging by the virality of deep
+learning, thus making an electrical engineer into an AI researcher. Now that
+this convergence has happened, opportunity exists to pursue an agenda that
+combines learning and reasoning bridged by interpretable machine learning
+models.},
+ author = {Varshney, Kush R.},
+ journal = {arxiv},
+ month = {3},
+ title = {How an Electrical Engineer Became an Artificial Intelligence Researcher,
+  a Multiphase Active Contours Analysis},
+ url = {http://arxiv.org/pdf/1803.11261v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1804.01396v1,
+ abstract = {AI technology has a long history which is actively and constantly changing
+and growing. It focuses on intelligent agents, which contain devices that
+perceive the environment and based on which takes actions in order to maximize
+goal success chances. In this paper, we will explain the modern AI basics and
+various representative applications of AI. In the context of the modern
+digitalized world, AI is the property of machines, computer programs, and
+systems to perform the intellectual and creative functions of a person,
+independently find ways to solve problems, be able to draw conclusions and make
+decisions. Most artificial intelligence systems have the ability to learn,
+which allows people to improve their performance over time. The recent research
+on AI tools, including machine learning, deep learning and predictive analysis
+intended toward increasing the planning, learning, reasoning, thinking and
+action taking ability. Based on which, the proposed research intends towards
+exploring on how the human intelligence differs from the artificial
+intelligence. Moreover, we critically analyze what AI of today is capable of
+doing, why it still cannot reach human intelligence and what are the open
+challenges existing in front of AI to reach and outperform human level of
+intelligence. Furthermore, it will explore the future predictions for
+artificial intelligence and based on which potential solution will be
+recommended to solve it within next decades.},
+ author = {Shabbir, Jahanzaib and Anwer, Tarique},
+ journal = {arxiv},
+ month = {4},
+ title = {Artificial Intelligence and its Role in Near Future},
+ url = {http://arxiv.org/pdf/1804.01396v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1804.02527v1,
+ abstract = {Recently, deep learning has been advancing the state of the art in artificial
+intelligence to a new level, and humans rely on artificial intelligence
+techniques more than ever. However, even with such unprecedented advancements,
+the lack of explanation regarding the decisions made by deep learning models
+and absence of control over their internal processes act as major drawbacks in
+critical decision-making processes, such as precision medicine and law
+enforcement. In response, efforts are being made to make deep learning
+interpretable and controllable by humans. In this paper, we review visual
+analytics, information visualization, and machine learning perspectives
+relevant to this aim, and discuss potential challenges and future research
+directions.},
+ author = {Choo, Jaegul and Liu, Shixia},
+ journal = {arxiv},
+ month = {4},
+ title = {Visual Analytics for Explainable Deep Learning},
+ url = {http://arxiv.org/pdf/1804.02527v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1805.10820v1,
+ abstract = {The recent years have witnessed the rise of accurate but obscure decision
+systems which hide the logic of their internal decision processes to the users.
+The lack of explanations for the decisions of black box systems is a key
+ethical issue, and a limitation to the adoption of machine learning components
+in socially sensitive and safety-critical contexts. %Therefore, we need
+explanations that reveals the reasons why a predictor takes a certain decision.
+In this paper we focus on the problem of black box outcome explanation, i.e.,
+explaining the reasons of the decision taken on a specific instance. We propose
+LORE, an agnostic method able to provide interpretable and faithful
+explanations. LORE first leans a local interpretable predictor on a synthetic
+neighborhood generated by a genetic algorithm. Then it derives from the logic
+of the local interpretable predictor a meaningful explanation consisting of: a
+decision rule, which explains the reasons of the decision; and a set of
+counterfactual rules, suggesting the changes in the instance's features that
+lead to a different outcome. Wide experiments show that LORE outperforms
+existing methods and baselines both in the quality of explanations and in the
+accuracy in mimicking the black box.},
+ author = {Guidotti, Riccardo and Monreale, Anna and Ruggieri, Salvatore and Pedreschi, Dino and Turini, Franco and Giannotti, Fosca},
+ journal = {arxiv},
+ month = {5},
+ title = {Local Rule-Based Explanations of Black Box Decision Systems},
+ url = {http://arxiv.org/pdf/1805.10820v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.00050v1,
+ abstract = {We propose learning flexible but interpretable functions that aggregate a
+variable-length set of permutation-invariant feature vectors to predict a
+label. We use a deep lattice network model so we can architect the model
+structure to enhance interpretability, and add monotonicity constraints between
+inputs-and-outputs. We then use the proposed set function to automate the
+engineering of dense, interpretable features from sparse categorical features,
+which we call semantic feature engine. Experiments on real-world data show the
+achieved accuracy is similar to deep sets or deep neural networks, and is
+easier to debug and understand.},
+ author = {Cotter, Andrew and Gupta, Maya and Jiang, Heinrich and Muller, James and Narayan, Taman and Wang, Serena and Zhu, Tao},
+ journal = {arxiv},
+ month = {5},
+ title = {Interpretable Set Functions},
+ url = {http://arxiv.org/pdf/1806.00050v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.00069v3,
+ abstract = {There has recently been a surge of work in explanatory artificial
+intelligence (XAI). This research area tackles the important problem that
+complex machines and algorithms often cannot provide insights into their
+behavior and thought processes. XAI allows users and parts of the internal
+system to be more transparent, providing explanations of their decisions in
+some level of detail. These explanations are important to ensure algorithmic
+fairness, identify potential bias/problems in the training data, and to ensure
+that the algorithms perform as expected. However, explanations produced by
+these systems is neither standardized nor systematically assessed. In an effort
+to create best practices and identify open challenges, we provide our
+definition of explainability and show how it can be used to classify existing
+literature. We discuss why current approaches to explanatory methods especially
+for deep neural networks are insufficient. Finally, based on our survey, we
+conclude with suggested future research directions for explanatory artificial
+intelligence.},
+ author = {Gilpin, Leilani H. and Bau, David and Yuan, Ben Z. and Bajwa, Ayesha and Specter, Michael and Kagal, Lalana},
+ journal = {arxiv},
+ month = {5},
+ title = {Explaining Explanations: An Overview of Interpretability of Machine
+  Learning},
+ url = {http://arxiv.org/pdf/1806.00069v3},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.01261v3,
+ abstract = {Artificial intelligence (AI) has undergone a renaissance recently, making
+major progress in key domains such as vision, language, control, and
+decision-making. This has been due, in part, to cheap data and cheap compute
+resources, which have fit the natural strengths of deep learning. However, many
+defining characteristics of human intelligence, which developed under much
+different pressures, remain out of reach for current approaches. In particular,
+generalizing beyond one's experiences--a hallmark of human intelligence from
+infancy--remains a formidable challenge for modern AI.
+  The following is part position paper, part review, and part unification. We
+argue that combinatorial generalization must be a top priority for AI to
+achieve human-like abilities, and that structured representations and
+computations are key to realizing this objective. Just as biology uses nature
+and nurture cooperatively, we reject the false choice between
+"hand-engineering" and "end-to-end" learning, and instead advocate for an
+approach which benefits from their complementary strengths. We explore how
+using relational inductive biases within deep learning architectures can
+facilitate learning about entities, relations, and rules for composing them. We
+present a new building block for the AI toolkit with a strong relational
+inductive bias--the graph network--which generalizes and extends various
+approaches for neural networks that operate on graphs, and provides a
+straightforward interface for manipulating structured knowledge and producing
+structured behaviors. We discuss how graph networks can support relational
+reasoning and combinatorial generalization, laying the foundation for more
+sophisticated, interpretable, and flexible patterns of reasoning. As a
+companion to this paper, we have released an open-source software library for
+building graph networks, with demonstrations of how to use them in practice.},
+ author = {Battaglia, Peter W. and Hamrick, Jessica B. and Bapst, Victor and Sanchez-Gonzalez, Alvaro and Zambaldi, Vinicius and Malinowski, Mateusz and Tacchetti, Andrea and Raposo, David and Santoro, Adam and Faulkner, Ryan and Gulcehre, Caglar and Song, Francis and Ballard, Andrew and Gilmer, Justin and Dahl, George and Vaswani, Ashish and Allen, Kelsey and Nash, Charles and Langston, Victoria and Dyer, Chris and Heess, Nicolas and Wierstra, Daan and Kohli, Pushmeet and Botvinick, Matt and Vinyals, Oriol and Li, Yujia and Pascanu, Razvan},
+ journal = {arxiv},
+ month = {6},
+ title = {Relational inductive biases, deep learning, and graph networks},
+ url = {http://arxiv.org/pdf/1806.01261v3},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.01933v1,
+ abstract = {Machine Learning algorithms are increasingly being used in recent years due
+to their flexibility in model fitting and increased predictive performance.
+However, the complexity of the models makes them hard for the data analyst to
+interpret the results and explain them without additional tools. This has led
+to much research in developing various approaches to understand the model
+behavior. In this paper, we present the Explainable Neural Network (xNN), a
+structured neural network designed especially to learn interpretable features.
+Unlike fully connected neural networks, the features engineered by the xNN can
+be extracted from the network in a relatively straightforward manner and the
+results displayed. With appropriate regularization, the xNN provides a
+parsimonious explanation of the relationship between the features and the
+output. We illustrate this interpretable feature--engineering property on
+simulated examples.},
+ author = {Vaughan, Joel and Sudjianto, Agus and Brahimi, Erind and Chen, Jie and Nair, Vijayan N.},
+ journal = {arxiv},
+ month = {6},
+ title = {Explainable Neural Networks based on Additive Index Models},
+ url = {http://arxiv.org/pdf/1806.01933v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.05337v2,
+ abstract = {Deep neural networks (DNNs) have achieved impressive predictive performance
+due to their ability to learn complex, non-linear relationships between
+variables. However, the inability to effectively visualize these relationships
+has led to DNNs being characterized as black boxes and consequently limited
+their applications. To ameliorate this problem, we introduce the use of
+hierarchical interpretations to explain DNN predictions through our proposed
+method, agglomerative contextual decomposition (ACD). Given a prediction from a
+trained DNN, ACD produces a hierarchical clustering of the input features,
+along with the contribution of each cluster to the final prediction. This
+hierarchy is optimized to identify clusters of features that the DNN learned
+are predictive. Using examples from Stanford Sentiment Treebank and ImageNet,
+we show that ACD is effective at diagnosing incorrect predictions and
+identifying dataset bias. Through human experiments, we demonstrate that ACD
+enables users both to identify the more accurate of two DNNs and to better
+trust a DNN's outputs. We also find that ACD's hierarchy is largely robust to
+adversarial perturbations, implying that it captures fundamental aspects of the
+input and ignores spurious noise.},
+ author = {Singh, Chandan and Murdoch, W. James and Yu, Bin},
+ journal = {arxiv},
+ month = {6},
+ title = {Hierarchical interpretations for neural network predictions},
+ url = {http://arxiv.org/pdf/1806.05337v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.07470v1,
+ abstract = {Recent advances in interpretable Machine Learning (iML) and eXplainable AI
+(XAI) construct explanations based on the importance of features in
+classification tasks. However, in a high-dimensional feature space this
+approach may become unfeasible without restraining the set of important
+features. We propose to utilize the human tendency to ask questions like "Why
+this output (the fact) instead of that output (the foil)?" to reduce the number
+of features to those that play a main role in the asked contrast. Our proposed
+method utilizes locally trained one-versus-all decision trees to identify the
+disjoint set of rules that causes the tree to classify data points as the foil
+and not as the fact. In this study we illustrate this approach on three
+benchmark classification tasks.},
+ author = {Waa, Jasper van der and Robeer, Marcel and Diggelen, Jurriaan van and Brinkhuis, Matthieu and Neerincx, Mark},
+ journal = {arxiv},
+ month = {6},
+ title = {Contrastive Explanations with Local Foil Trees},
+ url = {http://arxiv.org/pdf/1806.07470v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.07538v2,
+ abstract = {Most recent work on interpretability of complex machine learning models has
+focused on estimating $\textit{a posteriori}$ explanations for previously
+trained models around specific predictions. $\textit{Self-explaining}$ models
+where interpretability plays a key role already during learning have received
+much less attention. We propose three desiderata for explanations in general --
+explicitness, faithfulness, and stability -- and show that existing methods do
+not satisfy them. In response, we design self-explaining models in stages,
+progressively generalizing linear classifiers to complex yet architecturally
+explicit models. Faithfulness and stability are enforced via regularization
+specifically tailored to such models. Experimental results across various
+benchmark datasets show that our framework offers a promising direction for
+reconciling model complexity and interpretability.},
+ author = {Alvarez-Melis, David and Jaakkola, Tommi S.},
+ journal = {arxiv},
+ month = {6},
+ title = {Towards Robust Interpretability with Self-Explaining Neural Networks},
+ url = {http://arxiv.org/pdf/1806.07538v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.08340v1,
+ abstract = {Automated detection of new, interesting, unusual, or anomalous images within
+large data sets has great value for applications from surveillance (e.g.,
+airport security) to science (observations that don't fit a given theory can
+lead to new discoveries). Many image data analysis systems are turning to
+convolutional neural networks (CNNs) to represent image content due to their
+success in achieving high classification accuracy rates. However, CNN
+representations are notoriously difficult for humans to interpret. We describe
+a new strategy that combines novelty detection with CNN image features to
+achieve rapid discovery with interpretable explanations of novel image content.
+We applied this technique to familiar images from ImageNet as well as to a
+scientific image collection from planetary science.},
+ author = {Wagstaff, Kiri L. and Lee, Jake},
+ journal = {arxiv},
+ month = {6},
+ title = {Interpretable Discovery in Large Image Data Sets},
+ url = {http://arxiv.org/pdf/1806.08340v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.09809v1,
+ abstract = {Natural language explanations of deep neural network decisions provide an
+intuitive way for a AI agent to articulate a reasoning process. Current textual
+explanations learn to discuss class discriminative features in an image.
+However, it is also helpful to understand which attributes might change a
+classification decision if present in an image (e.g., "This is not a Scarlet
+Tanager because it does not have black wings.") We call such textual
+explanations counterfactual explanations, and propose an intuitive method to
+generate counterfactual explanations by inspecting which evidence in an input
+is missing, but might contribute to a different classification decision if
+present in the image. To demonstrate our method we consider a fine-grained
+image classification task in which we take as input an image and a
+counterfactual class and output text which explains why the image does not
+belong to a counterfactual class. We then analyze our generated counterfactual
+explanations both qualitatively and quantitatively using proposed automatic
+metrics.},
+ author = {Hendricks, Lisa Anne and Hu, Ronghang and Darrell, Trevor and Akata, Zeynep},
+ journal = {arxiv},
+ month = {6},
+ title = {Generating Counterfactual Explanations with Natural Language},
+ url = {http://arxiv.org/pdf/1806.09809v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1806.10758v2,
+ abstract = {Interpretability methods should be both meaningful to a human and correctly
+explain model behavior. In this work, we propose a benchmark to evaluate the
+latter. We introduce ROAR, RemOve And Retrain, a formal measure of the relative
+accuracy of interpretability methods that estimate feature importance in deep
+neural networks. We evaluate commonly used interpretability methods and a set
+of recently proposed ensemble-based derivative approaches. Our results across
+several large-scale image classification datasets are consistent and
+thought-provoking -- we find that the formal methods we consider produce
+estimates that are less accurate or on par with a random designation of feature
+importance. However, certain derivative approaches that ensemble these
+estimates far outperform such a random guess. The manner of ensembling remains
+critical, we show that some approaches do no better than the underlying method
+but carry a far higher computational burden.},
+ author = {Hooker, Sara and Erhan, Dumitru and Kindermans, Pieter-Jan and Kim, Been},
+ journal = {arxiv},
+ month = {6},
+ title = {Evaluating Feature Importance Estimates},
+ url = {http://arxiv.org/pdf/1806.10758v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1807.00154v1,
+ abstract = {Interpretability of the underlying AI representations is a key raison
+d'\^{e}tre for Open Learner Modelling (OLM) -- a branch of Intelligent Tutoring
+Systems (ITS) research. OLMs provide tools for 'opening' up the AI models of
+learners' cognition and emotions for the purpose of supporting human learning
+and teaching. Over thirty years of research in ITS (also known as AI in
+Education) produced important work, which informs about how AI can be used in
+Education to best effects and, through the OLM research, what are the necessary
+considerations to make it interpretable and explainable for the benefit of
+learning. We argue that this work can provide a valuable starting point for a
+framework of interpretable AI, and as such is of relevance to the application
+of both knowledge-based and machine learning systems in other high-stakes
+contexts, beyond education.},
+ author = {Conati, Cristina and Porayska-Pomsta, Kaska and Mavrikis, Manolis},
+ journal = {arxiv},
+ month = {6},
+ title = {AI in Education needs interpretable machine learning: Lessons from Open
+  Learner Modelling},
+ url = {http://arxiv.org/pdf/1807.00154v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1807.03418v1,
+ abstract = {Interpretability of deep neural networks is a recently emerging area of
+machine learning research targeting a better understanding of how models
+perform feature selection and derive their classification decisions. In this
+paper, two neural network architectures are trained on spectrogram and raw
+waveform data for audio classification tasks on a newly created audio dataset
+and layer-wise relevance propagation (LRP), a previously proposed
+interpretability method, is applied to investigate the models' feature
+selection and decision making. It is demonstrated that the networks are highly
+reliant on feature marked as relevant by LRP through systematic manipulation of
+the input data. Our results show that by making deep audio classifiers
+interpretable, one can analyze and compare the properties and strategies of
+different models beyond classification accuracy, which potentially opens up new
+ways for model improvements.},
+ author = {Becker, Sören and Ackermann, Marcel and Lapuschkin, Sebastian and Müller, Klaus-Robert and Samek, Wojciech},
+ journal = {arxiv},
+ month = {7},
+ title = {Interpreting and Explaining Deep Neural Networks for Classification of
+  Audio Signals},
+ url = {http://arxiv.org/pdf/1807.03418v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1807.06161v1,
+ abstract = {Recommendation systems are an integral part of Artificial Intelligence (AI)
+and have become increasingly important in the growing age of commercialization
+in AI. Deep learning (DL) techniques for recommendation systems (RS) provide
+powerful latent-feature models for effective recommendation but suffer from the
+major drawback of being non-interpretable. In this paper we describe a
+framework for explainable temporal recommendations in a DL model. We consider
+an LSTM based Recurrent Neural Network (RNN) architecture for recommendation
+and a neighbourhood-based scheme for generating explanations in the model. We
+demonstrate the effectiveness of our approach through experiments on the
+Netflix dataset by jointly optimizing for both prediction accuracy and
+explainability.},
+ author = {Bharadhwaj, Homanga and Joshi, Shruti},
+ journal = {arxiv},
+ month = {7},
+ title = {Explanations for Temporal Recommendations},
+ url = {http://arxiv.org/pdf/1807.06161v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1807.07404v1,
+ abstract = {Predictive geometric models deliver excellent results for many Machine
+Learning use cases. Despite their undoubted performance, neural predictive
+algorithms can show unexpected degrees of instability and variance,
+particularly when applied to large datasets. We present an approach to measure
+changes in geometric models with respect to both output consistency and
+topological stability. Considering the example of a recommender system using
+word2vec, we analyze the influence of single data points, approximation methods
+and parameter settings. Our findings can help to stabilize models where needed
+and to detect differences in informational value of data points on a large
+scale.},
+ author = {Regneri, Michaela and Hoffmann, Malte and Kost, Jurij and Pietsch, Niklas and Schulz, Timo and Stamm, Sabine},
+ journal = {arxiv},
+ month = {7},
+ title = {Analyzing Hypersensitive AI: Instability in Corporate-Scale Machine
+  Learning},
+ url = {http://arxiv.org/pdf/1807.07404v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1808.00033v2,
+ abstract = {Interpretable machine learning tackles the important problem that humans
+cannot understand the behaviors of complex machine learning models and how
+these models arrive at a particular decision. Although many approaches have
+been proposed, a comprehensive understanding of the achievements and challenges
+is still lacking. We provide a survey covering existing techniques to increase
+the interpretability of machine learning models. We also discuss crucial issues
+that the community should consider in future work such as designing
+user-friendly explanations and developing comprehensive evaluation metrics to
+further push forward the area of interpretable machine learning.},
+ author = {Du, Mengnan and Liu, Ninghao and Hu, Xia},
+ journal = {arxiv},
+ month = {7},
+ title = {Techniques for Interpretable Machine Learning},
+ url = {http://arxiv.org/pdf/1808.00033v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1808.01591v1,
+ abstract = {Recurrent neural networks (RNNs) are temporal networks and cumulative in
+nature that have shown promising results in various natural language processing
+tasks. Despite their success, it still remains a challenge to understand their
+hidden behavior. In this work, we analyze and interpret the cumulative nature
+of RNN via a proposed technique named as Layer-wIse-Semantic-Accumulation
+(LISA) for explaining decisions and detecting the most likely (i.e., saliency)
+patterns that the network relies on while decision making. We demonstrate (1)
+LISA: "How an RNN accumulates or builds semantics during its sequential
+processing for a given text example and expected response" (2) Example2pattern:
+"How the saliency patterns look like for each category in the data according to
+the network in decision making". We analyse the sensitiveness of RNNs about
+different inputs to check the increase or decrease in prediction scores and
+further extract the saliency patterns learned by the network. We employ two
+relation classification datasets: SemEval 10 Task 8 and TAC KBP Slot Filling to
+explain RNN predictions via the LISA and example2pattern.},
+ author = {Gupta, Pankaj and Schütze, Hinrich},
+ journal = {arxiv},
+ month = {8},
+ title = {LISA: Explaining Recurrent Neural Network Judgments via Layer-wIse
+  Semantic Accumulation and Example to Pattern Transformation},
+ url = {http://arxiv.org/pdf/1808.01591v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1808.04127v1,
+ abstract = {PatternAttribution is a recent method, introduced in the vision domain, that
+explains classifications of deep neural networks. We demonstrate that it also
+generates meaningful interpretations in the language domain.},
+ author = {Harbecke, David and Schwarzenberg, Robert and Alt, Christoph},
+ journal = {arxiv},
+ month = {8},
+ title = {Learning Explanations from Language Data},
+ url = {http://arxiv.org/pdf/1808.04127v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1809.02479v1,
+ abstract = {Recently machine learning is being applied to almost every data domain one of
+which is Question Answering Systems (QAS). A typical Question Answering System
+is fairly an information retrieval system, which matches documents or text and
+retrieve the most accurate one. The idea of open domain question answering
+system put forth, involves convolutional neural network text classifiers. The
+Classification model presented in this paper is multi-class text classifier.
+The neural network classifier can be trained on large dataset. We report series
+of experiments conducted on Convolution Neural Network (CNN) by training it on
+two different datasets. Neural network model is trained on top of word
+embedding. Softmax layer is applied to calculate loss and mapping of
+semantically related words. Gathered results can help justify the fact that
+proposed hypothetical QAS is feasible. We further propose a method to integrate
+Convolutional Neural Network Classifier to an open domain question answering
+system. The idea of Open domain will be further explained, but the generality
+of it indicates to the system of domain specific trainable models, thus making
+it an open domain.},
+ author = {Amin, Muhammad Zain and Nadeem, Noman},
+ journal = {arxiv},
+ month = {9},
+ title = {Convolutional Neural Network: Text Classification Model for Open Domain
+  Question Answering System},
+ url = {http://arxiv.org/pdf/1809.02479v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1809.10315v2,
+ abstract = {Recent work has studied the reasons for the remarkable performance of deep
+neural networks in image classification. We examine batch normalization on the
+one hand and the dynamical systems view of residual networks on the other hand.
+Our goal is in understanding the notions of stability and smoothness of the
+inter-layer propagation of ResNets so as to explain when they contribute to
+significantly enhanced performance. We postulate that such stability is of
+importance for the trained ResNet to transfer.},
+ author = {Zhang, Jingfeng and Wynter, Laura},
+ journal = {arxiv},
+ month = {9},
+ title = {Smooth Inter-layer Propagation of Stabilized Neural Networks for
+  Classification},
+ url = {http://arxiv.org/pdf/1809.10315v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.00184v1,
+ abstract = {There is general consensus that it is important for artificial intelligence
+(AI) and machine learning systems to be explainable and/or interpretable.
+However, there is no general consensus over what is meant by 'explainable' and
+'interpretable'. In this paper, we argue that this lack of consensus is due to
+there being several distinct stakeholder communities. We note that, while the
+concerns of the individual communities are broadly compatible, they are not
+identical, which gives rise to different intents and requirements for
+explainability/interpretability. We use the software engineering distinction
+between validation and verification, and the epistemological distinctions
+between knowns/unknowns, to tease apart the concerns of the stakeholder
+communities and highlight the areas where their foci overlap or diverge. It is
+not the purpose of the authors of this paper to 'take sides' - we count
+ourselves as members, to varying degrees, of multiple communities - but rather
+to help disambiguate what stakeholders mean when they ask 'Why?' of an AI.},
+ author = {Preece, Alun and Harborne, Dan and Braines, Dave and Tomsett, Richard and Chakraborty, Supriyo},
+ journal = {arxiv},
+ month = {9},
+ title = {Stakeholders in Explainable AI},
+ url = {http://arxiv.org/pdf/1810.00184v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.00869v1,
+ abstract = {Neural networks are among the most accurate supervised learning methods in
+use today. However, their opacity makes them difficult to trust in critical
+applications, especially when conditions in training may differ from those in
+practice. Recent efforts to develop explanations for neural networks and
+machine learning models more generally have produced tools to shed light on the
+implicit rules behind predictions. These tools can help us identify when models
+are right for the wrong reasons. However, they do not always scale to
+explaining predictions for entire datasets, are not always at the right level
+of abstraction, and most importantly cannot correct the problems they reveal.
+In this thesis, we explore the possibility of training machine learning models
+(with a particular focus on neural networks) using explanations themselves. We
+consider approaches where models are penalized not only for making incorrect
+predictions but also for providing explanations that are either inconsistent
+with domain knowledge or overly complex. These methods let us train models
+which can not only provide more interpretable rationales for their predictions
+but also generalize better when training data is confounded or meaningfully
+different from test data (even adversarially so).},
+ author = {Ross, Andrew Slavin},
+ journal = {arxiv},
+ month = {9},
+ title = {Training Machine Learning Models by Regularizing their Explanations},
+ url = {http://arxiv.org/pdf/1810.00869v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.02678v1,
+ abstract = {We introduce a method, KL-LIME, for explaining predictions of Bayesian
+predictive models by projecting the information in the predictive distribution
+locally to a simpler, interpretable explanation model. The proposed approach
+combines the recent Local Interpretable Model-agnostic Explanations (LIME)
+method with ideas from Bayesian projection predictive variable selection
+methods. The information theoretic basis helps in navigating the trade-off
+between explanation fidelity and complexity. We demonstrate the method in
+explaining MNIST digit classifications made by a Bayesian deep convolutional
+neural network.},
+ author = {Peltola, Tomi},
+ journal = {arxiv},
+ month = {10},
+ title = {Local Interpretable Model-agnostic Explanations of Bayesian Predictive
+  Models via Kullback-Leibler Projections},
+ url = {http://arxiv.org/pdf/1810.02678v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.02689v2,
+ abstract = {Evaluation has always been a key challenge in the development of artificial
+intelligence (AI) based software, due to the technical complexity of the
+software artifact and, often, its embedding in complex sociotechnical
+processes. Recent advances in machine learning (ML) enabled by deep neural
+networks has exacerbated the challenge of evaluating such software due to the
+opaque nature of these ML-based artifacts. A key related issue is the
+(in)ability of such systems to generate useful explanations of their outputs,
+and we argue that the explanation and evaluation problems are closely linked.
+The paper models the elements of a ML-based AI system in the context of public
+sector decision (PSD) applications involving both artificial and human
+intelligence, and maps these elements against issues in both evaluation and
+explanation, showing how the two are related. We consider a number of common
+PSD application patterns in the light of our model, and identify a set of key
+issues connected to explanation and evaluation in each case. Finally, we
+propose multiple strategies to promote wider adoption of AI/ML technologies in
+PSD, where each is distinguished by a focus on different elements of our model,
+allowing PSD policy makers to adopt an approach that best fits their context
+and concerns.},
+ author = {Preece, Alun and Ashelford, Rob and Armstrong, Harry and Braines, Dave},
+ journal = {arxiv},
+ month = {9},
+ title = {Hows and Whys of Artificial Intelligence for Public Sector Decisions:
+  Explanation and Evaluation},
+ url = {http://arxiv.org/pdf/1810.02689v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.04053v1,
+ abstract = {In the last couple of years, the rise of Artificial Intelligence and the
+successes of academic breakthroughs in the field have been inescapable. Vast
+sums of money have been thrown at AI start-ups. Many existing tech companies --
+including the giants like Google, Amazon, Facebook, and Microsoft -- have
+opened new research labs. The rapid changes in these everyday work and
+entertainment tools have fueled a rising interest in the underlying technology
+itself; journalists write about AI tirelessly, and companies -- of tech nature
+or not -- brand themselves with AI, Machine Learning or Deep Learning whenever
+they get a chance. Confronting squarely this media coverage, several analysts
+are starting to voice concerns about over-interpretation of AI's blazing
+successes and the sometimes poor public reporting on the topic. This paper
+reviews briefly the track-record in AI and Machine Learning and finds this
+pattern of early dramatic successes, followed by philosophical critique and
+unexpected difficulties, if not downright stagnation, returning almost to the
+clock in 30-year cycles since 1958.},
+ author = {Chauvet, Jean-Marie},
+ journal = {arxiv},
+ month = {10},
+ title = {The 30-Year Cycle In The AI Debate},
+ url = {http://arxiv.org/pdf/1810.04053v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.09648v2,
+ abstract = {Machine learning is an important tool for decision making, but its ethical
+and responsible application requires rigorous vetting of its interpretability
+and utility: an understudied problem, particularly for natural language
+processing models. We design a task-specific evaluation for a question
+answering task and evaluate how well a model interpretation improves human
+performance in a human-machine cooperative setting. We evaluate interpretation
+methods in a grounded, realistic setting: playing a trivia game as a team. We
+also provide design guidance for natural language processing human-in-the-loop
+settings.},
+ author = {Feng, Shi and Boyd-Graber, Jordan},
+ journal = {arxiv},
+ month = {10},
+ title = {What can AI do for me: Evaluating Machine Learning Interpretations in
+  Cooperative Play},
+ url = {http://arxiv.org/pdf/1810.09648v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.10862v4,
+ abstract = {An important challenge for safety in machine learning and artificial
+intelligence systems is a~set of related failures involving specification
+gaming, reward hacking, fragility to distributional shifts, and Goodhart's or
+Campbell's law. This paper presents additional failure modes for interactions
+within multi-agent systems that are closely related. These multi-agent failure
+modes are more complex, more problematic, and less well understood than the
+single-agent case, and are also already occurring, largely unnoticed. After
+motivating the discussion with examples from poker-playing artificial
+intelligence (AI), the paper explains why these failure modes are in some
+senses unavoidable. Following this, the paper categorizes failure modes,
+provides definitions, and cites examples for each of the modes: accidental
+steering, coordination failures, adversarial misalignment, input spoofing and
+filtering, and goal co-option or direct hacking. The paper then discusses how
+extant literature on multi-agent AI fails to address these failure modes, and
+identifies work which may be useful for the mitigation of these failure modes.},
+ author = {Manheim, David},
+ journal = {arxiv},
+ month = {10},
+ title = {Multiparty Dynamics and Failure Modes for Machine Learning and
+  Artificial Intelligence},
+ url = {http://arxiv.org/pdf/1810.10862v4},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1810.13192v4,
+ abstract = {The developments of deep neural networks (DNN) in recent years have ushered a
+brand new era of artificial intelligence. DNNs are proved to be excellent in
+solving very complex problems, e.g., visual recognition and text understanding,
+to the extent of competing with or even surpassing people. Despite inspiring
+and encouraging success of DNNs, thorough theoretical analyses still lack to
+unravel the mystery of their magics. The design of DNN structure is dominated
+by empirical results in terms of network depth, number of neurons and
+activations. A few of remarkable works published recently in an attempt to
+interpret DNNs have established the first glimpses of their internal
+mechanisms. Nevertheless, research on exploring how DNNs operate is still at
+the initial stage with plenty of room for refinement. In this paper, we extend
+precedent research on neural networks with piecewise linear activations (PLNN)
+concerning linear regions bounds. We present (i) the exact maximal number of
+linear regions for single layer PLNNs; (ii) a upper bound for multi-layer
+PLNNs; and (iii) a tighter upper bound for the maximal number of liner regions
+on rectifier networks. The derived bounds also indirectly explain why deep
+models are more powerful than shallow counterparts, and how non-linearity of
+activation functions impacts on expressiveness of networks.},
+ author = {Hu, Qiang and Zhang, Hao},
+ journal = {arxiv},
+ month = {10},
+ title = {Nearly-tight bounds on linear regions of piecewise linear neural
+  networks},
+ url = {http://arxiv.org/pdf/1810.13192v4},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.00196v1,
+ abstract = {Building explainable systems is a critical problem in the field of Natural
+Language Processing (NLP), since most machine learning models provide no
+explanations for the predictions. Existing approaches for explainable machine
+learning systems tend to focus on interpreting the outputs or the connections
+between inputs and outputs. However, the fine-grained information is often
+ignored, and the systems do not explicitly generate the human-readable
+explanations. To better alleviate this problem, we propose a novel generative
+explanation framework that learns to make classification decisions and generate
+fine-grained explanations at the same time. More specifically, we introduce the
+explainable factor and the minimum risk training approach that learn to
+generate more reasonable explanations. We construct two new datasets that
+contain summaries, rating scores, and fine-grained reasons. We conduct
+experiments on both datasets, comparing with several strong neural network
+baseline systems. Experimental results show that our method surpasses all
+baselines on both datasets, and is able to generate concise explanations at the
+same time.},
+ author = {Liu, Hui and Yin, Qingyu and Wang, William Yang},
+ journal = {arxiv},
+ month = {11},
+ title = {Towards Explainable NLP: A Generative Explanation Framework for Text
+  Classification},
+ url = {http://arxiv.org/pdf/1811.00196v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.01439v1,
+ abstract = {Recent work on interpretability in machine learning and AI has focused on the
+building of simplified models that approximate the true criteria used to make
+decisions. These models are a useful pedagogical device for teaching trained
+professionals how to predict what decisions will be made by the complex system,
+and most importantly how the system might break. However, when considering any
+such model it's important to remember Box's maxim that "All models are wrong
+but some are useful." We focus on the distinction between these models and
+explanations in philosophy and sociology. These models can be understood as a
+"do it yourself kit" for explanations, allowing a practitioner to directly
+answer "what if questions" or generate contrastive explanations without
+external assistance. Although a valuable ability, giving these models as
+explanations appears more difficult than necessary, and other forms of
+explanation may not have the same trade-offs. We contrast the different schools
+of thought on what makes an explanation, and suggest that machine learning
+might benefit from viewing the problem more broadly.},
+ author = {Mittelstadt, Brent and Russell, Chris and Wachter, Sandra},
+ journal = {arxiv},
+ month = {11},
+ title = {Explaining Explanations in AI},
+ url = {http://arxiv.org/pdf/1811.01439v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.02783v1,
+ abstract = {We introduce a novel approach to feed-forward neural network interpretation
+based on partitioning the space of sequences of neuron activations. In line
+with this approach, we propose a model-specific interpretation method, called
+YASENN. Our method inherits many advantages of model-agnostic distillation,
+such as an ability to focus on the particular input region and to express an
+explanation in terms of features different from those observed by a neural
+network. Moreover, examination of distillation error makes the method
+applicable to the problems with low tolerance to interpretation mistakes.
+Technically, YASENN distills the network with an ensemble of layer-wise
+gradient boosting decision trees and encodes the sequences of neuron
+activations with leaf indices. The finite number of unique codes induces a
+partitioning of the input space. Each partition may be described in a variety
+of ways, including examination of an interpretable model (e.g. a logistic
+regression or a decision tree) trained to discriminate between objects of those
+partitions. Our experiments provide an intuition behind the method and
+demonstrate revealed artifacts in neural network decision making.},
+ author = {Zharov, Yaroslav and Korzhenkov, Denis and Shvechikov, Pavel and Tuzhilin, Alexander},
+ journal = {arxiv},
+ month = {11},
+ title = {YASENN: Explaining Neural Networks via Partitioning Activation Sequences},
+ url = {http://arxiv.org/pdf/1811.02783v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.06471v2,
+ abstract = {Deep learning adoption in the financial services industry has been limited
+due to a lack of model interpretability. However, several techniques have been
+proposed to explain predictions made by a neural network. We provide an initial
+investigation into these techniques for the assessment of credit risk with
+neural networks.},
+ author = {Modarres, Ceena and Ibrahim, Mark and Louie, Melissa and Paisley, John},
+ journal = {arxiv},
+ month = {11},
+ title = {Towards Explainable Deep Learning for Credit Lending: A Case Study},
+ url = {http://arxiv.org/pdf/1811.06471v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.09725v1,
+ abstract = {Deep learning is currently playing a crucial role toward higher levels of
+artificial intelligence. This paradigm allows neural networks to learn complex
+and abstract representations, that are progressively obtained by combining
+simpler ones. Nevertheless, the internal "black-box" representations
+automatically discovered by current neural architectures often suffer from a
+lack of interpretability, making of primary interest the study of explainable
+machine learning techniques. This paper summarizes our recent efforts to
+develop a more interpretable neural model for directly processing speech from
+the raw waveform. In particular, we propose SincNet, a novel Convolutional
+Neural Network (CNN) that encourages the first layer to discover more
+meaningful filters by exploiting parametrized sinc functions. In contrast to
+standard CNNs, which learn all the elements of each filter, only low and high
+cutoff frequencies of band-pass filters are directly learned from data. This
+inductive bias offers a very compact way to derive a customized filter-bank
+front-end, that only depends on some parameters with a clear physical meaning.
+Our experiments, conducted on both speaker and speech recognition, show that
+the proposed architecture converges faster, performs better, and is more
+interpretable than standard CNNs.},
+ author = {Ravanelli, Mirco and Bengio, Yoshua},
+ journal = {arxiv},
+ month = {11},
+ title = {Interpretable Convolutional Filters with SincNet},
+ url = {http://arxiv.org/pdf/1811.09725v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.11705v1,
+ abstract = {Despite the growing popularity of modern machine learning techniques (e.g.
+Deep Neural Networks) in cyber-security applications, most of these models are
+perceived as a black-box for the user. Adversarial machine learning offers an
+approach to increase our understanding of these models. In this paper we
+present an approach to generate explanations for incorrect classifications made
+by data-driven Intrusion Detection Systems (IDSs). An adversarial approach is
+used to find the minimum modifications (of the input features) required to
+correctly classify a given set of misclassified samples. The magnitude of such
+modifications is used to visualize the most relevant features that explain the
+reason for the misclassification. The presented methodology generated
+satisfactory explanations that describe the reasoning behind the
+mis-classifications, with descriptions that match expert knowledge. The
+advantages of the presented methodology are: 1) applicable to any classifier
+with defined gradients. 2) does not require any modification of the classifier
+model. 3) can be extended to perform further diagnosis (e.g. vulnerability
+assessment) and gain further understanding of the system. Experimental
+evaluation was conducted on the NSL-KDD99 benchmark dataset using Linear and
+Multilayer perceptron classifiers. The results are shown using intuitive
+visualizations in order to improve the interpretability of the results.},
+ author = {Marino, Daniel L. and Wickramasinghe, Chathurika S. and Manic, Milos},
+ journal = {arxiv},
+ month = {11},
+ title = {An Adversarial Approach for Explainable AI in Intrusion Detection
+  Systems},
+ url = {http://arxiv.org/pdf/1811.11705v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1811.11839v2,
+ abstract = {The need for interpretable and accountable intelligent system gets sensible
+as artificial intelligence plays more role in human life. Explainable
+artificial intelligence systems can be a solution by self-explaining the
+reasoning behind the decisions and predictions of the intelligent system.
+Researchers from different disciplines work together to define, design and
+evaluate interpretable intelligent systems for the user. Our work supports the
+different evaluation goals in interpretable machine learning research by a
+thorough review of evaluation methodologies used in machine-explanation
+research across the fields of human-computer interaction, visual analytics, and
+machine learning. We present a 2D categorization of interpretable machine
+learning evaluation methods and show a mapping between user groups and
+evaluation measures. Further, we address the essential factors and steps for a
+right evaluation plan by proposing a nested model for design and evaluation of
+explainable artificial intelligence systems.},
+ author = {Mohseni, Sina and Zarei, Niloofar and Ragan, Eric D.},
+ journal = {arxiv},
+ month = {11},
+ title = {A Survey of Evaluation Methods and Measures for Interpretable Machine
+  Learning},
+ url = {http://arxiv.org/pdf/1811.11839v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1812.01029v1,
+ abstract = {Although neural networks can achieve very high predictive performance on
+various different tasks such as image recognition or natural language
+processing, they are often considered as opaque "black boxes". The difficulty
+of interpreting the predictions of a neural network often prevents its use in
+fields where explainability is important, such as the financial industry where
+regulators and auditors often insist on this aspect. In this paper, we present
+a way to assess the relative input features importance of a neural network
+based on the sensitivity of the model output with respect to its input. This
+method has the advantage of being fast to compute, it can provide both global
+and local levels of explanations and is applicable for many types of neural
+network architectures. We illustrate the performance of this method on both
+synthetic and real data and compare it with other interpretation techniques.
+This method is implemented into an open-source Python package that allows its
+users to easily generate and visualize explanations for their neural networks.},
+ author = {Horel, Enguerrand and Mison, Virgile and Xiong, Tao and Giesecke, Kay and Mangu, Lidia},
+ journal = {arxiv},
+ month = {12},
+ title = {Sensitivity based Neural Networks Explanations},
+ url = {http://arxiv.org/pdf/1812.01029v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1812.01214v2,
+ abstract = {Neural networks currently dominate the machine learning community and they do
+so for good reasons. Their accuracy on complex tasks such as image
+classification is unrivaled at the moment and with recent improvements they are
+reasonably easy to train. Nevertheless, neural networks are lacking robustness
+and interpretability. Prototype-based vector quantization methods on the other
+hand are known for being robust and interpretable. For this reason, we propose
+techniques and strategies to merge both approaches. This contribution will
+particularly highlight the similarities between them and outline how to
+construct a prototype-based classification layer for multilayer networks.
+Additionally, we provide an alternative, prototype-based, approach to the
+classical convolution operation. Numerical results are not part of this report,
+instead the focus lays on establishing a strong theoretical framework. By
+publishing our framework and the respective theoretical considerations and
+justifications before finalizing our numerical experiments we hope to
+jump-start the incorporation of prototype-based learning in neural networks and
+vice versa.},
+ author = {Saralajew, Sascha and Holdijk, Lars and Rees, Maike and Villmann, Thomas},
+ journal = {arxiv},
+ month = {12},
+ title = {Prototype-based Neural Network Layers: Incorporating Vector Quantization},
+ url = {http://arxiv.org/pdf/1812.01214v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1812.02340v4,
+ abstract = {Investment decisions can benefit from incorporating an accumulated knowledge
+of the past to drive future decision making. We introduce Continual Learning
+Augmentation (CLA) which is based on an explicit memory structure and a feed
+forward neural network (FFNN) base model and used to drive long term financial
+investment decisions. We demonstrate that our approach improves accuracy in
+investment decision making while memory is addressed in an explainable way. Our
+approach introduces novel remember cues, consisting of empirically learned
+change points in the absolute error series of the FFNN. Memory recall is also
+novel, with contextual similarity assessed over time by sampling distances
+using dynamic time warping (DTW). We demonstrate the benefits of our approach
+by using it in an expected return forecasting task to drive investment
+decisions. In an investment simulation in a broad international equity universe
+between 2003-2017, our approach significantly outperforms FFNN base models. We
+also illustrate how CLA's memory addressing works in practice, using a worked
+example to demonstrate the explainability of our approach.},
+ author = {Philps, Daniel and Weyde, Tillman and Garcez, Artur d'Avila and Batchelor, Roy},
+ journal = {arxiv},
+ month = {12},
+ title = {Continual Learning Augmented Investment Decisions},
+ url = {http://arxiv.org/pdf/1812.02340v4},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1812.04801v1,
+ abstract = {Interactions such as double negation in sentences and scene interactions in
+images are common forms of complex dependencies captured by state-of-the-art
+machine learning models. We propose Mah\'e, a novel approach to provide
+Model-agnostic hierarchical \'explanations of how powerful machine learning
+models, such as deep neural networks, capture these interactions as either
+dependent on or free of the context of data instances. Specifically, Mah\'e
+provides context-dependent explanations by a novel local interpretation
+algorithm that effectively captures any-order interactions, and obtains
+context-free explanations through generalizing context-dependent interactions
+to explain global behaviors. Experimental results show that Mah\'e obtains
+improved local interaction interpretations over state-of-the-art methods and
+successfully explains interactions that are context-free.},
+ author = {Tsang, Michael and Sun, Youbang and Ren, Dongxu and Liu, Yan},
+ journal = {arxiv},
+ month = {12},
+ title = {Can I trust you more? Model-Agnostic Hierarchical Explanations},
+ url = {http://arxiv.org/pdf/1812.04801v1},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1812.10537v2,
+ abstract = {In the present paper, a method of defining the industrial process parameters
+for a new product using machine learning algorithms will be presented. The
+study will describe how to go from the product characteristics till the
+prediction of the suitable machine parameters to produce a good quality of this
+product, and this is based on an historical training dataset of similar
+products with their respective process parameters. In the first part of our
+study, we will focus on the ultrasonic welding process definition, welding
+parameters and on how it operate. While in second part, we present the design
+and implementation of the prediction models such multiple linear regression,
+support vector regression, and we compare them to an artificial neural networks
+algorithm. In the following part, we present a new application of Convolutional
+Neural Networks (CNN) to the industrial process parameters prediction. In
+addition, we will propose the generalization approach of our CNN to any
+prediction problem of industrial process parameters. Finally the results of the
+four methods will be interpreted and discussed.},
+ author = {Khdoudi, Abdelmoula and Masrour, Tawfik},
+ journal = {arxiv},
+ month = {12},
+ title = {Prediction of Industrial Process Parameters using Artificial
+  Intelligence Algorithms},
+ url = {http://arxiv.org/pdf/1812.10537v2},
+ year = {2018}
+}
+
+@article{http://arxiv.org/abs/1901.06560v1,
+ abstract = {There is a disconnect between explanatory artificial intelligence (XAI)
+methods and the types of explanations that are useful for and demanded by
+society (policy makers, government officials, etc.) Questions that experts in
+artificial intelligence (AI) ask opaque systems provide inside explanations,
+focused on debugging, reliability, and validation. These are different from
+those that society will ask of these systems to build trust and confidence in
+their decisions. Although explanatory AI systems can answer many questions that
+experts desire, they often don't explain why they made decisions in a way that
+is precise (true to the model) and understandable to humans. These outside
+explanations can be used to build trust, comply with regulatory and policy
+changes, and act as external validation. In this paper, we focus on XAI methods
+for deep neural networks (DNNs) because of DNNs' use in decision-making and
+inherent opacity. We explore the types of questions that explanatory DNN
+systems can answer and discuss challenges in building explanatory systems that
+provide outside explanations for societal requirements and benefit.},
+ author = {Gilpin, Leilani H. and Testart, Cecilia and Fruchter, Nathaniel and Adebayo, Julius},
+ journal = {arxiv},
+ month = {1},
+ title = {Explaining Explanations to Society},
+ url = {http://arxiv.org/pdf/1901.06560v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1901.07538v1,
+ abstract = {This paper presents an unsupervised method to learn a neural network, namely
+an explainer, to interpret a pre-trained convolutional neural network (CNN),
+i.e., the explainer uses interpretable visual concepts to explain features in
+middle conv-layers of a CNN. Given feature maps of a conv-layer of the CNN, the
+explainer performs like an auto-encoder, which decomposes the feature maps into
+object-part features. The object-part features are learned to reconstruct CNN
+features without much loss of information. We can consider the disentangled
+representations of object parts a paraphrase of CNN features, which help people
+understand the knowledge encoded by the CNN. More crucially, we learn the
+explainer via knowledge distillation without using any annotations of object
+parts or textures for supervision. In experiments, our method was widely used
+to interpret features of different benchmark CNNs, and explainers significantly
+boosted the feature interpretability without hurting the discrimination power
+of the CNNs.},
+ author = {Zhang, Quanshi and Yang, Yu and Wu, Ying Nian},
+ journal = {arxiv},
+ month = {1},
+ title = {Unsupervised Learning of Neural Networks to Explain Neural Networks
+  (extended abstract)},
+ url = {http://arxiv.org/pdf/1901.07538v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1901.08547v1,
+ abstract = {Transfer learning which aims at utilizing knowledge learned from one problem
+(source domain) to solve another different but related problem (target domain)
+has attracted wide research attentions. However, the current transfer learning
+methods are mostly uninterpretable, especially to people without ML expertise.
+In this extended abstract, we brief introduce two knowledge graph (KG) based
+frameworks towards human understandable transfer learning explanation. The
+first one explains the transferability of features learned by Convolutional
+Neural Network (CNN) from one domain to another through pre-training and
+fine-tuning, while the second justifies the model of a target domain predicted
+by models from multiple source domains in zero-shot learning (ZSL). Both
+methods utilize KG and its reasoning capability to provide rich and human
+understandable explanations to the transfer procedure.},
+ author = {Geng, Yuxia and Chen, Jiaoyan and Jimenez-Ruiz, Ernesto and Chen, Huajun},
+ journal = {arxiv},
+ month = {1},
+ title = {Human-centric Transfer Learning Explanation via Knowledge Graph
+  [Extended Abstract]},
+ url = {http://arxiv.org/pdf/1901.08547v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1901.10040v1,
+ abstract = {Current approaches for explaining machine learning models fall into two
+distinct classes: antecedent event influence and value attribution. The former
+leverages training instances to describe how much influence a training point
+exerts on a test point, while the latter attempts to attribute value to the
+features most pertinent to a given prediction. In this work, we discuss an
+algorithm, AVA: Aggregate Valuation of Antecedents, that fuses these two
+explanation classes to form a new approach to feature attribution that not only
+retrieves local explanations but also captures global patterns learned by a
+model. Our experimentation convincingly favors weighting and aggregating
+feature attributions via AVA.},
+ author = {Bhatt, Umang and Ravikumar, Pradeep and Moura, Jose M. F.},
+ journal = {arxiv},
+ month = {1},
+ title = {Towards Aggregating Weighted Feature Attributions},
+ url = {http://arxiv.org/pdf/1901.10040v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1901.11184v1,
+ abstract = {Humans are increasingly coming into contact with artificial intelligence and
+machine learning systems. Human-centered artificial intelligence is a
+perspective on AI and ML that algorithms must be designed with awareness that
+they are part of a larger system consisting of humans. We lay forth an argument
+that human-centered artificial intelligence can be broken down into two
+aspects: (1) AI systems that understand humans from a sociocultural
+perspective, and (2) AI systems that help humans understand them. We further
+argue that issues of social responsibility such as fairness, accountability,
+interpretability, and transparency.},
+ author = {Riedl, Mark O.},
+ journal = {arxiv},
+ month = {1},
+ title = {Human-Centered Artificial Intelligence and Machine Learning},
+ url = {http://arxiv.org/pdf/1901.11184v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1902.02041v1,
+ abstract = {We ask whether the neural network interpretation methods can be fooled via
+adversarial model manipulation, which is defined as a model fine-tuning step
+that aims to radically alter the explanations without hurting the accuracy of
+the original model. By incorporating the interpretation results directly in the
+regularization term of the objective function for fine-tuning, we show that the
+state-of-the-art interpreters, e.g., LRP and Grad-CAM, can be easily fooled
+with our model manipulation. We propose two types of fooling, passive and
+active, and demonstrate such foolings generalize well to the entire validation
+set as well as transfer to other interpretation methods. Our results are
+validated by both visually showing the fooled explanations and reporting
+quantitative metrics that measure the deviations from the original
+explanations. We claim that the stability of neural network interpretation
+method with respect to our adversarial model manipulation is an important
+criterion to check for developing robust and reliable neural network
+interpretation method.},
+ author = {Heo, Juyeon and Joo, Sunghwan and Moon, Taesup},
+ journal = {arxiv},
+ month = {2},
+ title = {Fooling Neural Network Interpretations via Adversarial Model
+  Manipulation},
+ url = {http://arxiv.org/pdf/1902.02041v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1902.02384v1,
+ abstract = {A barrier to the wider adoption of neural networks is their lack of
+interpretability. While local explanation methods exist for one prediction,
+most global attributions still reduce neural network decisions to a single set
+of features. In response, we present an approach for generating global
+attributions called GAM, which explains the landscape of neural network
+predictions across subpopulations. GAM augments global explanations with the
+proportion of samples that each attribution best explains and specifies which
+samples are described by each attribution. Global explanations also have
+tunable granularity to detect more or fewer subpopulations. We demonstrate that
+GAM's global explanations 1) yield the known feature importances of simulated
+data, 2) match feature weights of interpretable statistical models on real
+data, and 3) are intuitive to practitioners through user studies. With more
+transparent predictions, GAM can help ensure neural network decisions are
+generated for the right reasons.},
+ author = {Ibrahim, Mark and Louie, Melissa and Modarres, Ceena and Paisley, John},
+ journal = {arxiv},
+ month = {2},
+ title = {Global Explanations of Neural Networks: Mapping the Landscape of
+  Predictions},
+ url = {http://arxiv.org/pdf/1902.02384v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1902.03501v1,
+ abstract = {The increasing adoption of machine learning tools has led to calls for
+accountability via model interpretability. But what does it mean for a machine
+learning model to be interpretable by humans, and how can this be assessed? We
+focus on two definitions of interpretability that have been introduced in the
+machine learning literature: simulatability (a user's ability to run a model on
+a given input) and "what if" local explainability (a user's ability to
+correctly indicate the outcome to a model under local changes to the input).
+Through a user study with 1000 participants, we test whether humans perform
+well on tasks that mimic the definitions of simulatability and "what if" local
+explainability on models that are typically considered locally interpretable.
+We find evidence consistent with the common intuition that decision trees and
+logistic regression models are interpretable and are more interpretable than
+neural networks. We propose a metric - the runtime operation count on the
+simulatability task - to indicate the relative interpretability of models and
+show that as the number of operations increases the users' accuracy on the
+local interpretability tasks decreases.},
+ author = {Friedler, Sorelle A. and Roy, Chitradeep Dutta and Scheidegger, Carlos and Slack, Dylan},
+ journal = {arxiv},
+ month = {2},
+ title = {Assessing the Local Interpretability of Machine Learning Models},
+ url = {http://arxiv.org/pdf/1902.03501v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1902.04704v2,
+ abstract = {Originally inspired by neurobiology, deep neural network models have become a
+powerful tool of machine learning and artificial intelligence, where they are
+used to approximate functions and dynamics by learning from examples. Here we
+give a brief introduction to neural network models and deep learning for
+biologists. We introduce feedforward and recurrent networks and explain the
+expressive power of this modeling framework and the backpropagation algorithm
+for setting the parameters. Finally, we consider how deep neural networks might
+help us understand the brain's computations.},
+ author = {Kriegeskorte, Nikolaus and Golan, Tal},
+ journal = {arxiv},
+ month = {2},
+ title = {Neural network models and deep learning - a primer for biologists},
+ url = {http://arxiv.org/pdf/1902.04704v2},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1902.06787v1,
+ abstract = {Most work on interpretability in machine learning has focused on designing
+either inherently interpretable models, that typically trade-off
+interpretability for accuracy, or post-hoc explanation systems, that lack
+guarantees about their explanation quality. We propose an alternative to these
+approaches by directly regularizing a black-box model for interpretability at
+training time. Our approach explicitly connects three key aspects of
+interpretable machine learning: the model's innate explainability, the
+explanation system used at test time, and the metrics that measure explanation
+quality. Our regularization results in substantial (up to orders of magnitude)
+improvement in terms of explanation fidelity and stability metrics across a
+range of datasets, models, and black-box explanation systems. Remarkably, our
+regularizers also slightly improve predictive accuracy on average across the
+nine datasets we consider. Further, we show that the benefits of our novel
+regularizers on explanation quality provably generalize to unseen test points.},
+ author = {Plumb, Gregory and Al-Shedivat, Maruan and Xing, Eric and Talwalkar, Ameet},
+ journal = {arxiv},
+ month = {2},
+ title = {Regularizing Black-box Models for Improved Interpretability},
+ url = {http://arxiv.org/pdf/1902.06787v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1903.00519v1,
+ abstract = {Despite a growing literature on explaining neural networks, no consensus has
+been reached on how to explain a neural network decision or how to evaluate an
+explanation. In fact, most works rely on manually assessing the explanation to
+evaluate the quality of a method. This injects uncertainty in the explanation
+process along several dimensions: Which explanation method to apply? Who should
+we ask to evaluate it and which criteria should be used for the evaluation? Our
+contributions in this paper are twofold. First, we investigate schemes to
+combine explanation methods and reduce model uncertainty to obtain a single
+aggregated explanation. Our findings show that the aggregation is more robust,
+well-aligned with human explanations and can attribute relevance to a broader
+set of features (completeness). Second, we propose a novel way of evaluating
+explanation methods that circumvents the need for manual evaluation and is not
+reliant on the alignment of neural networks and humans decision processes.},
+ author = {Rieger, Laura and Hansen, Lars Kai},
+ journal = {arxiv},
+ month = {3},
+ title = {Aggregating explainability methods for neural networks stabilizes
+  explanations},
+ url = {http://arxiv.org/pdf/1903.00519v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1903.03894v1,
+ abstract = {Graph Neural Networks (GNNs) are a powerful tool for machine learning on
+graphs. GNNs combine node feature information with the graph structure by using
+neural networks to pass messages through edges in the graph. However,
+incorporating both graph structure and feature information leads to complex
+non-linear models and explaining predictions made by GNNs remains to be a
+challenging task. Here we propose GnnExplainer, a general model-agnostic
+approach for providing interpretable explanations for predictions of any
+GNN-based model on any graph-based machine learning task (node and graph
+classification, link prediction). In order to explain a given node's predicted
+label, GnnExplainer provides a local interpretation by highlighting relevant
+features as well as an important subgraph structure by identifying the edges
+that are most relevant to the prediction. Additionally, the model provides
+single-instance explanations when given a single prediction as well as
+multi-instance explanations that aim to explain predictions for an entire class
+of instances/nodes. We formalize GnnExplainer as an optimization task that
+maximizes the mutual information between the prediction of the full model and
+the prediction of simplified explainer model. We experiment on synthetic as
+well as real-world data. On synthetic data we demonstrate that our approach is
+able to highlight relevant topological structures from noisy graphs. We also
+demonstrate GnnExplainer to provide a better understanding of pre-trained
+models on real-world tasks. GnnExplainer provides a variety of benefits, from
+the identification of semantically relevant structures to explain predictions
+to providing guidance when debugging faulty graph neural network models.},
+ author = {Ying, Rex and Bourgeois, Dylan and You, Jiaxuan and Zitnik, Marinka and Leskovec, Jure},
+ journal = {arxiv},
+ month = {3},
+ title = {GNN Explainer: A Tool for Post-hoc Explanation of Graph Neural Networks},
+ url = {http://arxiv.org/pdf/1903.03894v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1903.11420v1,
+ abstract = {Explainable Artificial Intelligence (XAI) brings a lot of attention recently.
+Explainability is being presented as a remedy for lack of trust in model
+predictions. Model agnostic tools such as LIME, SHAP, or Break Down promise
+instance level interpretability for any complex machine learning model. But how
+certain are these explanations? Can we rely on additive explanations for
+non-additive models? In this paper, we examine the behavior of model explainers
+under the presence of interactions. We define two sources of uncertainty, model
+level uncertainty, and explanation level uncertainty. We show that adding
+interactions reduces explanation level uncertainty. We introduce a new method
+iBreakDown that generates non-additive explanations with local interaction.},
+ author = {Gosiewska, Alicja and Biecek, Przemyslaw},
+ journal = {arxiv},
+ month = {3},
+ title = {iBreakDown: Uncertainty of Model Explanations for Non-additive
+  Predictive Models},
+ url = {http://arxiv.org/pdf/1903.11420v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1903.12069v1,
+ abstract = {Artificial intelligence (AI) will pave the way to a new era in medicine.
+However, currently available AI systems do not interact with a patient, e.g.,
+for anamnesis, and thus are only used by the physicians for predictions in
+diagnosis or prognosis. However, these systems are widely used, e.g., in
+diabetes or cancer prediction. In the current study, we developed an AI that is
+able to interact with a patient (virtual doctor) by using a speech recognition
+and speech synthesis system and thus can autonomously interact with the
+patient, which is particularly important for, e.g., rural areas, where the
+availability of primary medical care is strongly limited by low population
+densities. As a proof-of-concept, the system is able to predict type 2 diabetes
+mellitus (T2DM) based on non-invasive sensors and deep neural networks.
+Moreover, the system provides an easy-to-interpret probability estimation for
+T2DM for a given patient. Besides the development of the AI, we further
+analyzed the acceptance of young people for AI in healthcare to estimate the
+impact of such system in the future.},
+ author = {Spänig, Sebastian and Emberger-Klein, Agnes and Sowa, Jan-Peter and Canbay, Ali and Menrad, Klaus and Heider, Dominik},
+ journal = {arxiv},
+ month = {3},
+ title = {The Virtual Doctor: An Interactive Artificial Intelligence based on Deep
+  Learning for Non-Invasive Prediction of Diabetes},
+ url = {http://arxiv.org/pdf/1903.12069v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1903.12519v1,
+ abstract = {We present a training system, which can provably defend significantly larger
+neural networks than previously possible, including ResNet-34 and DenseNet-100.
+Our approach is based on differentiable abstract interpretation and introduces
+two novel concepts: (i) abstract layers for fine-tuning the precision and
+scalability of the abstraction, (ii) a flexible domain specific language (DSL)
+for describing training objectives that combine abstract and concrete losses
+with arbitrary specifications. Our training method is implemented in the DiffAI
+system.},
+ author = {Mirman, Matthew and Singh, Gagandeep and Vechev, Martin},
+ journal = {arxiv},
+ month = {3},
+ title = {A Provable Defense for Deep Residual Networks},
+ url = {http://arxiv.org/pdf/1903.12519v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1904.08939v1,
+ abstract = {A neuroscience method to understanding the brain is to find and study the
+preferred stimuli that highly activate an individual cell or groups of cells.
+Recent advances in machine learning enable a family of methods to synthesize
+preferred stimuli that cause a neuron in an artificial or biological brain to
+fire strongly. Those methods are known as Activation Maximization (AM) or
+Feature Visualization via Optimization. In this chapter, we (1) review existing
+AM techniques in the literature; (2) discuss a probabilistic interpretation for
+AM; and (3) review the applications of AM in debugging and explaining networks.},
+ author = {Nguyen, Anh and Yosinski, Jason and Clune, Jeff},
+ journal = {arxiv},
+ month = {4},
+ title = {Understanding Neural Networks via Feature Visualization: A survey},
+ url = {http://arxiv.org/pdf/1904.08939v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1904.09273v1,
+ abstract = {By their nature, the composition of black box models is opaque. This makes
+the ability to generate explanations for the response to stimuli challenging.
+The importance of explaining black box models has become increasingly important
+given the prevalence of AI and ML systems and the need to build legal and
+regulatory frameworks around them. Such explanations can also increase trust in
+these uncertain systems. In our paper we present RICE, a method for generating
+explanations of the behaviour of black box models by (1) probing a model to
+extract model output examples using sensitivity analysis; (2) applying
+CNPInduce, a method for inductive logic program synthesis, to generate logic
+programs based on critical input-output pairs; and (3) interpreting the target
+program as a human-readable explanation. We demonstrate the application of our
+method by generating explanations of an artificial neural network trained to
+follow simple traffic rules in a hypothetical self-driving car simulation. We
+conclude with a discussion on the scalability and usability of our approach and
+its potential applications to explanation-critical scenarios.},
+ author = {Paçacı, Görkem and Johnson, David and McKeever, Steve and Hamfelt, Andreas},
+ journal = {arxiv},
+ month = {4},
+ title = {"Why did you do that?": Explaining black box models with Inductive
+  Synthesis},
+ url = {http://arxiv.org/pdf/1904.09273v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1904.11738v1,
+ abstract = {Deep learning based knowledge tracing model has been shown to outperform
+traditional knowledge tracing model without the need for human-engineered
+features, yet its parameters and representations have long been criticized for
+not being explainable. In this paper, we propose Deep-IRT which is a synthesis
+of the item response theory (IRT) model and a knowledge tracing model that is
+based on the deep neural network architecture called dynamic key-value memory
+network (DKVMN) to make deep learning based knowledge tracing explainable.
+Specifically, we use the DKVMN model to process the student's learning
+trajectory and estimate the student ability level and the item difficulty level
+over time. Then, we use the IRT model to estimate the probability that a
+student will answer an item correctly using the estimated student ability and
+the item difficulty. Experiments show that the Deep-IRT model retains the
+performance of the DKVMN model, while it provides a direct psychological
+interpretation of both students and items.},
+ author = {Yeung, Chun-Kit},
+ journal = {arxiv},
+ month = {4},
+ title = {Deep-IRT: Make Deep Learning Based Knowledge Tracing Explainable Using
+  Item Response Theory},
+ url = {http://arxiv.org/pdf/1904.11738v1},
+ year = {2019}
+}
+
+@article{http://arxiv.org/abs/1905.00122v1,
+ abstract = {Converting malware into images followed by vision-based deep learning
+algorithms has shown superior threat detection efficacy compared with classical
+machine learning algorithms. When malware are visualized as images,
+visual-based interpretation schemes can also be applied to extract insights of
+why individual samples are classified as malicious. In this work, via two case
+studies of dynamic malware classification, we extend the local interpretable
+model-agnostic explanation algorithm to explain image-based dynamic malware
+classification and examine its interpretation fidelity. For both case studies,
+we first train deep learning models via transfer learning on malware images,
+demonstrate high classification effectiveness, apply an explanation method on
+the images, and correlate the results back to the samples to validate whether
+the algorithmic insights are consistent with security domain expertise. In our
+first case study, the interpretation framework identifies indirect calls that
+uniquely characterize the underlying exploit behavior of a malware family. In
+our second case study, the interpretation framework extracts insightful
+information such as cryptography-related APIs when applied on images created
+from API existence, but generate ambiguous interpretation on images created
+from API sequences and frequencies. Our findings indicate that current
+image-based interpretation techniques are promising for explaining vision-based
+malware classification. We continue to develop image-based interpretation
+schemes specifically for security applications.},
+ author = {Chen, Li and Yagemann, Carter and Downing, Evan},
+ journal = {arxiv},
+ month = {4},
+ title = {To believe or not to believe: Validating explanation fidelity for
+  dynamic malware analysis},
+ url = {http://arxiv.org/pdf/1905.00122v1},
+ year = {2019}
+}
+
