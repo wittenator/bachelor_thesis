@@ -1,3 +1,4 @@
 {
-	"ANDOR": [[ "explainability",  "explainable",  "explanation", "explaining",  "interpretability",  "interpretable",  "interpretation", "interpret"], [ "machine learning",  "neural network", "neural networks",  "AI", "XAI",  "artificial intelligence", "model"], ["text", "document", "NLP", "natural language programming", "review", "method", "technique", "visualization"]]
+	"stage1": [[ "explainability",  "explainable",  "explanation", "explaining",  "interpretability",  "interpretable",  "interpretation", "interpret", "understanding"], [ "machine learning",  "neural network", "neural networks",  "AI", "XAI",  "artificial intelligence", "model"], ["text", "document", "NLP", "natural language programming", "review", "method", "technique", "visualization"]],
+	"stage2": [[ "explainability",  "explainable",  "explanation", "explaining",  "interpretability",  "interpretable",  "interpretation", "interpret"]]
 }

@@ -5,7 +5,7 @@ from bibtexparser.bibdatabase import BibDatabase
 
 with open('./params.json') as json_file:
 	params = json.load(json_file)
-	search_string = ' AND '.join( '( ' + ' OR '.join([ f'"{item}"' for item in ors]) + ' )' for ors in params["ANDOR"])
+	search_string = ' AND '.join( '( ' + ' OR '.join([ f'"{item}"' for item in ors]) + ' )' for ors in params["stage1"])
 print(search_string)
 # Multi-field queries
 result = arxiv.query(search_query=search_string, max_results=100)
@@ -29,7 +29,7 @@ db = BibDatabase()
 db.entries = biblist
 
 writer = BibTexWriter()
-with open('../data/alt_arxiv_fulltextsearch.bib', 'w') as bibfile:
+with open('../data/arxiv_fulltextsearch.bib', 'w') as bibfile:
     bibfile.write(writer.write(db))
 
 

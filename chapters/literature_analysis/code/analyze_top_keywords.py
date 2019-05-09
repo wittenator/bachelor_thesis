@@ -22,12 +22,12 @@ def print_top_keywords(filepath, name):
     sns.barplot(y=keywords.index, x=keywords, orient='h')
 
     plt.tight_layout()
-    plt.savefig(name, bbox_inches="tight")
+    plt.savefig("./" + name + ".pdf", bbox_inches="tight")
 
     print(r"\begin{figure}[tbp]")
     print(r"\centering")
-    print(r"\includegraphics[width=1.0\textwidth]{" + name + "}")
-    print(r"""\caption{\label{fig:top_keywords}%
+    print(r"\includegraphics[width=1.0\textwidth]{" + name + ".pdf}")
+    print(r"""\caption{\label{fig:""" + name + """}%
         List of the 20 most used tags and their absolute frequency}""")
     print(r"\end{figure}")
     plt.clf()

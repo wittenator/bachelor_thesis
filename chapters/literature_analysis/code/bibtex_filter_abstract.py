@@ -16,7 +16,7 @@ for entry in bib_database.entries:
         bad_entries.append(entry)
     else:
         text = (entry['abstract'] + " " + entry['title']).lower()
-        if all(any(keyword in text for keyword in synonyms) for synonyms in params['ANDOR']) or any(keyword in text for keyword in params['OR']):
+        if all(any(keyword in text for keyword in synonyms) for synonyms in params['stage2']):
             filtered_entries.append(entry)
 
 with open('../data/stage2.bib', 'w') as bibtex_file:
