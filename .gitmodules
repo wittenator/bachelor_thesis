@@ -1,0 +1,3 @@
+[submodule "IKON-backend"]
+	path = IKON-backend
+	url = https://github.com/FUB-HCC/IKON-backend.git
