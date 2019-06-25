@@ -135,13 +135,20 @@ Miller et al. \cite{millerExplainableAIBeware2017} supports this point by conduc
 
 This thesis builds upon these concepts  and tries to transfer their critical insights into the sub field of natural language processing - an often overlooked discipline in the context of interpretability research.
 
-\section{Goal setting} 
-As formulated in the introduction, the main problem for project IKON is uncertainty about the interpretability of the existing model. This thesis should therefore examine existing interpretability techniques, their applicability to the existing model or a contending one and subsequently a decision for one of them by systematically and iteratively sourcing feedback from the principal researchers of project IKON. The chosen model will be implemented and augmented by a number of interpretability techniques. The results will be assessed with the help of an exemplary, qualitative user test with an expert user from the natural history museum. This goal setting directly leads to the following set of questions:
-\begin{itemize}
-	\item Which techniques to enhance interpretability of models are out there and how are they characterized?
-	\item How can the existing topic modeling pipeline be augmented or changed in order to enhance different aspects of interpretability?
-	\item Does the usage of these methods result in an enhanced understanding on the end users side?
-\end{itemize}
+\section{Goal setting and procedure} 
+As formulated in the introduction, the main problem for project IKON is uncertainty about the interpretability of the existing model. This thesis should therefore examine existing interpretability techniques, their applicability to the existing model or a contending one and subsequently a decision for one of them by systematically and iteratively sourcing feedback from the principal researchers of project IKON. The chosen model will be implemented and augmented by a number of interpretability techniques. The results will be assessed with the help of an exemplary, qualitative user test with an expert user from the natural history museum. This goal setting directly leads to the following list of steps:
+
+\begin{enumerate}
+	\item Since we as developers are not sure what kind of techniques to enhance explainability for unsupervised NLP models exist, a thorough and reproducible literature analysis on the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies2008} is going to be conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
+	
+	A quantitative analysis of these papers should summarize occurring XAI methods and categorize them according to the proposed categories of Hohman et. al. \cite{hohmanGamutDesignProbe2019}.
+	
+	\item The currently existing topic extraction pipeline can be clustered into the following four components: document embedding, dimensionality reduction into a topic space, clustering and another dimensionality reduction into 2D. Based on the results of the literature analysis an alternative pipeline is constructed. Based on the results of the previous step for each component either a directly applicable method (e.g. a clustering algorithm) from a paper or a model which supports most collected methods ( e.g. a neural network for document embedding) is chosen and implemented. Since the new pipeline should perform at least as good as the old one, each component will be quantitatively accessed according to applicable measures e.g. (\cite{roderExploringSpaceTopic2015a}).
+	
+	\item 
+	
+	\item In order to access how the implemented methods may support a non-technical expert in interpreting the results of the pipeline, a cognitive walkthrough from the point of view of a researcher from the national natural history museum will be conducted.
+\end{enumerate}
 
 
 
@@ -149,9 +156,7 @@ As formulated in the introduction, the main problem for project IKON is uncertai
 
 One of the most crucial parts of the existing topic modelling pipeline is the document embedding. Currently a simple information retrieval method - Tf-Idf - is used, but the main drawback of the technique is that it, as all Bag-of-Words method, completely disregards word order and semantic dependencies in texts. Since that may be a integral part especially in scientific literature a more complex model is needed which is able to capture this dependencies. In order to do this a short summary of the state of research of document embeddings is presented and an contender to the existing NLP pipeline will be chosen. 
 
-In order to gain a reproducible overview over the status of XAI research in the field of NLP a literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies2008} is going to be conducted. This should result in a number of papers which are, according to the process, good representatives of the literature base and therefore also of current research efforts. 
 
-A quantitative and qualitative analysis of these papers should summarize occurring XAI methods and categorize them according to proposed criteria e.g. Liptons's "Properties of Interpretable Models" \cite{liptonMythosModelInterpretability2016} or Robnik-Sikonja's criteria \cite{robnik-sikonjaPerturbationBasedExplanationsPrediction2018}.
 
 In this analysis a model is more interpretable if it supports more interpretability techniques that were sourced from the literature analysis. Therefore the next step involves checking which techniques are applicable to the two contending models. Based on the absolute counts the more interpretable model is chosen. Following a number of supported techniques are selected and going to be applied to the chosen model.
 

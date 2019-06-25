@@ -14,10 +14,12 @@ sys.path.insert(0, '../chapters/literature_analysis/code/')
 pytex.add_dependencies('../chapters/literature_analysis/code/analyze_top_publishers.py')
 pytex.add_dependencies('../chapters/literature_analysis/code/analyze_time_dist.py')
 pytex.add_dependencies('../chapters/literature_analysis/code/analyze_top_keywords.py')
+pytex.add_dependencies('../chapters/literature_analysis/code/analyze_mappings.py')
 # track data
 pytex.add_dependencies('../chapters/literature_analysis/data/meta_search.csv')
 pytex.add_dependencies('../chapters/literature_analysis/data/stage1.bib')
 pytex.add_dependencies('../chapters/literature_analysis/code/params.json')
+pytex.add_dependencies('../chapters/literature_analysis/data/mapping.xlsx')
 \end{pycode}
 
 \chapter{Kapitel}
@@ -148,5 +150,17 @@ print_top_keywords('../chapters/literature_analysis/data/stage1.bib', 'top_keywo
 	
 	gg
 	\item Quantitative and qualitative assessment of the resulting corpus
+	
+\begin{pycode}
+from analyze_mappings import print_mapping
+print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'mapping1', 'Mapping of applicability and gamut classification', 'Gamut extended', 'Applicability')
+
+print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'mapping2', 'Mapping of applicability and gamut classification', 'Gamut extended', 'Type')
+
+print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'mapping3', 'Mapping of applicability and gamut classification', 'Gamut extended', 'Pipeline step')
+\end{pycode}
+
+	hghbhbhb
+
 \end{enumerate}
 
