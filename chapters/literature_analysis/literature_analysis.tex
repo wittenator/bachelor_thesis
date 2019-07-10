@@ -22,63 +22,29 @@ pytex.add_dependencies('../chapters/literature_analysis/code/params.json')
 pytex.add_dependencies('../chapters/literature_analysis/data/mapping.xlsx')
 \end{pycode}
 
-\chapter{Kapitel}
-\label{chap:chapters} 
-
-\begin{itemize}
-	\item Abhängig vom Ziel der Arbeit und dem verwendeten Forschungsdesign unterscheidet sich dieser Hauptteil der Arbeit erheblich. 
-	\item Eine sehr allgemeine Struktur ist die folgende:
-	\begin{itemize}
-		\item Hintergrund der Arbeit (Theoretische Einordnung der Arbeit) 
-		 	\begin{itemize}
-		 		\item Hier sollte enthalten sein, welche Anwendungen in diesem Bereich bereits existieren und warum bei diesen ein Defizit besteht. 
-				\item Falls genutzt, sollten hier die entsprechenden Algorithmen erläutert werden.
-				\item Es sollten die Ziele der Anwendungsentwicklung, d.h. die Anforderungen herausgearbeitet werden. Dabei sollte die bestehende Literatur geeignet integriert werden.
-		 	\end{itemize}
-		\item Umsetzung (Praktischer Anteil der Arbeit)
-			\begin{itemize}
-				\item Zunächst sollte die Softwarearchitektur und die genutzten Anwendungen, APIs etc. erläutert werden. Ebenfalls gehört dazu das Datenbankschema.
-				\item Es sollten die zentralen Elemente der Software (abhängig von der Aufgabenstellung) beschrieben werden, wie implementierte Algorithmen oder das Oberflächendesign.
-				\item Zentraler Quellcode sollte entsprechend aufgelistet werden:
-				\lstset{language=Java,basicstyle=\footnotesize,numbers=left,showstringspaces=false,frame=single}
-				\begin{lstlisting}
-				public class Main {
-					public static void main(String[] args) {
-						System.out.println("Hello World!");
-					}
-				}
-				\end{lstlisting} 
-				%\item Klassendiagramm für Backend
-				%\item Dr Quellcode zentraler Implementierungen  können als Auszug in den Anhang. Im Text kann dann darauf verwiesen werden.
-			\end{itemize}
-		\item Evaluation (zumeist nur für Masterarbeiten relevant)
-		\begin{itemize}
-			\item Jede Software muss auch getestet werden. Dieses Tests werden entweder mit einem vorgegebenen Datensatz erfolgen oder aber die Evaluation erfolgt auf Basis von Experimenten. In diesem Kapitel sollte daher entweder der genutzte Datensatz oder der experimentelle Aufbau beschrieben werden. 
-		\end{itemize}
-		\item Ergebnis und Diskussion
-		\begin{itemize}
-			\item Die Ergebnisse der Anwendung werden in diesem Kapitel vorgestellt und anschließend diskutiert. Wenn möglich sollte die Ergebnisse in Relation zu bestehenden Arbeiten in dem Bereich erörtert werden.
-		\end{itemize}
-	\end{itemize}  
-\end{itemize}
-
 \chapter{Literature mapping study}
 
 \section{Motivation}
 
+With the surge of the application of machine learning (ML) systems in our daily life there is an increasing demand to make operation and results of these systems interpretable for people with different backgrounds (ML experts, non-technical experts etc.). Contrary to these efforts, interpretability as term has become an ill-defined objective \cite{liptonMythosModelInterpretability2016a} for research and development in ML algorithms since there is no widely agreed upon definition of it. This leads to a very fragmented nature of the field. 
+
+Miller et al. \cite{millerExplainableAIBeware2017} support this point by conducting a literature study and uncovering that interpretability research is rarely influenced by insights from the humanities, especially connected fields as explainability or causality research.
+
+In order to access current methods in the fast-moving field of interpretability research in machine learning in a reproducible and structured fashion I will conduct a literature mapping study according to Petersen et. al \cite{petersenSystematicMappingStudies}, which consists of a number of sequential steps which should result in a representative corpus and an analysis using it.
+
 \section{Methodology}
-In order to generate a reproducible and current overview over the fast-moving field of interpretability research in machine learning a rigorous methodology by Peterson et al. \cite{petersenSystematicMappingStudies} is used. 
 
 The recommended process is augmented by further steps in order to tailor it to the existing use case and consists of the following seven procedures:
 \begin{enumerate}
 	
 	\item Definition of research questions:
-	The overall process starts by defining clear questions which should guide the development of the whole literature study and subsequently the result as well. Since I am interested in the gaining an overview over the existing interpretability techniques, I chose the following questions:
+	
+	The overall process starts by defining clear questions which should guide the development of the whole literature mapping study and subsequently the result as well. Since I am interested in gaining an overview over the existing interpretability techniques, I chose the following questions:
 	
 	\begin{enumerate}
 		\item What kind of explainability techniques are mentioned in the corpus?
-		\item In which domain and for which applications are they most commonly used?
-		\item Which techniques are applicable to results produced by the pipeline or the pipeline itself? \tk{Is that right here already?}
+		\item On what kind of models are enhanced by explainability techniques?
+		\item Which techniques are applicable to results produced by the pipeline or the pipeline itself?
 	\end{enumerate}
 	
 	\item Construction of a search string:
@@ -99,7 +65,7 @@ with open('../chapters/literature_analysis/code/params.json') as json_file:
 	
 	\item Analysis of the main publishers using a meta search and the search string:
 	
-	Due to the presumed distributed nature of interpretability research it is not easy to pinpoint the main publishers of scientific articles. In order to mitigate this a pre-search in the meta-search engine 'Google Scholar' is conducted. It should be noted at this point that any biases which are apparent in the meta search engine therefore apply to this analysis as well. One can see in \autoref{fig:top_publisher} that the main publishers are respectivly Arxiv, IEEE, Springer and ACM. Since all of these publishers are mainly focused on publications in computer science, mathematics and engineering, this speaks in favor of the hypothesis that most of the research is still very technical and research from social sciences rarely influences it. Even though Arxiv is not a credible publisher per se, it seems like the research community uses it as the first place to publish ones work and therefore it should not be excluded in this analysis. 
+	Due to the presumed distributed nature of interpretability research it is not easy to pinpoint the main publishers of scientific articles. In order to mitigate this, a pre-search in the meta-search engine 'Google Scholar' is conducted. It should be noted at this point that any biases which are apparent in the meta search engine therefore apply to this analysis as well. One can see in \autoref{fig:top_publisher} that the main publishers are respectivly Arxiv, IEEE, Springer and ACM. Since all of these publishers are mainly focused on publications in computer science, mathematics and engineering, this speaks in favor of the hypothesis that most of the research is still very technical and research from social sciences rarely influences it. Even though Arxiv is not a credible publisher per se, it seems like the research community uses it as the first place to publish work and therefore it should not be excluded in this analysis. 
 	
 \begin{pycode}
 from analyze_top_publishers import show_top_publishers
@@ -108,7 +74,7 @@ show_top_publishers('../chapters/literature_analysis/data/meta_search.csv', 'top
 
 	\item Sourcing of publications in scientific databases:
 	
-	Based on the insights from the previous step each of the main publisher's databases is scraped using the search string. Since most searches result in more than 1000 publications only the top 100 results ordered by the relevance scoring of the database are taken into account. These publications then form the corpus which is the basis for further analysis.
+	Based on the insights from the previous step each of the main publisher's databases is scraped using the search string and their respective 'advanced search' interfaces or their APIs. Since most searches result in more than 1000 publications only the top 100 results ordered by the relevance scoring of the database are taken into account. These publications then form the corpus which is the basis for further analysis.
 
 \begin{pycode}
 from analyze_time_dist import print_time_dist
@@ -120,15 +86,18 @@ from analyze_top_keywords import print_top_keywords
 print_top_keywords('../chapters/literature_analysis/data/stage1.bib', 'top_keywords')
 \end{pycode}
 	
-	\item Filtering of these publications by keywording their abstracts
+	\item Filtering of these publications by keywording their abstracts:
 	
 	Most scientific databases do a full text search on publications and possibly find the supplied keywords from the search string in sections of the paper which are not relevant e.g. the bibliography or in the outlook. Therefore another filtering step is necessary which searches for the search string in the abstracts of the papers of the corpus.
 	
 	In order to enhance the quality of the filtering process, the search string is enhances with key words generated by an analysis of the current corpus. As seen in \autoref{fig:top_keywords} the previous search string already contains most of the relevant keywords.
 	
-	\item Definition and application of inclusion and exclusion criteria to narrow down the pool of publications further
+	\item Definition and application of inclusion and exclusion criteria to narrow down the pool of publications further:
 	
-	\begin{center}
+	The next step serves as another filtering step enhancing the quality of the hitherto automatic selection by using human decision making. A combination of the guiding questions, which were defined in the beginning of the process and a first pass over the whole corpus, in which I skimmed the papers, gave me a clear set of criteria, as seen in \autoref{tbl:incl_excl}, which can be used to filter the corpus further. In a second pass each paper was evaluated and included in the next step if and only if it satisfied at least one inclusion criterion and none of the exclusion criteria.	
+	
+	\begin{table}
+		\centering
 		\begin{tabular}{  p{5cm} | p{5cm} }
 			Inclusion criteria & Exclusion criteria  \\ \hline
 			
@@ -136,7 +105,7 @@ print_top_keywords('../chapters/literature_analysis/data/stage1.bib', 'top_keywo
 				\item Reviews the current state of explainability research
 				\item Presents a specific method for enhancing explainability for models
 			\end{itemize}
-		
+			
 			&
 			
 			\begin{itemize}
@@ -144,13 +113,21 @@ print_top_keywords('../chapters/literature_analysis/data/stage1.bib', 'top_keywo
 				\item Does not describe the used explainability method
 				\item The publication does not focus on explainability
 				\item The described method is neither general, nor focused on NLP
-			\end{itemize}			
+			\end{itemize}
 		\end{tabular}
-	\end{center}
+		\caption{\label{tbl:incl_excl} Table showing all used inclusion and exclusion criteria}
+	\end{table}
 	
-	gg
-	\item Quantitative and qualitative assessment of the resulting corpus
+	\item Quantitative assessment of the resulting corpus:
 	
+	In the last step the actual mapping is generated. In another pass I first skimmed and then read each paper and based on that classified each publication and its presented technique according to the Gamuth classification, the type of model to which the technique is applicable and the component where the technique could be applied in the topic extraction pipeline. Since most of the overview papers presented a huge amount of techniques which were already covered by the "Method" papers and the corpus was already large, I decided to exclude them from the last mapping step.
+
+\end{enumerate}
+
+\section{Results}
+
+In order to answer my first question concerning the different kinds of researched explainability 
+
 \begin{pycode}
 from analyze_mappings import print_mapping
 print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'mapping1', 'Mapping of applicability and gamut classification', 'Gamut extended', 'Applicability')
@@ -159,8 +136,4 @@ print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'mapping2', '
 
 print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'mapping3', 'Mapping of applicability and gamut classification', 'Gamut extended', 'Pipeline step')
 \end{pycode}
-
-	hghbhbhb
-
-\end{enumerate}
 

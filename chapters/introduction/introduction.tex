@@ -6,54 +6,60 @@
 %  Last upadte: C. Müller-Birn 2015-11-27 
 %  Freie Universität Berlin, Institute of Computer Science, Human Centered Computing. 
 %
-\chapter{Einleitung}
+\chapter{Introduction}
 \label{chap:introduction}
 
-Im folgenden werden Ihnen Hinweise zur Strukturierung und zum Inhalt des ersten Kapitels gegeben.
+\section{Project IKON}
 
-\section{Thema und Kontext}
-\begin{itemize}
-	\item Wo setze ich an? (Problemstellung / Ausgangslage)      
-	\item Identifikation der signifikanten Problemen im betrachteten Forschungsbereich  
-	\item Ein kurzer Überblick über den aktuellen Forschungsstand in dem Bereich inklusive vorhandener Lösungen (ausführlicher dann in den Folgeabschnitten)
-\end{itemize}
+This thesis has a direct application in a project which tries to explore potentials for knowledge transfer activities at a research museum. Project \textit{IKON} was started in cooperation with the German Natural History Museum in Berlin which houses more than 600 \tk{Right number?} scientists, PhD students and other staff. With that size of scientific staff the institution is a global player in research on evolution and biodiversity \cite{IntroducingMuseumFur}. Despite its importance in the research landscape the museum is challenged with a lack of shared knowledge across working groups and organizational structures such as departments. In interviews researchers from the project were able to trace these problems back to the very intricate and complex layout of rooms and halls in the building which was originally constructed in 1810. In order to mitigate this problem \autoref{pic:IKON-clusterview} shows one of the main deliverables of \textit{IKON} - a ML-driven data visualization which follows the path of knowledge at this research museum from its creation in projects over knowledge transfer activities, where multiple projects exchange their findings and try to generate added value for each other, to the final target group. Knowledge transfer is made explicitly visible by showing projects not in the predefined taxonomy of the museum, but instead in semantic relation to each other. This is accomplished by running all project abstracts through a topic extraction pipeline consisting of four major components, as seen in \autoref{pic:general_topic_extraction_pipeline}.  
 
-\section{Zielsetzung der Arbeit}
-\begin{itemize}
-	\item Was sind die mit dieser Arbeit verfolgten Ziele? Welches Problem soll gelöst werden?
-	\item Eine Beschreibung der ersten Ideen, der vorgeschlagene Ansatz und die aktuell erreichten Resultate 
-	\item Eine Beschreibung, welchen Beitrag die Arbeit leistet, um das vorgestellte Problem zu lösen
-	\item Eine Diskussion, wie die vorgeschlagene Lösung sich von bestehenden unterscheidet, was ist neu oder besser?
-\end{itemize}
-
-\section{Vorgehen bei der Umsetzung}
-\begin{itemize}
-	\item Wie will ich meine Ziele erreichen? (Methodische Überlegungen)
-	\item Darstellung zum Forschungsdesign.
-	\item Insbesondere bei Master: Wie kann die Zielerreichung ``gemessen'' werden? 
-\end{itemize}  	
-
-\section{Aufbau der Arbeit}
-\begin{itemize}
-	\item Welche Schritte werden durchlaufen, um die Ziele zu erreichen?
-	\item An dieser Stelle ist beispielsweise eine Grafik hilfreich, um den Aufbau der Arbeit und welche Ergebnisse/Erkenntnisse wo genutzt werden, zu visualisieren. 
-	\item Ebenfalls sollten noch Anmerkungen zur Gestaltung der Arbeit gegeben werden, vor allem, da in vielen deutschen Arbeiten englische Fachbegriffe verwendet werden. Ein solcher Text könnte folgendermaßen lauten: 
-		\begin{itemize}
-			\item ``Abschließend sind hier noch eine Anmerkungen zur Gestaltung der vorliegenden Arbeit. Für die im Folgenden verwendeten personenbezogene Ausdrücke wurde, um die Lesbarkeit der Arbeit zu erhöhen, die männliche Schreibweise gewählt. Des Weiteren werden eine Reihe von englischen Bezeichnungen verwendet, um einerseits dem interessierten Leser das Studium der häufig vorliegenden englischen Originalliteratur zu erleichtern oder andererseits bestehende Fachbegriffe nicht durch die Übersetzung zu verfälschen. Diese Begriffe sind vom herkömmlichen Text in kursiver Schrift unterschieden.''
-		\end{itemize}
-\end{itemize}
-
-\begin{figure}[!ht]
-	% Mit [!h] wird die Position der Grafik bestimmt. So bedeutet h=here und mit dem "!" (Ausrufezeichen) wird dieser Befehl verstärkt. Weitere Möglichkeiten sind : t=top und b=bottom. Zumeist wird angegeben, in welcher Reihenfolge LaTeX versuchen soll das Bild einzufügen, z.B. [!htb].
+\begin{figure}[t]
 	\centering
-		\includegraphics[width=0.95\textwidth]{pics/structure.pdf}
-	\caption[Beispiel einer möglichen Darstellung zum Aufbau der Arbeit]{Beispiel einer möglichen Darstellung zum Aufbau der Arbeit (vgl. Beschreibung Abschnitt  \ref{chap:chapters}).} 
-	% Mit Hilfe von caption wird die Bildunterschrift erzeugt. Der Text in geschweiften Klammern erscheint im Text, während der Text in eckigen Klammern sich dann empfiehlt, wenn die Beschreibung besonders lang ist, denn diese wird dann im Bildverzeichnis verwendet. Diese Kurzbeschreibung kann auch weggelassen werden. 
-	\label{fig:structurethesis}
+	\includegraphics[width=400px]{../chapters/introduction/graphics/ikon-clusterview}
+	\caption{\label{pic:IKON-clusterview} BPMN process diagram of the existing topic extraction pipeline}
 \end{figure}
 
-\chapter{Introduction}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+minimum height=2em]
+
+\begin{figure}[t]
+	\centering
+	\begin{tikzpicture}[node distance = 4cm, auto]
+	% Place nodes
+	\node [block] (emb) {Document embedding};
+	%\node [cloud, left of=emb] (expert) {expert};
+	%\node [cloud, right of=emb] (system) {system};
+	\node [block, right of=emb] (topic) {Topic extraction};
+	\node [block, right of=topic, above of=topic] (cluster) {Clustering};
+	\node [block, right of=topic, below of=topic] (2D) {Reduction into 2D};
+	% Draw edges
+	\path [line] (emb) -- (topic);
+	\path [line] (topic) -- (cluster);
+	\path [line] (topic) -- (2D);
+	%\path [line] (identify) -- (evaluate);
+	%\path [line] (update) |- (identify);
+	%\path [line,dashed] (system) |- (evaluate);
+	\end{tikzpicture}
+	\caption{\label{pic:general_topic_extraction_pipeline} Components of a general unsupervised topic extraction pipeline}
+\end{figure}
+
+First user tests and interviews unveiled that, even though the visualization was specifically tailored to non-technical users \tk{neeeds definition}, the scientists from the museum had a hard time interpreting and understanding the output generated by the pipeline.  Based on these findings and a workshop with the main researchers of project \textit{IKON} I was able to extract a set of questions that a subject tries to answer while interacting with the visualization:
+
+\begin{enumerate}
+	\item How does the research landscape look like and on what kind of topics are prominent?
+	\item What does a cluster mean?
+	\item What does the distance between clusters/projects mean?
+	\item How similar are two projects/clusters?
+\end{enumerate}
 
 \section{Interpretability}
 
-\section{Project IKON}
+\tk{Interpretation of machine learning (ML) results is a major challenge for humans, especially for non-technical experts [ref]. Research on interpretability\footnote{Which we position to be a high-level precondition for Explainability from the XAI \cite{gunning_broad_2016} and Fairness, Accountability and Transparency, from the FAT-ML discourse \cite{kohli_translation_2018}.} in the ML community has focused on developing interpretability techniques, i.e. specific technical approaches to generate explanations\footnote{Which we define as instances of interpretability techniques.} for ML results. However, applications of these techniques are predominantly concerned with making particular model features understandable, rather than supporting the interpretation of ML-driven systems in a specific context of use. At the same time, research in the HCI domain often remains on a formal, algorithmic level---explanations tend to be technical and tailored to an expert audience, mirroring the technical focus of ML research. Realistic use cases and qualitative, context-aware evaluations to inform the selection and design of interpretability techniques remain rare. 
+While we do not see complete transparency as a prerequisite for interpretability we hypothesize that in general, since interpretation is dependent on context, interpretability techniques cannot be fully context agnostic either. Therefore, our general approach is to research interpretability from a context-aware perspective, i.e. we explore how interpretability can be operationalized in a specified, well-defined domain context.}
+

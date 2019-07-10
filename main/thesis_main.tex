@@ -51,15 +51,18 @@
 \usepackage{rotating} %for rotating table
 % custom imports
 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
 %
 %---------------------------------------------------
 %----- PDF and document setup
 %---------------------------------------------------
 %
 \hypersetup{
-	pdftitle={<My title>},  % please, add the title of your thesis
-    pdfauthor={<Author>},   % please, add your name
-    pdfsubject={<<Bachelor/Master thesis>, Institute of Computer Science, Freie Universität Berlin>}, % please, select the type of this document
+	pdftitle={Comparing interpretability techniques for unsupervised topic extraction},  % please, add the title of your thesis
+    pdfauthor={Tim Korjakow},   % please, add your name
+    pdfsubject={Bachelor thesis, Institute of Computer Science, Freie Universität Berlin}, % please, select the type of this document
     pdfstartview={FitH},    % fits the width of the page to the window
     pdfnewwindow=true, 		% links in new window
     colorlinks=false,  		% false: boxed links; true: colored links
@@ -133,6 +136,8 @@
 ../chapters/preface/preface,
 ../chapters/introduction/introduction,
 ../chapters/literature_analysis/literature_analysis,
+../chapters/implementation/implementation,
+../chapters/validation/validation,
 ../chapters/conclusion/conclusion,
 ../chapters/appendix/appendix
 }
@@ -221,6 +226,8 @@
 
 \input{../chapters/introduction/introduction}
 \input{../chapters/literature_analysis/literature_analysis}
+\input{../chapters/implementation/implementation}
+\input{../chapters/validation/validation}
 \input{../chapters/conclusion/conclusion}
 
 
@@ -230,12 +237,12 @@
 \phantomsection
 \addcontentsline{toc}{../chapters/appendix/appendix}{Literatur}
 \bibliographystyle{alpha}
-\bibliography{references.bib,../references/thesis/main.bib}
+\bibliography{../references/thesis/main.bib}
 
 %---------------------------------------------------
 %----- Appendix   
 %---------------------------------------------------
 \backmatter
-\include{appendix}
+%\input{../chapters/appendix/appendix}
 
 \end{document}
