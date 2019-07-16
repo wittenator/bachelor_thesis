@@ -26,10 +26,6 @@ pytex.add_dependencies('../chapters/literature_analysis/data/mapping.xlsx')
 
 \section{Motivation}
 
-With the surge of the application of machine learning (ML) systems in our daily life there is an increasing demand to make operation and results of these systems interpretable for people with different backgrounds (ML experts, non-technical experts etc.). Contrary to these efforts, interpretability as term has become an ill-defined objective \cite{liptonMythosModelInterpretability2016a} for research and development in ML algorithms since there is no widely agreed upon definition of it. This leads to a very fragmented nature of the field. 
-
-Miller et al. \cite{millerExplainableAIBeware2017} support this point by conducting a literature study and uncovering that interpretability research is rarely influenced by insights from the humanities, especially connected fields as explainability or causality research.
-
 In order to access current methods in the fast-moving field of interpretability research in machine learning in a reproducible and structured fashion I will conduct a literature mapping study according to Petersen et. al \cite{petersenSystematicMappingStudies}, which consists of a number of sequential steps which should result in a representative corpus and an analysis using it.
 
 \section{Methodology}
@@ -43,7 +39,7 @@ The recommended process is augmented by further steps in order to tailor it to t
 	
 	\begin{enumerate}
 		\item What kind of explainability techniques are mentioned in the corpus?
-		\item On what kind of models are enhanced by explainability techniques?
+		\item What kind of models are enhanced by explainability techniques?
 		\item Which techniques are applicable to results produced by the pipeline or the pipeline itself?
 	\end{enumerate}
 	
@@ -120,7 +116,10 @@ print_top_keywords('../chapters/literature_analysis/data/stage1.bib', 'top_keywo
 	
 	\item Quantitative assessment of the resulting corpus:
 	
-	In the last step the actual mapping is generated. In another pass I first skimmed and then read each paper and based on that classified each publication and its presented technique according to the Gamuth classification, the type of model to which the technique is applicable and the component where the technique could be applied in the topic extraction pipeline. Since most of the overview papers presented a huge amount of techniques which were already covered by the "Method" papers and the corpus was already large, I decided to exclude them from the last mapping step.
+	In the last step the actual mapping is generated. In another pass I first skimmed and then read each paper and based on that classified each publication and its presented technique according to the Gamuth classification, the type of model to which the technique is applicable and the component where the technique could be applied in the topic extraction pipeline. Additionally each paper was classified as either "Theory", "Method", "Study" or "Report". 
+	A "Method" paper presents a single explainability technique and demonstrates its impact in an exemplary use case. A "Theory" paper does so as well, but misses a presented application and evaluation. A "Report" on the other hand summarizes and presents multiple techniques. Finally, a "Study" paper shows the results of an evaluation of an interface which visualizes the results of explainability methods. Publications from the last category are therefore less technical and more concerned with the HCI aspects of explainability techniques and their visualization.
+	
+	Since most of the overview papers presented a huge amount of techniques which were already covered by the "Method" papers and the corpus was already large, I decided to exclude them from the last mapping step.
 
 \end{enumerate}
 
