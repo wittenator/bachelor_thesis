@@ -23,7 +23,7 @@ This thesis has a direct application in a project which tries to explore potenti
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
 text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-text width=5em, text centered, rounded corners, minimum height=4em]
+text width=6em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
 \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
 minimum height=2em]
@@ -36,7 +36,7 @@ minimum height=2em]
 	%\node [cloud, left of=emb] (expert) {expert};
 	%\node [cloud, right of=emb] (system) {system};
 	\node [block, right of=emb] (topic) {Topic extraction};
-	\node [block, right of=topic, above of=topic] (cluster) {Clustering};
+	\node [block, right of=topic, above of=topic] (cluster) {Classification of documents};
 	\node [block, right of=topic, below of=topic] (2D) {Reduction into 2D};
 	% Draw edges
 	\path [line] (emb) -- (topic);
@@ -59,7 +59,7 @@ In order to lay the groundwork for this thesis and understand the challenges whi
 		\hline 
 		Question & Applicable pipeline component \\ \hline
 		How does the research landscape look like \\ and on what kind of topics are prominent? & Topic Extraction \\ \hline
-		What does a cluster mean? & Clustering \\ \hline
+		What does a cluster mean? & Classification \\ \hline
 		What does the distance between \\ clusters/projects mean? & Topic Extraction / Reduction into 2D \\ \hline
 		How similar are two projects/clusters? & Topic Extraction \\
 		\hline
