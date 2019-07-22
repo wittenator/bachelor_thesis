@@ -17,6 +17,18 @@ sys.path.insert(0, '../chapters/implementation/code/')
 \chapter{Implementation}
 \label{chap:implementation}
 
+\section{Topic modeling}
+
+Given an unlabeled corpus $C = \{D_1, ..., D_n\}$ consisting of $n$ documents $D_i = (t_1, ..., t_m)$, which in turn consists of a sequence of $m$ strings, also called tokens, the document embedding step assigns to each document a vector $v_D \in \mathbb{R}^e, e \in \mathbb{N}^+$. Semantically similar documents should also be closer in the embedded vector space with respect to a given distance measure than documents which are semantically not related. Therefore this step transforms a corpus into a matrix $(v_1, ..., v_n) \in \mathbb{R}^{e \times n}$.
+
+Consuming the output from the previous step the topic extraction tries to uncover $k$ latent structures. We call these structures \textit{topics}. Mathematically speaking a topic is a probability distribution over a fixed set of input features. \cite{liuOverviewTopicModeling2016} These features can correspond to tokens, as it is the case in the later discussed Tfidf-BOW embedding, but this does not have to be the case. Therefore this step transforms the corpus from the embedding space of dimensionality $e \times n$, where each document is described as linear combination of features, to the latent space of dimensionality $k \times n$, where each document is described as a linear combination of latent topics. Since most often $k < e$ holds true, this can also be seen as a form of dimensionality reduction, which is again a form of feature extraction.
+
+Using the document vectors in the latent space each document is assigned a label. This may happen in a supervised way if there are labels available for training purposes, but in most cases an unsupervised classification, also known as clustering, is used to group the documents.
+
+Finally in order to visualize the high dimensional distribution of documents in the latent space another dimensionality reduction is used to project the documents to 2D.
+
+
+
 \section{Data and Preprocessing}
 In order to connect projects semantically instead of by the rigid taxonomy of the museum, I was able to use the project's self-description which is recorded in the GEPRIS database of the DFG \cite{DFGGEPRIS}. It consists of almost all projects which were supported by the DFG since 2000. Fortunately, another bachelor project before me worked on a scraper which extracted approximately 114.000 projects from the web interface of the database since there is no publicly available API. Each project was characterized by a title, a project abstract in German or English, start and end dates as well as additional meta data like connected institutions or people working in the project.
 
@@ -28,7 +40,7 @@ As one can see in \autoref{pic:gepris_histogram}, there is a peak at word count 
 	\caption{\label{pic:gepris_histogram} Histogram showing the distribution of text lengths in the dataset}
 \end{figure}
 
-Removing these peaks in \autoref{pic:gepris_cleaned_histogram} reveals that most texts have an length of 180 words, while also having smaller peaks at ca. 80 and 360 words. The shortest description has a length of one word and the longest approximately  960 words.
+Removing these peaks in \autoref{pic:gepris_cleaned_histogram} reveals that most texts have an length of 150 words, while also having smaller peaks at ca. 70 and 350 words. The shortest description has a length of one word and the longest  983 words.
 
 \begin{figure}[t]
 	\centering
@@ -46,7 +58,7 @@ The existing pipeline was implemented by me as a proof-of-concept for project \t
 Now that we have a vector representation of each document, we could work in the existing space and try to cluster our documents in their current form using k-Means, which will be explained later. An exemplary analysis shows that the semantic coherence of the document clusters seems to lack. \tk{show proof} That is due to the clustering algorithm failing to perform and facing, what is commonly known as, \textit{the curse of dimensionality}. The curse of dimensionality states for distance based methods that "under certain reasonable assumptions on the
 data distribution, the ratio of the distances of the nearest and farthest neighbors
 to a given target in high dimensional space is almost 1 for a wide variety of data
-distributions and distance functions" \cite{aggarwalSurprisingBehaviorDistance2001}. Therefore closeness between points, which is the relevance measure for the k-Means algorithm due to it using the Euclidian distance, becomes effectively meaningless and making it necessary to reduce the dimensionality of the vector space.
+distributions and distance functions" \cite{aggarwalSurprisingBehaviorDistance2001}. Therefore closeness between points, which is the relevance metric for the k-Means algorithm due to it using the Euclidian distance, becomes effectively meaningless and making it necessary to reduce the dimensionality of the vector space.
 
 One popular method, which is often used in conjunction with Tf-Idf BOW embeddings, is the Latent Semantic Indexing (LSI), also known and henceforth referenced as Latent Semantic Analysis (LSA). A LSA operates on the premise that a vectorized corpus contains latent structures, which my correspond to topics for example. Such a topic would consist of several words which are semantically connected and therefore appear together more often than words which are not semantically similar. Adding constraints such as adjustable representational richness, which depicts sufficient parameterisation, explicit representation of both terms and documents and computational tractability for large datasets the authors decided to use a Singular Value Decomposition (SVD) \cite{deerwesterIndexingLatentSemantic}. The SVD is closely related to Principal Component Analysis (PCA) and reduces the dimensionality of a dataset by removing the dimensions with the least variance, effectively projecting the vector space onto the subspace with the highest variance and therefore the most information contained. Applying a SVD on the corpus changes the representation of the document from being a linear combination of words into being a linear combination of latent topics. This representation is now usable for most other methods such as clustering due to its smaller dimensionality. The existing pipeline uses a k-Means algorithm to discover clusters and classify the documents as a next step. Finally, in order to visualize the high dimensional topic space in 2D a linear discriminant analysis is used using the clustering as labels.  \tk{Connections to BPMN}
 
@@ -55,28 +67,57 @@ One popular method, which is often used in conjunction with Tf-Idf BOW embedding
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/nlpflowchart_old}
-	\caption{\label{pic:IKON_pipeline} BPMN process diagram of the existing topic extraction pipeline}
+	\caption{\label{pic:IKON_pipeline} BPMN process diagram of the existing topic modeling pipeline}
 \end{figure}
 
 
 \section{Document embedding}
 
 \subsection{A short survey of document embedding techniques}
+Since 1972, the year when the Idf measure was proposed for the first time, \cite{robertsonUnderstandingInverseDocument2004} a number of other techniques appeared, which are able to vectorize documents in a corpus.
 
+Another popular technique was published by Blei et al. \cite{bleiLatentDirichletAllocation2003} in 2003. \textit{Latent Dirichlet Allocation} is a hierarchical Bayesian model, which describes documents as a finite mixture of latent topics, while topics are an infinite mixture of latent topic probabilities. The LDA therefore performs the embedding and the topic extraction step at once.
+
+Le and Mikolov \cite{leDistributedRepresentationsSentences2014} proposed \textit{Paragraph vectors} almost a decade later using the newest advances in neural networks. This technique, also known as \textit{Doc2Vec}, because it expands the idea of Word2Vec \cite{mikolovDistributedRepresentationsWords} to documents, utilizes a shallow neural network to run over each document with a sliding window and predict a token in this window using the other tokens and a paragraph id as a special token as context. Using a standard backpropagation algorithm to train the weights of the network the final paragraph vector consists of the weights which are used for the paragraph id. The intuition is that the paragraph vector acts as an additional storage for context information and since the connected paragraph ID is unique for each document it contains semantic information for the entire document. Choosing a low dimension as an embedding dimension also corresponds to the embedding and topic extraction step at once, but the authors recommend an embedding dimensionality of at least 100.
+
+A rather new method was presented by Wu et al. \cite{wuWordMoverEmbedding2018} using a new distance metric called \textit{Word Mover's distance}(WMD). This metric uses pretrained word vectors and word alignment in order to compute more meaningful distances. Because the computation of this metric is quite expensive, Wu et al. develop an approximative kernel which embeds a corpus into a vector space using the WMD, which can be used instead of computing the full kernel with all the training data.
+
+Another approach would be to not train a model on the specific dataset, but rather use a model which was pretrained on a huge and very general dataset. One of the state-of-the-art techniques for that is BERT \cite{devlinBERTPretrainingDeep2018}. Devlin et al. present a new model architecture based on the popular Transformer model \cite{vaswaniAttentionAllYou2017} and train it in the first version on a concatenated corpus of BookCorpus and the English Wikipedia ($3,3\cdot 10^9$ words in total).  Having such a huge amount of data as context knowledge one is now able to train another model for downstream tasks on top of BERT and utilize the knowledge extracted from the corpus in a transfer learning fashion. It is also possible to extract the raw document embeddings from BERT directly, but the sequence length is capped to 512 characters.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=250px]{../chapters/implementation/pics/doc2vec}
+	\caption{\label{pic:doc2vec} Visualization of a training step of a Doc2Vec network {\cite{wuWordMoverEmbedding2018}}}
+\end{figure}
+
+\subsection{Selection of a document embedding technique}
+
+Summarizing the previously discussed methods by three of their main characteristics - number of hyperparameters, maximum processable document length and type of model - \autoref{tab:overview_doc_embedding}
 \begin{table}
 	\centering
 	\begin{tabular}{ c | c | c | c }
 		\hline 
-		Technique & Parameters & Maximum processable text length & Type \\ \hline
-		Tf-Idf BOW & 5 & 6 \\ \hline
-		Doc2Vec & 8 & 9 \\
-		\hline
+		Technique & Parameters & Max. document length & Type \\ \hline
+		Tf-Idf BOW & 0 & unlimited & Probabilistic \\ \hline
+		Latent Dirichlet Allocation & 1 & unlimited & Probabilistic \\ \hline
+		Doc2Vec & 8 & unlimited & NN \\ \hline
+		Word mover's embedding & 1 & unlimited & Kernel method \\ \hline
+		BERT & 8 & 512 characters & NN \\ \hline
 	\end{tabular}
 	\caption{\label{tab:overview_doc_embedding} Table summarizing the key features of different document embedding techniques}
 \end{table}
 
+
+\subsection{Explainability technique: Top words}
+
 \section{Topic extraction}
+
+\subsection{Quality of topic extraction}
 
 \section{Clustering}
 
+\subsection{Explainability technique: Cluster topography }
+
 \section{Reduction into 2D}
+
+\subsection{Explainability technique: Linearization}
