@@ -17,18 +17,6 @@ sys.path.insert(0, '../chapters/implementation/code/')
 \chapter{Implementation}
 \label{chap:implementation}
 
-\section{Topic modeling}
-
-Given an unlabeled corpus $C = \{D_1, ..., D_n\}$ consisting of $n$ documents $D_i = (t_1, ..., t_m)$, which in turn consists of a sequence of $m$ strings, also called tokens, the document embedding step assigns to each document a vector $v_D \in \mathbb{R}^e, e \in \mathbb{N}^+$. Semantically similar documents should also be closer in the embedded vector space with respect to a given distance measure than documents which are semantically not related. Therefore this step transforms a corpus into a matrix $(v_1, ..., v_n) \in \mathbb{R}^{e \times n}$.
-
-Consuming the output from the previous step the topic extraction tries to uncover $k$ latent structures. We call these structures \textit{topics}. Mathematically speaking a topic is a probability distribution over a fixed set of input features. \cite{liuOverviewTopicModeling2016} These features can correspond to tokens, as it is the case in the later discussed Tfidf-BOW embedding, but this does not have to be the case. Therefore this step transforms the corpus from the embedding space of dimensionality $e \times n$, where each document is described as linear combination of features, to the latent space of dimensionality $k \times n$, where each document is described as a linear combination of latent topics. Since most often $k < e$ holds true, this can also be seen as a form of dimensionality reduction, which is again a form of feature extraction.
-
-Using the document vectors in the latent space each document is assigned a label. This may happen in a supervised way if there are labels available for training purposes, but in most cases an unsupervised classification, also known as clustering, is used to group the documents.
-
-Finally in order to visualize the high dimensional distribution of documents in the latent space another dimensionality reduction is used to project the documents to 2D.
-
-
-
 \section{Data and Preprocessing}
 In order to connect projects semantically instead of by the rigid taxonomy of the museum, I was able to use the project's self-description which is recorded in the GEPRIS database of the DFG \cite{DFGGEPRIS}. It consists of almost all projects which were supported by the DFG since 2000. Fortunately, another bachelor project before me worked on a scraper which extracted approximately 114.000 projects from the web interface of the database since there is no publicly available API. Each project was characterized by a title, a project abstract in German or English, start and end dates as well as additional meta data like connected institutions or people working in the project.
 
@@ -47,6 +35,7 @@ Removing these peaks in \autoref{pic:gepris_cleaned_histogram} reveals that most
 	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/plots/cleaned_histogram}
 	\caption{\label{pic:gepris_cleaned_histogram} Histogram showing the distribution of text lengths in the dataset excluding duplicates and projects without a description}
 \end{figure}
+
 Following the advice of Matthew et al. \cite{dennymatthewpennstateuniversity;spirlingarthurnewyorkuniversityReplicationDataText2017} the texts were preprocessed by a P-N-S-W scheme. First punctuation (P) and numbers (N) were removed since sentence boundaries or specific numbers do not bear a lot of information in middle-sized descriptive texts. Following this, according to the categories of Matthew et al., a stemming step (S) is performed, which uses lemmatization to find the lemmas of words by using vocabularies and the context of each word. The last step removes infrequent words without much semantic meaning, commonly known as stopwords (W). Lowercasing and n-gram inclusion were omitted, because casing is an important feature for distinguishing nouns from other word types in the German language, which helps the lemmatization step, and the use of word composition makes most reasonable n-grams in other languages appear as one word in German. 
 
 Until the start of this thesis the pipeline did all this preprocessing using regex-based rules and a lemmatization using the SpaCy lemmatizer. This proved to be a viable option until a corpus size of 5000 since after that point the running time was too long to effectively work with it. Therefore I bundled all the preprocessing operations in a new class called \textit{Datapreprocessor}, which should be able to transform any given query into a preprocessed dataset for the following pipeline steps as well as cache its results. In order to do that I rewrote the preprocessing steps and integrated them into the already existing SpaCy pipeline which uses a CNN to apply the previously discussed preprocessing. Additionally it is able to detect the language of a text, which, in turn, makes it possible to filter out all non-German texts. Using this existing framework gave me the opportunity to embed my custom code into the Cython code of the framework accelerating the looping over the corpus. Additionally I was able to fully parallelize the process on $n$ CPUs by splitting the corpus in $n$ chunks and feeding each chunk into a separate sub-process to make use of the batch sizes of the SpaCy neural networks. This accelerated the preprocessing by a factor of 10.
@@ -92,7 +81,7 @@ Another approach would be to not train a model on the specific dataset, but rath
 
 \subsection{Selection of a document embedding technique}
 
-Summarizing the previously discussed methods by three of their main characteristics - number of hyperparameters, maximum processable document length and type of model - \autoref{tab:overview_doc_embedding}
+Summarizing the previously discussed methods by three of their main characteristics - number of hyperparameters, maximum processable document length and type of model results in  \autoref{tab:overview_doc_embedding}.
 \begin{table}
 	\centering
 	\begin{tabular}{ c | c | c | c }
@@ -107,14 +96,89 @@ Summarizing the previously discussed methods by three of their main characterist
 	\caption{\label{tab:overview_doc_embedding} Table summarizing the key features of different document embedding techniques}
 \end{table}
 
-
-\subsection{Explainability technique: Top words}
+The model is now selected by exclusion. Since our database contains documents which are longer than 512 tokens and each token has a length of at least 1 character, BERT is eliminated as a potential document embedding technique. It would be possible to take word embeddings from BERT and average them in order to get a document embedding as it was proposed and further developed in \cite{deboomRepresentationLearningVery2016} for Word2Vec embeddings, but there was no scientific or non-scientific literature that suggested that this works for the case of BERT embeddings. \tk{Why is BERT different?}
+Furthermore the previous literature analysis showed that there is not a lot of work done for explaining probabilistic models or models utilizing kernel tricks, therefore TF-Idf BOW, the LDA and the Word Mover's embedding are not of interest in this case. Only Doc2Vec remains, supporting both an unlimited document length and being of type 'NN' and therefore potentially being able to support more explainability techniques which may be developed in the future.
 
 \section{Topic extraction}
 
-\subsection{Quality of topic extraction}
+\subsection{Assessing the quality of the topic modeling using topic coherence}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/plots/tm_quality}
+	\caption{\label{pic:tm_quality} Graph showing the quality of the topic modeling while varying the embedding, topic extraction and clustering model}
+\end{figure}
+
+\subsection{Explainability technique: Top words}
+
+Looking at \autoref{fig:pipelinestep_gamut} shows that local instance explanations as a strategy to explain the output of an unsupervised embedding algorithm are most prevalent among all sourced publications. Factoring in the two questions from \autoref{tab:overview_viz_questions} which deal with the most prominent topics and the similarity between projects and clusters I will rank the input features to the document embedding and topic extraction step for each document and cluster. 
+
+Assume that I have a document described as a vector $c \in \mathbb{R}^k$ in the latent topic space. In order to show the most important features in the document the idea is to go backwards. Taking the vector in the latent space firstly the inverse dimensionality reduction is applied in order to transform the vector into the embedding space. Both the LSA and the autodecoder approach have this opportunity, but they differ greatly in quality of this reconstruction. Since the LSA is a linear method, the back projection yields all documents on a hyperplane, while the autodecoder is able to minimize the reconstruction loss through its inherent nonlinearity. 
+
+Now that the document vector is in its embedding space we will make use of a special ability of the Doc2Vec model. As described in the previous section the model does not only train document vectors, but it also generates word embeddings in the same space. The revolution the Word2Vec model, as a base of the Doc2Vec model, presented was that the generated embeddings and their relations to eachother encoded semantic relations. Although there is no literature on this, it is a hypothesis that this behaviour also applies to the embedding of document and word vectors into one space. This leads to the possibility of describing a document by its nearest word vectors. An exemplary analysis shows that there seems to be a valid semantic structure in the relations between tokens and between tokens and documents. As a German native speaker it is easy for me to verify that the word queries in \autoref{tab:semantic_connectivity_words} are indeed semantically well connected. The results of the document queries in \autoref{tab:semantic_connectivity_docs} on the other hand are hard to verify since most documents are very specific, scientific texts. I picked two projects and their top words which I was able to understand without relying on external information. The first three top words are indeed well connected to the topic of the corresponding project, but the last two ones seem to be off. This exemplary analysis speaks in favor of the hypothesis that there are indeed semantic connections document vectors and word vectors.
+
+\begin{table}
+	\centering
+	\begin{tabular}{ p{6cm} | p{6cm} }
+		"Evolution" & "Diversität" \\ \hline
+		\begin{enumerate}
+			\item evolutionären
+			\item evolutionäre
+			\item evolutionärer
+			\item phylogenetische
+			\item Artbildung
+		\end{enumerate} & 
+		\begin{enumerate}
+			\item Artenzusammensetzung
+			\item Biodiversität
+			\item Taxa
+			\item taxonomisch
+			\item Lebensräumen
+		\end{enumerate} \\
+	\end{tabular}
+	\caption{\label{tab:semantic_connectivity_words} Table showing the top five similar words for two queries by word}
+\end{table}
+
+\begin{table}
+	\centering
+	\begin{tabular}{ p{6cm} | p{6cm} }
+		\href{https://gepris.dfg.de/gepris/projekt/387798678}{'Ambitionierte Amateure' - Europäische Filmclubs in den langen 1960er Jahren} & \href{https://gepris.dfg.de/gepris/projekt/160874660}{Netzwerke im europäischen Handel des Mittelalters} \\ \hline
+		\begin{enumerate}
+			\item Kulturpraxis
+			\item Kulturzentren
+			\item alltagsweltlich
+			\item pain
+			\item Ceuta
+		\end{enumerate} & 
+		\begin{enumerate}
+			\item Opportunitätskosten
+			\item Diskursteilnehmer
+			\item evoluieren
+			\item schloss
+			\item Staphylococcen
+		\end{enumerate} \\
+	\end{tabular}
+	\caption{\label{tab:semantic_connectivity_docs} Table showing the top five similar words for two queries by document}
+\end{table}
+
+ \tk{Proof that the word vectors make sense and the doc vectors also make sense}
+
+Keeping the gist of this strategy the first explainability technique I propose id the \textit{Top words} method. 
 
 \section{Clustering}
+
+As described in the beginning of this chapter a K-Means clustering would now classify the documents in the latent topic space. A problem that this approach poses is that the assumption that the Euclidian distance (EuD), which is the inert similarity measure of the K-Means algorithm \tk{Cite!} is meaningful in our vector space may not be true. \tk{Cite?} Another distance measure which may may encode more semantic meaning could be the previously mentioned \textit{Word Mover's Distance}. Since it uses the generated word embeddings and their order in the document to compute distances, it may be more suited for comparing texts and subsequently also yield better results for the clustering. This weighs even heavier if the corpus is vectorized as a sparse matrix since the Euclidian distance, as described in \autoref{chap:introduction}, looses its meaning . In our case, having embeddings from a Doc2Vec model, we don't have to deal with this additional problem, but the question remains if the two distance measures differ on our dataset.  
+Comparing the distances between documents generated by both the Word Mover's distance and the Euclidian distance in \autoref{pic:wmd_eud_boxplot} it is apparent that there is indeed a difference. Therefore it is worth investigating if using this information improves the clustering results. 
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/plots/wmd-eud}
+	\caption{\label{pic:wmd_eud_boxplot} Boxplot showing the distribution of the quotients between WMD and EuD for all documents}
+\end{figure}
+
+Inspired by Liu et al. \cite{Liu:2018:INE:3219819.3220001} I chose a hierarchical clustering approach, specifically \textit{Agglomerative Clustering}, as a contending method to the K-Means algorithm. This method works bottom-up since in the beginning it considers every data point to be its own cluster. Now in every step two clusters are merged which minimize a given linkage metric. The distance calculations between points are performed by a lookup in a precomputed distance matrix which enables the usage of any given distance metric. Doing this until only one cluster remains, creates a binary tree, which describes the hierarchy of the data given the used metric. 
+
+
 
 \subsection{Explainability technique: Cluster topography }
 
