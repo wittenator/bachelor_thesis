@@ -8,10 +8,27 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
 
+As stated in the Introduction, this thesis was conducted in order to study what kind of explainability techniques for NLP exist and how they could support a non-technical expert in understanding the output from the system.
+
+The first step was a systematic literature mapping study according to Petersen et al. \cite{petersenSystematicMappingStudies} which unveiled that I was able to confirm the findings of Lipton \cite{liptonMythosModelInterpretability2016a} and Miller \cite{millerExplanationArtificialIntelligence2017} in the domain of NLP.
+Furthermore the results from the literature mapping study suggest that most of the current research focuses on supervised methods, such as neural networks, and these models are mainly made interpretable through local instance explanations. A proper definition of interpretability or an analysis of how a method influences interpretability lacks in a majority of publications on the other hand.
+
+Based on these findings I was now able to take each component of the general topic extraction pipeline in \autoref{pic:general_topic_extraction_pipeline} and propose and implement a contending method. Each method was evaluated according to standard measures in order to ensure proper performance. Three out of four components where also augmented by explainability methods.
+Following an analysis investigating the interplay between all implemented methods, the decision was made to remain with the existing pipeline, but augment it by the proposed explainability techniques.
+
+A cognitive walkthrough simulating a researcher doing an exploratory interaction unveiled a number of usability issues, but also showed how the implemented techniques support the user in making inferences about the output of the topic modeling pipeline. 
+
 \section{Discussion} 
 
-\section{Outlook}     
+\section{Outlook}   
+As discussed in \autoref{chap:literature_analysis} and visible in the results of the literature mapping study, there are a number of additional explanation strategies which could be applied to the augmented topic modeling pipeline.
 
-\begin{itemize}
-	\item Die Zusammenfassung sollte das Ziel der Arbeit und die zentralen Ergebnisse beschreiben. Des Weiteren sollten auch bestehende Probleme bei der Arbeit aufgezählt werden und Vorschläge herausgearbeitet werden, die helfen, diese Probleme zukünftig zu umgehen. Mögliche Erweiterungen für die umgesetzte Anwendung sollten hier auch beschrieben werden.
-\end{itemize}
+Although the performance of Agglomerative Clustering didn't seem to satisfy the needs of the application, the idea of explaining a model by an induced taxonomy is still very interesting \cite{Liu:2018:INE:3219819.3220001}. Factoring in that the majority of the staff at the museum are trained biologists and taxonomies are widely used in this scientific discipline, these structures may be a very useful metaphor to present information to these non-technical experts.
+
+Furthermore during the work on this thesis another potential question, additional to the ones defined in \autoref{tab:overview_viz_questions}, arose:
+\begin{center}
+	What kind of potential projects exist in the space between projects?
+\end{center}
+One of the already used techniques could be used to deliver potential answers . If the current LDA reduction gets replaced by a special kind of autoencoding, called variational autoencoding (VAE), it should be possible to generate meaningful vectors in the latent topic space and via the previously discussed methods also top words for these potential projects. 
+
+Asides from additional explainability strategies and further model tuning, the whole system needs to be subjected to complete and rigorous user test with non-technical experts from the museum. The cognitive walkthrough included in this thesis does deliver a few insights into the usability of the application and the interaction with the topic modeling pipeline, but only a test in the situational context of the environment of the museum can convey reliable information concerning the interpretability of the used algorithms and the inferences the users are able to make using the system.

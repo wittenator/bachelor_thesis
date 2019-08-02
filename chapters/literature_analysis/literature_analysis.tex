@@ -23,6 +23,7 @@ pytex.add_dependencies('../chapters/literature_analysis/data/mapping.xlsx')
 \end{pycode}
 
 \chapter{Literature mapping study}
+\label{chap:literature_analysis}
 
 \section{Motivation}
 
@@ -89,7 +90,7 @@ print_top_keywords('../chapters/literature_analysis/data/stage1.bib', 'top_keywo
 	
 	\item Definition and application of inclusion and exclusion criteria to narrow down the pool of publications further:
 	
-	The next step serves as another filtering step enhancing the quality of the hitherto automatic selection by using human decision making. A combination of the guiding questions, which were defined in the beginning of the process and a first pass over the whole corpus, in which I skimmed the papers, gave me a clear set of criteria, as seen in \autoref{tbl:incl_excl}, which can be used to filter the corpus further. In a second pass each paper was evaluated and included in the next step if and only if it satisfied at least one inclusion criterion and none of the exclusion criteria.	In order to support my decision making and minimize the amount of work to classify each paper I developed a Jupyter-based interface, which takes a bibliography and a set of inclusion and exclusion criteria and iterates over all contained publications, shows its title and abstract and allows the user to select criteria which apply. If a closer examination is needed it opens the paper on demand. Furthermore it sorts each publication into either a bibliography for the next stage, a bibliography with rejected publications depending on the applying criteria. \tk{Interesting? Should I show the interface?}
+	The next step serves as another filtering step enhancing the quality of the hitherto automatic selection by using human decision making. A combination of the guiding questions, which were defined in the beginning of the process and a first pass over the whole corpus, in which I skimmed the papers, gave me a clear set of criteria, as seen in \autoref{tbl:incl_excl}, which can be used to filter the corpus further. In a second pass each paper was evaluated and included in the next step if and only if it satisfied at least one inclusion criterion and none of the exclusion criteria.	In order to support my decision making and minimize the amount of work to classify each paper I developed a Jupyter-based interface, which takes a bibliography and a set of inclusion and exclusion criteria and iterates over all contained publications, shows its title and abstract and allows the user to select criteria which apply. If a closer examination is needed it opens the paper on demand. Furthermore it sorts each publication into either a bibliography for the next stage, a bibliography with rejected publications depending on the applying criteria or a bibliography containing interesting, but not directly relevant literature. I opensourced this framework on \href{https://github.com/wittenator/limap}{GitHub}.
 	
 	\begin{table}
 		\centering

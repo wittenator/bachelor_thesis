@@ -54,7 +54,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
 \usepackage{amssymb}
-
+\usepackage{longtable}
 %
 %---------------------------------------------------
 %----- PDF and document setup
@@ -231,6 +231,11 @@
 \input{../chapters/validation/validation}
 \input{../chapters/conclusion/conclusion}
 
+%---------------------------------------------------
+%----- Appendix   
+%---------------------------------------------------
+\backmatter
+\input{../chapters/appendix/appendix}
 
 %---------------------------------------------------
 %----- Bibliography
@@ -240,10 +245,5 @@
 \bibliographystyle{alpha}
 \bibliography{../references/thesis/main,../chapters/literature_analysis/data/mapping}
 
-%---------------------------------------------------
-%----- Appendix   
-%---------------------------------------------------
-\backmatter
-%\input{../chapters/appendix/appendix}
 
 \end{document}

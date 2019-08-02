@@ -17,8 +17,13 @@ sys.path.insert(0, '../chapters/implementation/code/')
 \chapter{Implementation}
 \label{chap:implementation}
 
+\section{General setup}
+
+In order to ensure that the results of this thesis are usable for further work and research it was one of my priorities to integrate all my code into the existing project as well as possible. Since the IKON project uses a Docker-based microservice architecture to develop and manage their servers, I decided to integrate the Jupyter Notebook, which I used as my main tool for code development and documentation, into this network. Doing this also enabled the Notebook to dynamically fetch data from the Postgres database which serves as the main source of information.
+In anticipation of huge computational loads the Docker container was designed to make use of a potential graphic card. That's why I built all my work on top of the official Tensorflow Docker image which comes with all the drivers for NVidia GPUs. The problem with that image is that it either detects a graphic card and suitable drivers and works or it fails in case of no present drivers. For that reason I created a Shell which makes the use of the container easier. By activating a $--gpu$ flag while executing the script, the docker container dynamically selects an image with or without GPU support, starts the Notebook container and the database in a separate network and scans the output of the Notebook container in order to extract the Notebook credentials, which are necessary to access the program via the browser, and opens a browser session once these credentials were found.
+
 \section{Data and Preprocessing}
-In order to connect projects semantically instead of by the rigid taxonomy of the museum, I was able to use the project's self-description which is recorded in the GEPRIS database of the DFG \cite{DFGGEPRIS}. It consists of almost all projects which were supported by the DFG since 2000. Fortunately, another bachelor project before me worked on a scraper which extracted approximately 114.000 projects from the web interface of the database since there is no publicly available API. Each project was characterized by a title, a project abstract in German or English, start and end dates as well as additional meta data like connected institutions or people working in the project.
+Since one of the main aims of project IKON is to connect projects semantically instead of by using the rigid taxonomy of the museum, I was able to use the project's abstract which is recorded in the GEPRIS database of the DFG \cite{DFGGEPRIS}. It consists of almost all projects which were supported by the DFG since 2000. Fortunately, another bachelor project before me worked on a scraper which extracted approximately 114.000 projects from the web interface of the database since there is no publicly available API. Each project was characterized by a title, a project abstract in German or English, start and end dates as well as additional meta data like connected institutions or people working in the project.
 
 As one can see in \autoref{pic:gepris_histogram}, there is a peak at word count 3 and one at approximatly 100. The first one corresponds to all projects which do not have descriptions, because they are described with "Keine Zusammenfassung vorhanden". The latter peak on the other hand is produced by projects from a fund which uses the same descriptions for all its projects which are financed through the DFG.
 
@@ -52,14 +57,6 @@ distributions and distance functions" \cite{aggarwalSurprisingBehaviorDistance20
 One popular method, which is often used in conjunction with Tf-Idf BOW embeddings, is the Latent Semantic Indexing (LSI), also known and henceforth referenced as Latent Semantic Analysis (LSA). A LSA operates on the premise that a vectorized corpus contains latent structures, which my correspond to topics for example. Such a topic would consist of several words which are semantically connected and therefore appear together more often than words which are not semantically similar. Adding constraints such as adjustable representational richness, which depicts sufficient parameterisation, explicit representation of both terms and documents and computational tractability for large datasets the authors decided to use a Singular Value Decomposition (SVD) \cite{deerwesterIndexingLatentSemantic}. The SVD is closely related to Principal Component Analysis (PCA) and reduces the dimensionality of a dataset by removing the dimensions with the least variance, effectively projecting the vector space onto the subspace with the highest variance and therefore the most information contained. Applying a SVD on the corpus changes the representation of the document from being a linear combination of words into being a linear combination of latent topics. This representation is now usable for most other methods such as clustering due to its smaller dimensionality. The existing pipeline uses a k-Means algorithm to discover clusters and classify the documents as a next step. Finally, in order to visualize the high dimensional topic space in 2D a linear discriminant analysis is used using the clustering as labels.  \tk{Connections to BPMN}
 
 
-
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/nlpflowchart_old}
-	\caption{\label{pic:IKON_pipeline} BPMN process diagram of the existing topic modeling pipeline}
-\end{figure}
-
-
 \section{Document embedding}
 
 \subsection{A short survey of document embedding techniques}
@@ -84,30 +81,20 @@ Another approach would be to not train a model on the specific dataset, but rath
 Summarizing the previously discussed methods by three of their main characteristics - number of hyperparameters, maximum processable document length and type of model results in  \autoref{tab:overview_doc_embedding}.
 \begin{table}
 	\centering
-	\begin{tabular}{ c | c | c | c }
+	\begin{tabular}{ c | c | c }
 		\hline 
-		Technique & Parameters & Max. document length & Type \\ \hline
-		Tf-Idf BOW & 0 & unlimited & Probabilistic \\ \hline
-		Latent Dirichlet Allocation & 1 & unlimited & Probabilistic \\ \hline
-		Doc2Vec & 8 & unlimited & NN \\ \hline
-		Word mover's embedding & 1 & unlimited & Kernel method \\ \hline
-		BERT & 8 & 512 characters & NN \\ \hline
+		Technique & Max. document length & Type \\ \hline
+		Tf-Idf BOW & unlimited & Probabilistic \\ \hline
+		Latent Dirichlet Allocation & unlimited & Probabilistic \\ \hline
+		Doc2Vec & unlimited & NN \\ \hline
+		Word mover's embedding & unlimited & Kernel method \\ \hline
+		BERT & 512 characters & NN \\ \hline
 	\end{tabular}
 	\caption{\label{tab:overview_doc_embedding} Table summarizing the key features of different document embedding techniques}
 \end{table}
 
 The model is now selected by exclusion. Since our database contains documents which are longer than 512 tokens and each token has a length of at least 1 character, BERT is eliminated as a potential document embedding technique. It would be possible to take word embeddings from BERT and average them in order to get a document embedding as it was proposed and further developed in \cite{deboomRepresentationLearningVery2016} for Word2Vec embeddings, but there was no scientific or non-scientific literature that suggested that this works for the case of BERT embeddings. \tk{Why is BERT different?}
 Furthermore the previous literature analysis showed that there is not a lot of work done for explaining probabilistic models or models utilizing kernel tricks, therefore TF-Idf BOW, the LDA and the Word Mover's embedding are not of interest in this case. Only Doc2Vec remains, supporting both an unlimited document length and being of type 'NN' and therefore potentially being able to support more explainability techniques which may be developed in the future.
-
-\section{Topic extraction}
-
-\subsection{Assessing the quality of the topic modeling using topic coherence}
-
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/plots/tm_quality}
-	\caption{\label{pic:tm_quality} Graph showing the quality of the topic modeling while varying the embedding, topic extraction and clustering model}
-\end{figure}
 
 \subsection{Explainability technique: Top words}
 
@@ -161,9 +148,31 @@ Now that the document vector is in its embedding space we will make use of a spe
 	\caption{\label{tab:semantic_connectivity_docs} Table showing the top five similar words for two queries by document}
 \end{table}
 
- \tk{Proof that the word vectors make sense and the doc vectors also make sense}
+Keeping the gist of this strategy the first explainability technique I propose id the \textit{Top words} method.
 
-Keeping the gist of this strategy the first explainability technique I propose id the \textit{Top words} method. 
+\section{Topic extraction}
+
+Currently the only used topic extraction method is the LSA. Since the underlying SVD is a purely linear technique, the questions stands if the results of the topic extraction improve when nonlinear features are taken into account. One technique to perform an nonlinear, unsupervised dimensionality reduction is the \textit{Autoencoder}. This type of neural network consists of an encoder network and a decoder network as seen in \autoref{pic:autoencoder}. The encoder maps an input to an intermediate layer, while the decoder maps a vector from its representation in the intermediate layer to a vector in the vector space of the original input.
+
+The composition of encoder and decoder is then trained to reconstruct the input from its intermediate layer via a standard backpropagation algorithm. Choosing the intermediate layer of lesser dimensionality compresses the input vectors, which constitutes as a dimensionality reduction. As Wang et al. \cite{wangAutoencoderBasedDimensionality2016} pointed out, an autoencoder can emulate the results of a PCA/SVD by choosing a linear activation function for all neurons and may even outperform it for other nonlinear activation functions.
+
+Adding a sparsity constraint to the encoding network can help to describe a project by as little features as possible. Since the features could be interpreted as topics, this constraint helps the clustering task downstream.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=250px]{../chapters/implementation/pics/autoencoder}
+	\caption{\label{pic:autoencoder} Strucuture of a simple autoencoder {\cite{wangAutoencoderBasedDimensionality2016}}}
+\end{figure} 
+
+Training the model with an embedding dimension of 50, binary crossentropy as a loss function and Adadelta optimizer shows that the model achieves a loss of 0.005 after 75 epochs on the training set and approximately 0.01 on the validation set \autoref{pic:autoencoder_loss}.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/plots/autoencoder_loss}
+	\caption{\label{pic:autoencoder_loss} Graph showing the training and validation loss of the autoencoder over progressing epochs}
+\end{figure}
+
+ 
 
 \section{Clustering}
 
@@ -182,6 +191,71 @@ Inspired by Liu et al. \cite{Liu:2018:INE:3219819.3220001} I chose a hierarchica
 
 \subsection{Explainability technique: Cluster topography }
 
+The hypothesis on which technique is grounded is that clusters in a high dimensional space are inherently hard to interpret, because the cluster does not exist as an explicit object. A cluster is rather an abstract concept and solely consists of the points which are connected to it via a membership assignment. Especially once the points which form a cluster get reduced into a 2D or 3D space distances get distorted, a problem which we will discuss further in on of the following subsections. Information on the position and form of the clusters is not easily obtainable anymore. One way to mitigate this is to extract artifacts in the high dimensional space and carry it over into the 2D space where the points can be visualized.
+
+Motivated by the explanatory nature of the interaction which the non-technical experts will carry out, the quality of each point fitting into its cluster could be an interesting pointer to make potentially contrastive deductions concerning the structure of the clusters.
+
+Firstly described by Kinkeldey et al. \cite{christophkinkeldeySupportingInterpretabilityClustering2019}, this technique computes an uncertainty measure for each point which describes how well it fits into its assigned cluster. In the original paper they assign each point the Euclidean distance between the point and its cluster centroid. Small distances speak in favor of the hypothesis that a point fits well into its cluster, while bigger distances speak in favor of the contrary. After the projection into 2D a topography is interpolated with the points and their Euclidean distances as fulcrums. This intendedly invokes the notion of a geographical surface since this most sciences, especially at a natural history museum, work often with such kind of maps. Making sure that the peaks of this topography corresponds to points which fit very well into their clusters enlarges the metaphor and ensures that people are intuitively able to understand the visualization. 
+
+The problem with the original approach is that, firstly the Euclidean distance may not be well suited for such vector spaces, as discussed earlier, and points in different clusters cannot be compared since volume-wise larger clusters exhibit a higher distance for each point than ones which are smaller. Secondly points may exhibit the same fitness and lie close together in 2D, but may be on two opposing ends of an n-dimensional sphere in the latent space. 
+
+The second problem is harder to tackle since that is one of the inherent problems of dimensionality reductions and therefore I will present an argument for an alternative similarity measure.
+
+The main information that this technique should convey is how well the clustering method captured the structure of the high dimensional space which can be expressed by measuring how sure the method is about the cluster assignment for each point. One measure capturing this information is the silhouette score \cite{rousseeuwSilhouettesGraphicalAid1987}. The silhouette score takes, for each sample, the nearest cluster into account, computes the mean intra-cluster distance $a$ and the mean nearest-cluster distance $b$ and scores them as $\frac{(b-a)}{\max{a,b}}$. This leads to a score between -1 and 1, where a negative value denotes that the point was assigned to the wrong cluster since the nearest not assigned one is closer than the assigned cluster. The normalization of this score makes it possible to compare the fitness of points between clusters as well.
+Using this 
+
+
+\section{Assessing the quality of the topic modeling using topic coherence}
+
+A popular method to measure the quality of a topic modeling pipeline is the Coherence Score. 
+
+Plotting the coherence scores over different embeding, topic extraction and clustering models and different number of clusters reveals (\autoref{pic:tm_quality}) , surprisingly, that the combination with the best scores is an TfIdf embedding, an LSA topic extraction, followed by an Agglomerative Clustering with 10 clusters.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=400px]{/home/tim/HCC/IKON-backend/src/topicextraction/nlp/plots/tm_quality}
+	\caption{\label{pic:tm_quality} Graph showing the quality of the topic modeling while varying the embedding, topic extraction and clustering model}
+\end{figure}
+
+Plotting this combination of models and parameters in \autoref{pic:best_coherence_plot} reveals that there is one huge cluster (cluster 0) while the other 9 clusters contain maximally five projects. A further analysis of the dominating cluster also showed that although its top words suggest projects connected to evolution and biology, there are also a number of projects which deal with geology and paleontology. Interestingly, perturbating the parameters of all models does not change the fact that such a huge cluster forms speaking in favor of the hypothesis that these projects indeed form a huge cluster in the high embedding space.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=400px]{../chapters/implementation/pics/best_coherence_plot}
+	\caption{\label{pic:best_coherence_plot} Plot for the parameter and models with the best coherence score}
+\end{figure}
+
+\begin{table}
+	\centering
+	\begin{tabular}{c | c}
+		0 & Datum, Evolution, morphologisch, Taxa, ökologisch \\ \hline
+		1 & Sackflügelfledermaus, Abwanderungsverhalten, Weibchen, Männchen, Harem \\ \hline
+		2 & Western, Mountains, Kaokoveld, Fauna, Escarpment \\ \hline
+		3 & Tansania, biostratigraphische, palynologisch, Tendaguru, Palynologie \\ \hline
+		4 & Acentropinae, Philippinen, Trichoptera, Lepidoptera, Reliktendemiten \\ \hline
+		5 & SCHRANK, gesichert, Flora, Sauropoden, Gymnospermen \\ \hline
+		6 & Praktik, kolonisieren, Mediziner, Gesundheitsbehörden, Malaria \\ \hline
+		7 & Magmaozeans, Magmaozean, Planetare, Impaktprozess, Impaktors \\ \hline
+		8 & Kurzexpedition, Basilosauridae, Pabdeh, Ablagerungen, Iran \\ \hline
+		9 & Hauptexporteur, Kieselalgendiversität, Känozoikum, Silikatverwitterung, Kieselalgen \\ \hline
+	\end{tabular}
+	\caption{\label{tab:best_coherence_table} Table showing the top words for {\autoref{pic:best_coherence_plot}}}
+\end{table}
+
+At this point I gathered feedback from the researchers from project IKON and their answers suggested that problems may occur trying to visualize such dominating structures in scatterplots. \tk{Proper argument?}
+Therefore I turned to the second best performing combination of models which is a Doc2Vec embedding, an autoencoder-based topic extraction and a K-Means clustering. The graph also suggests that less clusters improve the quality of the generated top words which I incorporated by constraining the range of selectable numbers of topics.
+
 \section{Reduction into 2D}
 
+\section{Visualization}
+
+In order to visualize all the results from the topic modeling pipeline I developed a D3.js-based interface, which is embedded in the Jupyter notebook in which the code for all the numerical computations resides. Since Jupyter is embracing the browser as a frontend, there is the possibility to embed arbitrary Javascript code in a cell and inject any kind of visualization. In order to do that I construct a JSON object containing all the results from the topic pipeline (vectorized documents as scatter points and linearized points, top words, the interpolated topography, model parameters etc.) and pass it into the Javascript code via Jupyter's $Javascript$ function and string interpolation which renders it in the browser.
+
 \subsection{Explainability technique: Linearization}
+
+As Lipton \cite{liptonMythosModelInterpretability2016a} pointed out, a visualization is already an explainability technique in itself. Therefore we can use the vast amount of interaction design research to optimize the existing interface. 
+
+One of the main problems of scatter graphs is overdrawing, also called clutter. This problem occurs when glyphs are close enough in a scatter plot so that they overlap each other. The higher the density of a region is, the harder it gets to perceive the number of points and the harder it is to annotate the glyphs with additional data \cite{mayorgaSplatterplotsOvercomingOverdraw2013}. 
+
+Normally this problem is hard to solve since the position of points in respect to each other encodes important information. Considering that in this case a high dimensional space is reduced to 2D, there are inherent reduction errors introduced into the distances between points and the absolute distances in 2D loose part of their semantic importance, as discussed in the section concerning the cluster topography. Therefore it is possible to assume that instead of distances, the neighborhood of a point is more important, which leads to the possibility to map the scatter graph on a more regularized structure while preserving the neighborhood of points as well as possible. One way to do so, is to map the points in 2D onto a grid. This problem reduces to a linear assignment problem (LAP), where each point should be assigned to its nearest point in the grid while minimizing the global displacement error. A popular algorithm for that is the Jonker-Volgenant algorithm \cite{jonkerShortestAugmentingPath1987}. Jonker and Volgenant rephrase the LAP as a shortest path problem and by using augmenting paths improve the previously popular Hungarian algorithm to cubic worst-case complexity. 
+Applying this to the output of the developed pipeline yields the plots in \autoref{label}.
