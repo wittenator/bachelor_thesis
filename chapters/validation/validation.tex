@@ -138,7 +138,10 @@ This cognitive walkthrough unveiled a number of usability issues with the visual
 	\hline
 	Description & Usability Impact \\ \hline \hline
 	The label for the dropdown selection between the scatter plot and the linearized view does not properly describes what it does. & 
-	The user sees the visualization for the first time and tries to connect the cluster top words, which are displayed above the visualization and the clusters in the visualization. \\ \hline
+	Uncertainty about the usage of a tool may disturb a user in the inference task, therefore a descriptive name for this selection should be chosen. \\ \hline
+	There is no visual connection between views while changing the cluster or view parameters. &
+	Perturbing these parameters does not change the underlying displayed corpus, but the recomputation of the full pipeline may lead, due to the random initialization of the K-Means algorithm, to dramatically different outputs. Tracking these changes is quite hard and therefore after each change the user has to orient himself in th visualization anew. Adding animated transitions could help alleviating this problems by introducing object permanence in the views. \\ \hline
+	
 	
 	\caption{Table summarizing the found usability design issues} 
 	\label{tab:usability_problems}
