@@ -25,6 +25,7 @@ def print_time_dist(filepath, name):
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
     ax.set_yscale('log')
     fig.autofmt_xdate()
+    ax.set(xlabel='Year of publication', ylabel='Absolute count')
 
 
     plt.tight_layout()
@@ -34,6 +35,6 @@ def print_time_dist(filepath, name):
     print(r"\centering")
     print(r"\includegraphics[width=0.8\textwidth]{" + name + ".pdf}")
     print(r"""\caption{\label{fig:""" + name + """}%
-    	Barplot displaying the distribution of publishers occurring in the meta search results}""")
+    	Barplot displaying the distribution of publishing dates occurring in the results after the inclusion-exclusion step}""")
     print(r"\end{figure}")
     plt.clf()

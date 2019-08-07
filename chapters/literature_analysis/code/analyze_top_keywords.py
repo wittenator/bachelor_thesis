@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import re
 sns.set(color_codes=True)
 matplotlib.use('TkAgg')
 
@@ -12,7 +13,7 @@ def print_top_keywords(filepath, name):
 
     pubdata = pd.DataFrame.from_records(bib_database.entries)
     pubdata["keywords"] = pubdata["keywords"].str.lower()
-    pubdata["keywords"] = pubdata["keywords"].str.split(",")
+    pubdata["keywords"] = pubdata["keywords"].str.split(pat =";|,")
 
     keywords = [item.strip() for sublist in pubdata["keywords"][pubdata['keywords'].notnull()] for item in sublist]
     keywords = pd.DataFrame(data=keywords, columns=["count"])
