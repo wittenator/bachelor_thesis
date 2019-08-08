@@ -27,7 +27,7 @@ pytex.add_dependencies('../chapters/literature_analysis/data/mapping.xlsx')
 
 \section{Motivation}
 
-In order to access current methods in the fast-moving field of interpretability research in machine learning in a reproducible and structured fashion I conduct a literature mapping study according to Petersen et. al \cite{petersenSystematicMappingStudies}, which consists of a number of sequential steps which should reduce the initially sourced corpus to a set of representative publications and an analysis using it.
+In order to assess current methods in the fast-moving field of interpretability research in machine learning in a reproducible and structured fashion I conduct a literature mapping study according to Petersen et. al \cite{petersenSystematicMappingStudies}, which consists of a number of sequential steps which should reduce the initially sourced corpus to a set of representative publications and an analysis using it.
 
 \section{Method}
 
@@ -75,7 +75,7 @@ show_top_publishers('../chapters/literature_analysis/data/meta_search.csv', 'top
 	
 	\item Definition and application of inclusion and exclusion criteria to narrow down the pool of publications further:
 	
-	The next step serves as another filtering step enhancing the quality of the hitherto automatic selection by using human decision making. A combination of the guiding questions, which were defined in the beginning of the process and a first pass over the whole corpus, in which I skimmed the papers, gave me a clear set of criteria, as seen in \autoref{tbl:incl_excl}, which can be used to filter the corpus further. In a second pass each paper was evaluated and included in the next step if and only if it satisfied at least one inclusion criterion and none of the exclusion criteria.	In order to support my decision making and minimize the amount of work to classify each paper I developed a Jupyter-based interface, which takes a bibliography and a set of inclusion and exclusion criteria and iterates over all contained publications, shows its title and abstract and allows the user to select criteria which apply. If a closer examination is needed it opens the paper on demand. Furthermore it sorts each publication into either a bibliography for the next stage, a bibliography with rejected publications depending on the applying criteria or a bibliography containing interesting, but not directly relevant literature. I opensourced this framework on \href{https://github.com/wittenator/limap}{GitHub}.
+	The next step serves as another filtering step enhancing the quality of the hitherto automatic selection by using human decision making. A combination of the guiding questions, which were defined in the beginning of the process and a first pass over the whole corpus, in which I skimmed the papers, gave me a clear set of criteria, as seen in \autoref{tbl:incl_excl}, which can be used to filter the corpus further. In a second pass each paper was evaluated and included in the next step if and only if it satisfied at least one inclusion criterion and none of the exclusion criteria.	In order to support my decision making and minimize the amount of work to classify each paper I developed a Jupyter-based interface, which takes a bibliography and a set of inclusion and exclusion criteria and iterates over all contained publications, shows its title and abstract and allows the user to select criteria which apply. If a closer examination is needed it opens the paper on demand. Furthermore it sorts each publication into either a bibliography for the next stage, a bibliography with rejected publications depending on the applying criteria or a bibliography containing interesting, but not directly relevant literature. I opensourced this framework on \href{https://github.com/wittenator/limap}{GitHub} \footnote{https://github.com/wittenator/limap}.
 	
 	\begin{table}
 		\centering
@@ -83,16 +83,16 @@ show_top_publishers('../chapters/literature_analysis/data/meta_search.csv', 'top
 			Inclusion criteria & Exclusion criteria  \\ \hline
 			
 			\begin{itemize}
-				\item Reviews the current state of explainability research
-				\item Presents a specific method for enhancing explainability for models
+				\item Reviews the current state of interpretability research
+				\item Presents a specific method for enhancing interpretability for models
 			\end{itemize}
 			
 			&
 			
 			\begin{itemize}
 				\item Is not scientific literature
-				\item Does not describe the used explainability method
-				\item The publication does not focus on explainability
+				\item Does not describe the used interpretability technique
+				\item The publication does not focus on interpretability
 				\item The described method is neither general, nor focused on NLP
 			\end{itemize}
 		\end{tabular}
@@ -116,11 +116,11 @@ print_top_keywords('../chapters/literature_analysis/data/stage2.bib', 'top_keywo
 	
 	\item Quantitative assessment of the resulting corpus:
 	
-	In the last step the actual mapping is generated. In another pass I first skimmed and then read each paper and based on that classified each publication and its presented technique in order to answer the initially posed questions. To answer the first question I categorized them according to the proposed categories of Hohman et. al. \cite{hohmanGamutDesignProbe2019}. 
-	They propose a set of categories which fit the description of explanation strategies in the initially proposed relational model. These categories, henceforth referenced as Gamut classification, are not a perfect fit for a thesis dealing with explainability for non-technical experts since it also categorizes techniques according to their mathematical inner workings, but Hohman et al. extended the categories proposed by Lipton \cite{liptonMythosModelInterpretability2016a}, which formulated the starting hypothesis for this thesis and is the closest to a nontechnical assessment of interpretability research I could find. Furthermore there are not many such classifications to begin with, so I chose one which was recently introduced and presented at a major conference (CHI 2019).  
+	In the last step the actual mapping is generated. In another pass I first skimmed and then read each paper and based on that classified each publication and its presented technique in order to answer the initially posed questions. To answer the first question I categorized them according to the proposed categories of Hohman et. al. \cite{hohmanGamutDesignProbe2019}, who also conducted a literature study.. 
+	They propose a set of categories which fit the description of explanation strategies in the initially proposed relational model. These categories, henceforth referenced as Gamut classification, are not a perfect fit for a thesis dealing with interpretability for non-technical experts since it also categorizes techniques according to their mathematical inner workings, but Hohman et al. extended the categories proposed by Lipton \cite{liptonMythosModelInterpretability2016a}, which formulated the starting hypothesis for this thesis and is the closest to a nontechnical assessment of interpretability research I could find. Furthermore there are not many such classifications to begin with, so I chose one which was recently introduced and presented at a major conference (CHI 2019).  
 	Additionally, I expanded the proposed set of categories by one strategy called 'decomposition', because during the analysis of the corpus I encountered the situation of not being able to classify a technique in one given bin. Investigating the non-assigned techniques led me to understand that most of them explain the interplay between components in the model they try to explain or decompose a model and use existing techniques to explain the components. For the rest of this thesis I refer to this set of categories as Gamut+.
-	Each publication was therefore assigned the type of explainability strategy it supports, the type of model to which the technique is applicable, the component to which the technique could be applied in the topic extraction pipeline and each paper was classified as either "Theory", "Method", "Study" or "Report". 
-	A "Method" paper presents a single explainability technique and demonstrates its impact in an exemplary use case. A "Theory" paper does so as well, but misses a presented application and evaluation. A "Report" on the other hand summarizes and presents multiple techniques. Finally, a "Study" paper shows the results of an interface evaluation which visualizes the output of explainability methods. Publications from the last category are therefore less technical and more concerned with the HCI aspects of explainability techniques and their visualization.
+	Each publication was therefore assigned the type of explanation strategy it supports, the type of model to which the technique is applicable, the component to which the technique could be applied in the topic extraction pipeline and each paper was classified as either "Theory", "Method", "Study" or "Report". 
+	A "Method" paper presents a single interpretability techniques and demonstrates its impact in an exemplary use case. A "Theory" paper does so as well, but misses a presented application and evaluation. A "Report" on the other hand summarizes and presents multiple techniques. Finally, a "Study" paper shows the results of an interface evaluation which visualizes the output of interpretability techniques. Publications from the last category are therefore less technical and more concerned with the HCI aspects of interpretability techniques and their visualization.
 	
 	Since most of the overview papers presented a huge amount of techniques which were already covered by the "Method" papers and the corpus was already large, I decided to exclude them from the last mapping step. This reduced the final corpus to a size of 72 publications.
 
@@ -130,14 +130,14 @@ print_top_keywords('../chapters/literature_analysis/data/stage2.bib', 'top_keywo
 
 In order to answer the posed question in the beginning of the literature mapping study I visualize the resulting corpus as a mapping on a grid. Each dimension of this grid stands for one of the selected categories and these dimensions are divided into all possible tags in the respective categories. The intersections contain bubbles which visualize, by size and as an explicit number in the middle of the bubble, the amount of publications which were assigned both tags.
 
-Mapping the type of paper and the classification according to Gamut+ each on an axis (\autoref{fig:type_gamut}) shows clearly that there is a trend towards developing methods which explain single decision instances (38 paper). Furthermore most developed methods are tested on real world data (61 paper), but their application in an interface is rarely studied (6 paper). This speaks in favor of the hypothesis that most explainability methods are developed as mathematical theories and influences from HCI are rarely taken into consideration and that the findings of Miller \cite{millerExplainableAIBeware2017} also hold true in the subdomain of NLP.
+Mapping the type of paper and the classification according to Gamut+ each on an axis (\autoref{fig:type_gamut}) shows clearly that there is a trend towards developing methods which explain single decision instances (38 paper). Furthermore most developed methods are tested on real world data (61 paper), but their application in an interface is rarely studied (6 paper). This speaks in favor of the hypothesis that most interpretability techniques are developed as mathematical theories and influences from HCI are rarely taken into consideration and that the findings of Miller \cite{millerExplainableAIBeware2017} also hold true in the subdomain of NLP.
 
 \begin{pycode}
 from analyze_mappings import print_mapping
 print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'type_gamut', 'Mapping of the type of publication and its Gamut+ classification', 'Gamut extended', 'Type')
 \end{pycode}
 
-The second question was concerned with the type of models which are enhanced by explainability techniques. In \autoref{fig:application_gamut} it is visible that neural architectures (NN, CNN, FNN, RNN, GCNN) dominate the field (40 paper). 19 papers try to explain a given model in an agnostic way as a black box, while a minority of publications deals with the explainability of clustering results, decision trees or linear models.
+The second question was concerned with the type of models which are enhanced by interpretability techniques. In \autoref{fig:application_gamut} it is visible that neural architectures (NN, CNN, FNN, RNN, GCNN) dominate the field (40 paper). 19 papers try to explain a given model in an agnostic way as a black box, while a minority of publications deals with the interpretability of clustering results, decision trees or linear models.
 
 \begin{pycode}
 from analyze_mappings import print_mapping
@@ -154,5 +154,4 @@ from analyze_mappings import print_mapping
 print_mapping('../chapters/literature_analysis/data/mapping.xlsx', 'pipelinestep_gamut', 'Mapping of pipeline step and Gamut+ classification', 'Gamut extended', 'Pipeline step')
 \end{pycode}
 
-All in all the literature mapping study revealed a few interesting insights into the field of interpretability research in NLP, while yielding surprisingly few applicable techniques. This may be due to the selection of only the first 100 publications in the scientific database or due to introducing a false bias to the results by including key words like 'neural network' or 'deep learning'. These techniques are normally connected to supervised learning which is not applicable to this use case from the start.
-
+The literature mapping study revealed a few interesting insights into the field of interpretability research in NLP, while yielding surprisingly few applicable techniques. This may be due to the selection of only the first 100 publications in the scientific database or due to introducing a false bias to the results by including key words like 'neural network' or 'deep learning'. These techniques are normally connected to supervised learning which is not applicable to this use case from the start. These findings, especially the analysis showing the distribution of explanation strategies over models, makes it possible to tackle the problem of the proof-of-concept pipeline having theoretical shortcomings while simultaneously improving the interpretability of each component.

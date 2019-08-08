@@ -67,7 +67,7 @@ def analyze_corpus(filepath, name):
     plt.tight_layout(pad=1.0);
     plt.savefig(name, bbox_inches="tight");
 
-    print(r"\begin{figure}[tbp]")
+    print(r"\begin{figure}[htbp!]")
     print(r"\centering")
     print(r"\includegraphics[width=0.85\textwidth]{" + name + "}")
     print(r"""\caption{\label{fig:publisher_distribution}%

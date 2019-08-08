@@ -15,7 +15,7 @@ def show_top_publishers(filepath, name):
 	plt.tight_layout();
 	plt.savefig("./" + name + ".pdf", bbox_inches="tight");
 
-	print(r"\begin{figure}[tbp]")
+	print(r"\begin{figure}[htbp!]")
 	print(r"\centering")
 	print(r"\includegraphics[width=0.65\textwidth]{" + name +".pdf}")
 	print(r"""\caption{\label{fig:""" + name + """}%

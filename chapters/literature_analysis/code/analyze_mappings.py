@@ -59,7 +59,7 @@ def print_mapping(excel_name, name, caption, name_x_axis, name_y_axis):
 
 	pio.write_image(fig, './' + name + '.pdf')
 
-	print(r"\begin{figure}[tbp]")
+	print(r"\begin{figure}[htbp!]")
 	print(r"\centering")
 	print(r"\includegraphics[width=1.0\textwidth]{" + name + ".pdf}")
 	print(r"""\caption{\label{fig:""" + name + """}%

@@ -9,6 +9,18 @@
 
 \subsection*{Abstract}
 
-<Please summarize your thesis in a brief but meaningful way (about one page). Include in your abstract the topic of this thesis, important contents, results of your research and an evaluation of your results.>
+With the surge of the application of machine learning (ML) systems in our daily life there is an increasing demand to make operation and results of these systems interpretable for people with different backgrounds (ML experts, non-technical experts etc.). A wide range of research exists, particular in ML research on specific interpretability techniques (e.g., extracting and displaying information from ML pipelines). However, often a background in machine learning or mathematics is required to interpret the results of the interpretability technique itself. Therefore there is an urgent lack of techniques which may help non-technical experts in using such systems.
+
+The grounding hypothesis of this thesis is that, especially for non-technical experts, context is an influential factor in how people make sense of complex algorithmic systems. Therefore an interaction between a user and an application assumed to be an interplay between a user and his historical context, the context of the situation in which the interaction is embedded and the algorithmic system. Interpretability techniques are the common link which bring all these different aspects together.
+
+In order to evaluate the assumption that most of the current interpretability research is tailored to a technical audience and gain an overview over existing interpretability techniques I conducted a literature mapping study studying the state of interpretability research in the field of natural language processing (NLP). The results of this analysis suggest that indeed most techniques are not evaluated in a context where a non-technical expert may use it and that even most publications lack a proper definition of interpretability.
+
+I propose and implement three methods for making the topic modeling pipeline more interpretable, drawing inspiration from the general strategies which were used in the sourced publications from the mapping study.
+
+Since this thesis presumes that interpretation is a complex socio-technical process, a validation also has to take both sides into account. A first system-centered evaluation using coherence scores showed that the pipeline is indeed able to semantically link projects and show important features in a meaningful way. This theoretical analysis was followed by a human-centered validation in which a cognitive walkthrough was used to simulate the interaction between a non-technical expert and the application. This usability technique unveiled that even though the three interpretability techniques where developed with a certain strategy in mind, the context can make it possible to reinterpret the output of interpretability techniques and use them in an unintended way to understand the system. This finding speaks in favor of the hypothesis that such context-light usability techniques can not completely probe the relationship between user and application, creating a need for validations which are embedded in the same context in that the user will face the system.
+
+
+
+
 
 \cleardoublepage
