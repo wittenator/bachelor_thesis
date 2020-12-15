@@ -1,0 +1,4 @@
+{
+	"inclusion_criteria": ["Reviews the current state of explainability research", "Presents a specific method for enhancing explainability for models"],
+	"exclusion_criteria": ["Is not scientific literature", "The publication does not focus on explainability", "Does not describe the used explainability method", "The described method is neither general, nor focused on NLP"]
+}

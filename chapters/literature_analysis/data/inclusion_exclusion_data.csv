@@ -1,0 +1,9 @@
+Step,Total included publications,Total exluded publications
+Sourcing,400,0
+1. Deduplication,361,39
+Is not scientific literature,350,50
+The publication does not focus on explainability,191,209
+Does not describe the used explainability method,162,238
+"The described method is neither general, nor focused on NLP",90,310
+2. Deduplication,83,417
+Resulting corpus,83,0
